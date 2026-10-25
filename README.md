@@ -4,10 +4,6 @@ A real-time SaaS web application for 100+ member team attendance tracking, capac
 
 ---
 
-## 🌐 Live Website
-
-The website is **ONLINE and RUNNING**:
-👉 **[http://localhost:5000](http://localhost:5000)**
 
 *(Or double-click [`index.html`](file:///C:/Users/Dell/.gemini/antigravity/scratch/team-bandwidth-tracker/index.html) or the single-file [`TeamPulse_Standalone_Demo.html`](file:///C:/Users/Dell/.gemini/antigravity/scratch/team-bandwidth-tracker/TeamPulse_Standalone_Demo.html) to open directly in any browser with zero setup).*
 
