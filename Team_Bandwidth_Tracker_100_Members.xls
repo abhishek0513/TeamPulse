@@ -1,0 +1,2285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:x="urn:schemas-microsoft-com:office:excel"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:html="http://www.w3.org/TR/REC-html40">
+ <Styles>
+  <Style ss:ID="Default" ss:Name="Normal">
+   <Alignment ss:Vertical="Center"/>
+   <Font ss:FontName="Calibri" ss:Size="11" ss:Color="#000000"/>
+  </Style>
+  <Style ss:ID="Header">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#4B5563"/>
+   </Borders>
+   <Font ss:FontName="Calibri" ss:Size="11" ss:Color="#FFFFFF" ss:Bold="1"/>
+   <Interior ss:Color="#1E293B" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="Title">
+   <Font ss:FontName="Calibri" ss:Size="14" ss:Color="#1E293B" ss:Bold="1"/>
+  </Style>
+  <Style ss:ID="Working">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Font ss:FontName="Calibri" ss:Color="#065F46" ss:Bold="1"/>
+   <Interior ss:Color="#D1FAE5" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="Leave">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Font ss:FontName="Calibri" ss:Color="#991B1B" ss:Bold="1"/>
+   <Interior ss:Color="#FEE2E2" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="HalfDay">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Font ss:FontName="Calibri" ss:Color="#92400E" ss:Bold="1"/>
+   <Interior ss:Color="#FEF3C7" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="NA">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Font ss:FontName="Calibri" ss:Color="#6B7280"/>
+   <Interior ss:Color="#F3F4F6" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="BwOK">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Font ss:FontName="Calibri" ss:Color="#065F46" ss:Bold="1" ss:Size="11"/>
+   <Interior ss:Color="#A7F3D0" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="BwAlert">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Font ss:FontName="Calibri" ss:Color="#FFFFFF" ss:Bold="1" ss:Size="11"/>
+   <Interior ss:Color="#DC2626" ss:Pattern="Solid"/>
+  </Style>
+ </Styles>
+ <Worksheet ss:Name="Team Leave &amp; Bandwidth">
+  <Table ss:DefaultRowHeight="20">
+   <Column ss:Width="65"/>
+   <Column ss:Width="140"/>
+   <Column ss:Width="190"/>
+   <Column ss:Width="140"/>
+   <Column ss:Width="170"/>
+   <Column ss:Width="85"/>
+   <Column ss:Width="85"/>
+   <Column ss:Width="85"/>
+   <Column ss:Width="85"/>
+   <Column ss:Width="85"/>
+   <Column ss:Width="85"/>
+   <Column ss:Width="85"/>
+   <Column ss:Width="85"/>
+   <Column ss:Width="85"/>
+   <Column ss:Width="85"/>
+   <Column ss:Width="85"/>
+   <Column ss:Width="85"/>
+   <Column ss:Width="85"/>
+   <Column ss:Width="85"/>
+   <Row ss:Height="26">
+    <Cell ss:StyleID="Title"><Data ss:Type="String">Team Leave &amp; Bandwidth Capacity Tracker (100 Members)</Data></Cell>
+   </Row>
+   <Row ss:Height="18">
+    <Cell><Data ss:Type="String">Automatic Escalation Rule: Any date where available bandwidth drops below 40% triggers alert to Manager (sarah.lead@company.com)</Data></Cell>
+   </Row>
+   <Row ss:Height="10"/>
+   <Row ss:Height="24">
+    <Cell ss:StyleID="Header"><Data ss:Type="String">Member ID</Data></Cell>
+    <Cell ss:StyleID="Header"><Data ss:Type="String">Team Member Name</Data></Cell>
+    <Cell ss:StyleID="Header"><Data ss:Type="String">Project Name</Data></Cell>
+    <Cell ss:StyleID="Header"><Data ss:Type="String">Backup Person</Data></Cell>
+    <Cell ss:StyleID="Header"><Data ss:Type="String">Leave Reason / Notes</Data></Cell>
+    <Cell ss:StyleID="Header"><Data ss:Type="String">24-Oct&#10;(Sat)</Data></Cell>
+    <Cell ss:StyleID="Header"><Data ss:Type="String">25-Oct&#10;(Sun)</Data></Cell>
+    <Cell ss:StyleID="Header"><Data ss:Type="String">26-Oct&#10;(Mon)</Data></Cell>
+    <Cell ss:StyleID="Header"><Data ss:Type="String">27-Oct&#10;(Tue)</Data></Cell>
+    <Cell ss:StyleID="Header"><Data ss:Type="String">28-Oct&#10;(Wed)</Data></Cell>
+    <Cell ss:StyleID="Header"><Data ss:Type="String">29-Oct&#10;(Thu)</Data></Cell>
+    <Cell ss:StyleID="Header"><Data ss:Type="String">30-Oct&#10;(Fri)</Data></Cell>
+    <Cell ss:StyleID="Header"><Data ss:Type="String">31-Oct&#10;(Sat)</Data></Cell>
+    <Cell ss:StyleID="Header"><Data ss:Type="String">01-Nov&#10;(Sun)</Data></Cell>
+    <Cell ss:StyleID="Header"><Data ss:Type="String">02-Nov&#10;(Mon)</Data></Cell>
+    <Cell ss:StyleID="Header"><Data ss:Type="String">03-Nov&#10;(Tue)</Data></Cell>
+    <Cell ss:StyleID="Header"><Data ss:Type="String">04-Nov&#10;(Wed)</Data></Cell>
+    <Cell ss:StyleID="Header"><Data ss:Type="String">05-Nov&#10;(Thu)</Data></Cell>
+    <Cell ss:StyleID="Header"><Data ss:Type="String">06-Nov&#10;(Fri)</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-001</Data></Cell>
+    <Cell><Data ss:Type="String">Aarav Sharma</Data></Cell>
+    <Cell><Data ss:Type="String">E-Commerce Core & Checkout</Data></Cell>
+    <Cell><Data ss:Type="String">Priya Patel</Data></Cell>
+    <Cell><Data ss:Type="String">Doctor & Health Checkup</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-002</Data></Cell>
+    <Cell><Data ss:Type="String">Priya Patel</Data></Cell>
+    <Cell><Data ss:Type="String">Payment Gateway & Fraud Shield</Data></Cell>
+    <Cell><Data ss:Type="String">Michael Chen</Data></Cell>
+    <Cell><Data ss:Type="String">Family Function / Wedding</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="HalfDay"><Data ss:Type="String">Half day</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-003</Data></Cell>
+    <Cell><Data ss:Type="String">Michael Chen</Data></Cell>
+    <Cell><Data ss:Type="String">Mobile Banking App (iOS/Android)</Data></Cell>
+    <Cell><Data ss:Type="String">Sarah Jenkins</Data></Cell>
+    <Cell><Data ss:Type="String">Annual Vacation & Travel</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-004</Data></Cell>
+    <Cell><Data ss:Type="String">Sarah Jenkins</Data></Cell>
+    <Cell><Data ss:Type="String">AI Recommendation Engine</Data></Cell>
+    <Cell><Data ss:Type="String">David Kim</Data></Cell>
+    <Cell><Data ss:Type="String">Personal Emergency</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-005</Data></Cell>
+    <Cell><Data ss:Type="String">David Kim</Data></Cell>
+    <Cell><Data ss:Type="String">Cloud & DevOps Infrastructure</Data></Cell>
+    <Cell><Data ss:Type="String">Fatima Zahra</Data></Cell>
+    <Cell><Data ss:Type="String">Home Maintenance</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-006</Data></Cell>
+    <Cell><Data ss:Type="String">Fatima Zahra</Data></Cell>
+    <Cell><Data ss:Type="String">Identity & Access Management (IAM)</Data></Cell>
+    <Cell><Data ss:Type="String">Carlos Rodriguez</Data></Cell>
+    <Cell><Data ss:Type="String">Parent-Teacher Conference</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="HalfDay"><Data ss:Type="String">Half day</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-007</Data></Cell>
+    <Cell><Data ss:Type="String">Carlos Rodriguez</Data></Cell>
+    <Cell><Data ss:Type="String">Data Warehouse & Analytics</Data></Cell>
+    <Cell><Data ss:Type="String">Emily Watson</Data></Cell>
+    <Cell><Data ss:Type="String">Certification Exam</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-008</Data></Cell>
+    <Cell><Data ss:Type="String">Emily Watson</Data></Cell>
+    <Cell><Data ss:Type="String">Customer Support Portal & CRM</Data></Cell>
+    <Cell><Data ss:Type="String">Rohan Gupta</Data></Cell>
+    <Cell><Data ss:Type="String">Visa & Passport Appointment</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="HalfDay"><Data ss:Type="String">Half day</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-009</Data></Cell>
+    <Cell><Data ss:Type="String">Rohan Gupta</Data></Cell>
+    <Cell><Data ss:Type="String">E-Commerce Core & Checkout</Data></Cell>
+    <Cell><Data ss:Type="String">Ananya Singh</Data></Cell>
+    <Cell><Data ss:Type="String">Doctor & Health Checkup</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-010</Data></Cell>
+    <Cell><Data ss:Type="String">Ananya Singh</Data></Cell>
+    <Cell><Data ss:Type="String">Payment Gateway & Fraud Shield</Data></Cell>
+    <Cell><Data ss:Type="String">James Johnson</Data></Cell>
+    <Cell><Data ss:Type="String">Family Function / Wedding</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-011</Data></Cell>
+    <Cell><Data ss:Type="String">James Johnson</Data></Cell>
+    <Cell><Data ss:Type="String">Mobile Banking App (iOS/Android)</Data></Cell>
+    <Cell><Data ss:Type="String">Elena Petrova</Data></Cell>
+    <Cell><Data ss:Type="String">Annual Vacation & Travel</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-012</Data></Cell>
+    <Cell><Data ss:Type="String">Elena Petrova</Data></Cell>
+    <Cell><Data ss:Type="String">AI Recommendation Engine</Data></Cell>
+    <Cell><Data ss:Type="String">Liam Smith</Data></Cell>
+    <Cell><Data ss:Type="String">Personal Emergency</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="HalfDay"><Data ss:Type="String">Half day</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-013</Data></Cell>
+    <Cell><Data ss:Type="String">Liam Smith</Data></Cell>
+    <Cell><Data ss:Type="String">Cloud & DevOps Infrastructure</Data></Cell>
+    <Cell><Data ss:Type="String">Sophia Miller</Data></Cell>
+    <Cell><Data ss:Type="String">Home Maintenance</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-014</Data></Cell>
+    <Cell><Data ss:Type="String">Sophia Miller</Data></Cell>
+    <Cell><Data ss:Type="String">Identity & Access Management (IAM)</Data></Cell>
+    <Cell><Data ss:Type="String">Daniel Taylor</Data></Cell>
+    <Cell><Data ss:Type="String">Parent-Teacher Conference</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-015</Data></Cell>
+    <Cell><Data ss:Type="String">Daniel Taylor</Data></Cell>
+    <Cell><Data ss:Type="String">Data Warehouse & Analytics</Data></Cell>
+    <Cell><Data ss:Type="String">Meera Verma</Data></Cell>
+    <Cell><Data ss:Type="String">Certification Exam</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-016</Data></Cell>
+    <Cell><Data ss:Type="String">Meera Verma</Data></Cell>
+    <Cell><Data ss:Type="String">Customer Support Portal & CRM</Data></Cell>
+    <Cell><Data ss:Type="String">Alexander Ivanov</Data></Cell>
+    <Cell><Data ss:Type="String">Visa & Passport Appointment</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="HalfDay"><Data ss:Type="String">Half day</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-017</Data></Cell>
+    <Cell><Data ss:Type="String">Alexander Ivanov</Data></Cell>
+    <Cell><Data ss:Type="String">E-Commerce Core & Checkout</Data></Cell>
+    <Cell><Data ss:Type="String">Zainab Khan</Data></Cell>
+    <Cell><Data ss:Type="String">Doctor & Health Checkup</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-018</Data></Cell>
+    <Cell><Data ss:Type="String">Zainab Khan</Data></Cell>
+    <Cell><Data ss:Type="String">Payment Gateway & Fraud Shield</Data></Cell>
+    <Cell><Data ss:Type="String">Lucas Martin</Data></Cell>
+    <Cell><Data ss:Type="String">Family Function / Wedding</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="HalfDay"><Data ss:Type="String">Half day</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-019</Data></Cell>
+    <Cell><Data ss:Type="String">Lucas Martin</Data></Cell>
+    <Cell><Data ss:Type="String">Mobile Banking App (iOS/Android)</Data></Cell>
+    <Cell><Data ss:Type="String">Olivia Brown</Data></Cell>
+    <Cell><Data ss:Type="String">Annual Vacation & Travel</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-020</Data></Cell>
+    <Cell><Data ss:Type="String">Olivia Brown</Data></Cell>
+    <Cell><Data ss:Type="String">AI Recommendation Engine</Data></Cell>
+    <Cell><Data ss:Type="String">Vikram Nair</Data></Cell>
+    <Cell><Data ss:Type="String">Personal Emergency</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="HalfDay"><Data ss:Type="String">Half day</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-021</Data></Cell>
+    <Cell><Data ss:Type="String">Vikram Nair</Data></Cell>
+    <Cell><Data ss:Type="String">Cloud & DevOps Infrastructure</Data></Cell>
+    <Cell><Data ss:Type="String">Chloe Anderson</Data></Cell>
+    <Cell><Data ss:Type="String">Home Maintenance</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="HalfDay"><Data ss:Type="String">Half day</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-022</Data></Cell>
+    <Cell><Data ss:Type="String">Chloe Anderson</Data></Cell>
+    <Cell><Data ss:Type="String">Identity & Access Management (IAM)</Data></Cell>
+    <Cell><Data ss:Type="String">Benjamin Davis</Data></Cell>
+    <Cell><Data ss:Type="String">Parent-Teacher Conference</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="HalfDay"><Data ss:Type="String">Half day</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-023</Data></Cell>
+    <Cell><Data ss:Type="String">Benjamin Davis</Data></Cell>
+    <Cell><Data ss:Type="String">Data Warehouse & Analytics</Data></Cell>
+    <Cell><Data ss:Type="String">Aaliyah Al-Mansoor</Data></Cell>
+    <Cell><Data ss:Type="String">Certification Exam</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-024</Data></Cell>
+    <Cell><Data ss:Type="String">Aaliyah Al-Mansoor</Data></Cell>
+    <Cell><Data ss:Type="String">Customer Support Portal & CRM</Data></Cell>
+    <Cell><Data ss:Type="String">William Wilson</Data></Cell>
+    <Cell><Data ss:Type="String">Visa & Passport Appointment</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-025</Data></Cell>
+    <Cell><Data ss:Type="String">William Wilson</Data></Cell>
+    <Cell><Data ss:Type="String">E-Commerce Core & Checkout</Data></Cell>
+    <Cell><Data ss:Type="String">Jessica Martinez</Data></Cell>
+    <Cell><Data ss:Type="String">Doctor & Health Checkup</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-026</Data></Cell>
+    <Cell><Data ss:Type="String">Jessica Martinez</Data></Cell>
+    <Cell><Data ss:Type="String">Payment Gateway & Fraud Shield</Data></Cell>
+    <Cell><Data ss:Type="String">Noah Moore</Data></Cell>
+    <Cell><Data ss:Type="String">Family Function / Wedding</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="HalfDay"><Data ss:Type="String">Half day</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-027</Data></Cell>
+    <Cell><Data ss:Type="String">Noah Moore</Data></Cell>
+    <Cell><Data ss:Type="String">Mobile Banking App (iOS/Android)</Data></Cell>
+    <Cell><Data ss:Type="String">Zara Siddiqui</Data></Cell>
+    <Cell><Data ss:Type="String">Annual Vacation & Travel</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="HalfDay"><Data ss:Type="String">Half day</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-028</Data></Cell>
+    <Cell><Data ss:Type="String">Zara Siddiqui</Data></Cell>
+    <Cell><Data ss:Type="String">AI Recommendation Engine</Data></Cell>
+    <Cell><Data ss:Type="String">Ethan Taylor</Data></Cell>
+    <Cell><Data ss:Type="String">Personal Emergency</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-029</Data></Cell>
+    <Cell><Data ss:Type="String">Ethan Taylor</Data></Cell>
+    <Cell><Data ss:Type="String">Cloud & DevOps Infrastructure</Data></Cell>
+    <Cell><Data ss:Type="String">Nandini Iyer</Data></Cell>
+    <Cell><Data ss:Type="String">Home Maintenance</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-030</Data></Cell>
+    <Cell><Data ss:Type="String">Nandini Iyer</Data></Cell>
+    <Cell><Data ss:Type="String">Identity & Access Management (IAM)</Data></Cell>
+    <Cell><Data ss:Type="String">Henry Thomas</Data></Cell>
+    <Cell><Data ss:Type="String">Parent-Teacher Conference</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="HalfDay"><Data ss:Type="String">Half day</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-031</Data></Cell>
+    <Cell><Data ss:Type="String">Henry Thomas</Data></Cell>
+    <Cell><Data ss:Type="String">Data Warehouse & Analytics</Data></Cell>
+    <Cell><Data ss:Type="String">Maya Rao</Data></Cell>
+    <Cell><Data ss:Type="String">Certification Exam</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-032</Data></Cell>
+    <Cell><Data ss:Type="String">Maya Rao</Data></Cell>
+    <Cell><Data ss:Type="String">Customer Support Portal & CRM</Data></Cell>
+    <Cell><Data ss:Type="String">Sebastian Hernandez</Data></Cell>
+    <Cell><Data ss:Type="String">Visa & Passport Appointment</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="HalfDay"><Data ss:Type="String">Half day</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-033</Data></Cell>
+    <Cell><Data ss:Type="String">Sebastian Hernandez</Data></Cell>
+    <Cell><Data ss:Type="String">E-Commerce Core & Checkout</Data></Cell>
+    <Cell><Data ss:Type="String">Layla Malik</Data></Cell>
+    <Cell><Data ss:Type="String">Doctor & Health Checkup</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-034</Data></Cell>
+    <Cell><Data ss:Type="String">Layla Malik</Data></Cell>
+    <Cell><Data ss:Type="String">Payment Gateway & Fraud Shield</Data></Cell>
+    <Cell><Data ss:Type="String">Matthew Clark</Data></Cell>
+    <Cell><Data ss:Type="String">Family Function / Wedding</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-035</Data></Cell>
+    <Cell><Data ss:Type="String">Matthew Clark</Data></Cell>
+    <Cell><Data ss:Type="String">Mobile Banking App (iOS/Android)</Data></Cell>
+    <Cell><Data ss:Type="String">Tara Deshmukh</Data></Cell>
+    <Cell><Data ss:Type="String">Annual Vacation & Travel</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="HalfDay"><Data ss:Type="String">Half day</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-036</Data></Cell>
+    <Cell><Data ss:Type="String">Tara Deshmukh</Data></Cell>
+    <Cell><Data ss:Type="String">AI Recommendation Engine</Data></Cell>
+    <Cell><Data ss:Type="String">Samuel Lewis</Data></Cell>
+    <Cell><Data ss:Type="String">Personal Emergency</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="HalfDay"><Data ss:Type="String">Half day</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-037</Data></Cell>
+    <Cell><Data ss:Type="String">Samuel Lewis</Data></Cell>
+    <Cell><Data ss:Type="String">Cloud & DevOps Infrastructure</Data></Cell>
+    <Cell><Data ss:Type="String">Kavya Chopra</Data></Cell>
+    <Cell><Data ss:Type="String">Home Maintenance</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-038</Data></Cell>
+    <Cell><Data ss:Type="String">Kavya Chopra</Data></Cell>
+    <Cell><Data ss:Type="String">Identity & Access Management (IAM)</Data></Cell>
+    <Cell><Data ss:Type="String">Jackson Robinson</Data></Cell>
+    <Cell><Data ss:Type="String">Parent-Teacher Conference</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-039</Data></Cell>
+    <Cell><Data ss:Type="String">Jackson Robinson</Data></Cell>
+    <Cell><Data ss:Type="String">Data Warehouse & Analytics</Data></Cell>
+    <Cell><Data ss:Type="String">Noor Qureshi</Data></Cell>
+    <Cell><Data ss:Type="String">Certification Exam</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="HalfDay"><Data ss:Type="String">Half day</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-040</Data></Cell>
+    <Cell><Data ss:Type="String">Noor Qureshi</Data></Cell>
+    <Cell><Data ss:Type="String">Customer Support Portal & CRM</Data></Cell>
+    <Cell><Data ss:Type="String">Aditya Mishra</Data></Cell>
+    <Cell><Data ss:Type="String">Visa & Passport Appointment</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="HalfDay"><Data ss:Type="String">Half day</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-041</Data></Cell>
+    <Cell><Data ss:Type="String">Aditya Mishra</Data></Cell>
+    <Cell><Data ss:Type="String">E-Commerce Core & Checkout</Data></Cell>
+    <Cell><Data ss:Type="String">Amara Ali</Data></Cell>
+    <Cell><Data ss:Type="String">Doctor & Health Checkup</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="HalfDay"><Data ss:Type="String">Half day</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-042</Data></Cell>
+    <Cell><Data ss:Type="String">Amara Ali</Data></Cell>
+    <Cell><Data ss:Type="String">Payment Gateway & Fraud Shield</Data></Cell>
+    <Cell><Data ss:Type="String">Gabriel Walker</Data></Cell>
+    <Cell><Data ss:Type="String">Family Function / Wedding</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="HalfDay"><Data ss:Type="String">Half day</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-043</Data></Cell>
+    <Cell><Data ss:Type="String">Gabriel Walker</Data></Cell>
+    <Cell><Data ss:Type="String">Mobile Banking App (iOS/Android)</Data></Cell>
+    <Cell><Data ss:Type="String">Sana Bano</Data></Cell>
+    <Cell><Data ss:Type="String">Annual Vacation & Travel</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-044</Data></Cell>
+    <Cell><Data ss:Type="String">Sana Bano</Data></Cell>
+    <Cell><Data ss:Type="String">AI Recommendation Engine</Data></Cell>
+    <Cell><Data ss:Type="String">Carter Hall</Data></Cell>
+    <Cell><Data ss:Type="String">Personal Emergency</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-045</Data></Cell>
+    <Cell><Data ss:Type="String">Carter Hall</Data></Cell>
+    <Cell><Data ss:Type="String">Cloud & DevOps Infrastructure</Data></Cell>
+    <Cell><Data ss:Type="String">Ishaan Bose</Data></Cell>
+    <Cell><Data ss:Type="String">Home Maintenance</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="HalfDay"><Data ss:Type="String">Half day</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-046</Data></Cell>
+    <Cell><Data ss:Type="String">Ishaan Bose</Data></Cell>
+    <Cell><Data ss:Type="String">Identity & Access Management (IAM)</Data></Cell>
+    <Cell><Data ss:Type="String">Luke Allen</Data></Cell>
+    <Cell><Data ss:Type="String">Parent-Teacher Conference</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="HalfDay"><Data ss:Type="String">Half day</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-047</Data></Cell>
+    <Cell><Data ss:Type="String">Luke Allen</Data></Cell>
+    <Cell><Data ss:Type="String">Data Warehouse & Analytics</Data></Cell>
+    <Cell><Data ss:Type="String">Simran Kaur</Data></Cell>
+    <Cell><Data ss:Type="String">Certification Exam</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-048</Data></Cell>
+    <Cell><Data ss:Type="String">Simran Kaur</Data></Cell>
+    <Cell><Data ss:Type="String">Customer Support Portal & CRM</Data></Cell>
+    <Cell><Data ss:Type="String">Anthony Young</Data></Cell>
+    <Cell><Data ss:Type="String">Visa & Passport Appointment</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-049</Data></Cell>
+    <Cell><Data ss:Type="String">Anthony Young</Data></Cell>
+    <Cell><Data ss:Type="String">E-Commerce Core & Checkout</Data></Cell>
+    <Cell><Data ss:Type="String">Diya Bhatt</Data></Cell>
+    <Cell><Data ss:Type="String">Doctor & Health Checkup</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="HalfDay"><Data ss:Type="String">Half day</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-050</Data></Cell>
+    <Cell><Data ss:Type="String">Diya Bhatt</Data></Cell>
+    <Cell><Data ss:Type="String">Payment Gateway & Fraud Shield</Data></Cell>
+    <Cell><Data ss:Type="String">Arjun Reddy</Data></Cell>
+    <Cell><Data ss:Type="String">Family Function / Wedding</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-051</Data></Cell>
+    <Cell><Data ss:Type="String">Arjun Reddy</Data></Cell>
+    <Cell><Data ss:Type="String">Mobile Banking App (iOS/Android)</Data></Cell>
+    <Cell><Data ss:Type="String">Neha Ghosh</Data></Cell>
+    <Cell><Data ss:Type="String">Annual Vacation & Travel</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="HalfDay"><Data ss:Type="String">Half day</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-052</Data></Cell>
+    <Cell><Data ss:Type="String">Neha Ghosh</Data></Cell>
+    <Cell><Data ss:Type="String">AI Recommendation Engine</Data></Cell>
+    <Cell><Data ss:Type="String">Mason Wright</Data></Cell>
+    <Cell><Data ss:Type="String">Personal Emergency</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-053</Data></Cell>
+    <Cell><Data ss:Type="String">Mason Wright</Data></Cell>
+    <Cell><Data ss:Type="String">Cloud & DevOps Infrastructure</Data></Cell>
+    <Cell><Data ss:Type="String">Grace King</Data></Cell>
+    <Cell><Data ss:Type="String">Home Maintenance</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-054</Data></Cell>
+    <Cell><Data ss:Type="String">Grace King</Data></Cell>
+    <Cell><Data ss:Type="String">Identity & Access Management (IAM)</Data></Cell>
+    <Cell><Data ss:Type="String">Oliver Lopez</Data></Cell>
+    <Cell><Data ss:Type="String">Parent-Teacher Conference</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-055</Data></Cell>
+    <Cell><Data ss:Type="String">Oliver Lopez</Data></Cell>
+    <Cell><Data ss:Type="String">Data Warehouse & Analytics</Data></Cell>
+    <Cell><Data ss:Type="String">Tanvi Joshi</Data></Cell>
+    <Cell><Data ss:Type="String">Certification Exam</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="HalfDay"><Data ss:Type="String">Half day</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-056</Data></Cell>
+    <Cell><Data ss:Type="String">Tanvi Joshi</Data></Cell>
+    <Cell><Data ss:Type="String">Customer Support Portal & CRM</Data></Cell>
+    <Cell><Data ss:Type="String">Elijah Hill</Data></Cell>
+    <Cell><Data ss:Type="String">Visa & Passport Appointment</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-057</Data></Cell>
+    <Cell><Data ss:Type="String">Elijah Hill</Data></Cell>
+    <Cell><Data ss:Type="String">E-Commerce Core & Checkout</Data></Cell>
+    <Cell><Data ss:Type="String">Riya Mehta</Data></Cell>
+    <Cell><Data ss:Type="String">Doctor & Health Checkup</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-058</Data></Cell>
+    <Cell><Data ss:Type="String">Riya Mehta</Data></Cell>
+    <Cell><Data ss:Type="String">Payment Gateway & Fraud Shield</Data></Cell>
+    <Cell><Data ss:Type="String">Jack Scott</Data></Cell>
+    <Cell><Data ss:Type="String">Family Function / Wedding</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-059</Data></Cell>
+    <Cell><Data ss:Type="String">Jack Scott</Data></Cell>
+    <Cell><Data ss:Type="String">Mobile Banking App (iOS/Android)</Data></Cell>
+    <Cell><Data ss:Type="String">Pooja Saxena</Data></Cell>
+    <Cell><Data ss:Type="String">Annual Vacation & Travel</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="HalfDay"><Data ss:Type="String">Half day</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-060</Data></Cell>
+    <Cell><Data ss:Type="String">Pooja Saxena</Data></Cell>
+    <Cell><Data ss:Type="String">AI Recommendation Engine</Data></Cell>
+    <Cell><Data ss:Type="String">Aryan Kapoor</Data></Cell>
+    <Cell><Data ss:Type="String">Personal Emergency</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-061</Data></Cell>
+    <Cell><Data ss:Type="String">Aryan Kapoor</Data></Cell>
+    <Cell><Data ss:Type="String">Cloud & DevOps Infrastructure</Data></Cell>
+    <Cell><Data ss:Type="String">Sneha Banerjee</Data></Cell>
+    <Cell><Data ss:Type="String">Home Maintenance</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="HalfDay"><Data ss:Type="String">Half day</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-062</Data></Cell>
+    <Cell><Data ss:Type="String">Sneha Banerjee</Data></Cell>
+    <Cell><Data ss:Type="String">Identity & Access Management (IAM)</Data></Cell>
+    <Cell><Data ss:Type="String">Leo Green</Data></Cell>
+    <Cell><Data ss:Type="String">Parent-Teacher Conference</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-063</Data></Cell>
+    <Cell><Data ss:Type="String">Leo Green</Data></Cell>
+    <Cell><Data ss:Type="String">Data Warehouse & Analytics</Data></Cell>
+    <Cell><Data ss:Type="String">Avani Adams</Data></Cell>
+    <Cell><Data ss:Type="String">Certification Exam</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="HalfDay"><Data ss:Type="String">Half day</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-064</Data></Cell>
+    <Cell><Data ss:Type="String">Avani Adams</Data></Cell>
+    <Cell><Data ss:Type="String">Customer Support Portal & CRM</Data></Cell>
+    <Cell><Data ss:Type="String">Theodore Baker</Data></Cell>
+    <Cell><Data ss:Type="String">Visa & Passport Appointment</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-065</Data></Cell>
+    <Cell><Data ss:Type="String">Theodore Baker</Data></Cell>
+    <Cell><Data ss:Type="String">E-Commerce Core & Checkout</Data></Cell>
+    <Cell><Data ss:Type="String">Mira Trivedi</Data></Cell>
+    <Cell><Data ss:Type="String">Doctor & Health Checkup</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="HalfDay"><Data ss:Type="String">Half day</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-066</Data></Cell>
+    <Cell><Data ss:Type="String">Mira Trivedi</Data></Cell>
+    <Cell><Data ss:Type="String">Payment Gateway & Fraud Shield</Data></Cell>
+    <Cell><Data ss:Type="String">Thomas Gonzalez</Data></Cell>
+    <Cell><Data ss:Type="String">Family Function / Wedding</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-067</Data></Cell>
+    <Cell><Data ss:Type="String">Thomas Gonzalez</Data></Cell>
+    <Cell><Data ss:Type="String">Mobile Banking App (iOS/Android)</Data></Cell>
+    <Cell><Data ss:Type="String">Deepika Agarwal</Data></Cell>
+    <Cell><Data ss:Type="String">Annual Vacation & Travel</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-068</Data></Cell>
+    <Cell><Data ss:Type="String">Deepika Agarwal</Data></Cell>
+    <Cell><Data ss:Type="String">AI Recommendation Engine</Data></Cell>
+    <Cell><Data ss:Type="String">Logan Nelson</Data></Cell>
+    <Cell><Data ss:Type="String">Personal Emergency</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="HalfDay"><Data ss:Type="String">Half day</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-069</Data></Cell>
+    <Cell><Data ss:Type="String">Logan Nelson</Data></Cell>
+    <Cell><Data ss:Type="String">Cloud & DevOps Infrastructure</Data></Cell>
+    <Cell><Data ss:Type="String">Shreya Mukherjee</Data></Cell>
+    <Cell><Data ss:Type="String">Home Maintenance</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="HalfDay"><Data ss:Type="String">Half day</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-070</Data></Cell>
+    <Cell><Data ss:Type="String">Shreya Mukherjee</Data></Cell>
+    <Cell><Data ss:Type="String">Identity & Access Management (IAM)</Data></Cell>
+    <Cell><Data ss:Type="String">Harsh Pandey</Data></Cell>
+    <Cell><Data ss:Type="String">Parent-Teacher Conference</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-071</Data></Cell>
+    <Cell><Data ss:Type="String">Harsh Pandey</Data></Cell>
+    <Cell><Data ss:Type="String">Data Warehouse & Analytics</Data></Cell>
+    <Cell><Data ss:Type="String">Shruti Chatterjee</Data></Cell>
+    <Cell><Data ss:Type="String">Certification Exam</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-072</Data></Cell>
+    <Cell><Data ss:Type="String">Shruti Chatterjee</Data></Cell>
+    <Cell><Data ss:Type="String">Customer Support Portal & CRM</Data></Cell>
+    <Cell><Data ss:Type="String">Julian Mitchell</Data></Cell>
+    <Cell><Data ss:Type="String">Visa & Passport Appointment</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-073</Data></Cell>
+    <Cell><Data ss:Type="String">Julian Mitchell</Data></Cell>
+    <Cell><Data ss:Type="String">E-Commerce Core & Checkout</Data></Cell>
+    <Cell><Data ss:Type="String">Swati Pillai</Data></Cell>
+    <Cell><Data ss:Type="String">Doctor & Health Checkup</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="HalfDay"><Data ss:Type="String">Half day</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-074</Data></Cell>
+    <Cell><Data ss:Type="String">Swati Pillai</Data></Cell>
+    <Cell><Data ss:Type="String">Payment Gateway & Fraud Shield</Data></Cell>
+    <Cell><Data ss:Type="String">Jayden Perez</Data></Cell>
+    <Cell><Data ss:Type="String">Family Function / Wedding</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="HalfDay"><Data ss:Type="String">Half day</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-075</Data></Cell>
+    <Cell><Data ss:Type="String">Jayden Perez</Data></Cell>
+    <Cell><Data ss:Type="String">Mobile Banking App (iOS/Android)</Data></Cell>
+    <Cell><Data ss:Type="String">Bhavna Das</Data></Cell>
+    <Cell><Data ss:Type="String">Annual Vacation & Travel</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="HalfDay"><Data ss:Type="String">Half day</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-076</Data></Cell>
+    <Cell><Data ss:Type="String">Bhavna Das</Data></Cell>
+    <Cell><Data ss:Type="String">AI Recommendation Engine</Data></Cell>
+    <Cell><Data ss:Type="String">Ryan Roberts</Data></Cell>
+    <Cell><Data ss:Type="String">Personal Emergency</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-077</Data></Cell>
+    <Cell><Data ss:Type="String">Ryan Roberts</Data></Cell>
+    <Cell><Data ss:Type="String">Cloud & DevOps Infrastructure</Data></Cell>
+    <Cell><Data ss:Type="String">Archana Chawla</Data></Cell>
+    <Cell><Data ss:Type="String">Home Maintenance</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-078</Data></Cell>
+    <Cell><Data ss:Type="String">Archana Chawla</Data></Cell>
+    <Cell><Data ss:Type="String">Identity & Access Management (IAM)</Data></Cell>
+    <Cell><Data ss:Type="String">Nathan Turner</Data></Cell>
+    <Cell><Data ss:Type="String">Parent-Teacher Conference</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-079</Data></Cell>
+    <Cell><Data ss:Type="String">Nathan Turner</Data></Cell>
+    <Cell><Data ss:Type="String">Data Warehouse & Analytics</Data></Cell>
+    <Cell><Data ss:Type="String">Geeta Menon</Data></Cell>
+    <Cell><Data ss:Type="String">Certification Exam</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="HalfDay"><Data ss:Type="String">Half day</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-080</Data></Cell>
+    <Cell><Data ss:Type="String">Geeta Menon</Data></Cell>
+    <Cell><Data ss:Type="String">Customer Support Portal & CRM</Data></Cell>
+    <Cell><Data ss:Type="String">Varun Thakur</Data></Cell>
+    <Cell><Data ss:Type="String">Visa & Passport Appointment</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="HalfDay"><Data ss:Type="String">Half day</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-081</Data></Cell>
+    <Cell><Data ss:Type="String">Varun Thakur</Data></Cell>
+    <Cell><Data ss:Type="String">E-Commerce Core & Checkout</Data></Cell>
+    <Cell><Data ss:Type="String">Pallavi Dutta</Data></Cell>
+    <Cell><Data ss:Type="String">Doctor & Health Checkup</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-082</Data></Cell>
+    <Cell><Data ss:Type="String">Pallavi Dutta</Data></Cell>
+    <Cell><Data ss:Type="String">Payment Gateway & Fraud Shield</Data></Cell>
+    <Cell><Data ss:Type="String">Caleb Phillips</Data></Cell>
+    <Cell><Data ss:Type="String">Family Function / Wedding</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="HalfDay"><Data ss:Type="String">Half day</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-083</Data></Cell>
+    <Cell><Data ss:Type="String">Caleb Phillips</Data></Cell>
+    <Cell><Data ss:Type="String">Mobile Banking App (iOS/Android)</Data></Cell>
+    <Cell><Data ss:Type="String">Meenakshi Nambiar</Data></Cell>
+    <Cell><Data ss:Type="String">Annual Vacation & Travel</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="HalfDay"><Data ss:Type="String">Half day</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-084</Data></Cell>
+    <Cell><Data ss:Type="String">Meenakshi Nambiar</Data></Cell>
+    <Cell><Data ss:Type="String">AI Recommendation Engine</Data></Cell>
+    <Cell><Data ss:Type="String">Christian Campbell</Data></Cell>
+    <Cell><Data ss:Type="String">Personal Emergency</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-085</Data></Cell>
+    <Cell><Data ss:Type="String">Christian Campbell</Data></Cell>
+    <Cell><Data ss:Type="String">Cloud & DevOps Infrastructure</Data></Cell>
+    <Cell><Data ss:Type="String">Divya Mahajan</Data></Cell>
+    <Cell><Data ss:Type="String">Home Maintenance</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-086</Data></Cell>
+    <Cell><Data ss:Type="String">Divya Mahajan</Data></Cell>
+    <Cell><Data ss:Type="String">Identity & Access Management (IAM)</Data></Cell>
+    <Cell><Data ss:Type="String">Hunter Parker</Data></Cell>
+    <Cell><Data ss:Type="String">Parent-Teacher Conference</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-087</Data></Cell>
+    <Cell><Data ss:Type="String">Hunter Parker</Data></Cell>
+    <Cell><Data ss:Type="String">Data Warehouse & Analytics</Data></Cell>
+    <Cell><Data ss:Type="String">Kalyani Garg</Data></Cell>
+    <Cell><Data ss:Type="String">Certification Exam</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="HalfDay"><Data ss:Type="String">Half day</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-088</Data></Cell>
+    <Cell><Data ss:Type="String">Kalyani Garg</Data></Cell>
+    <Cell><Data ss:Type="String">Customer Support Portal & CRM</Data></Cell>
+    <Cell><Data ss:Type="String">Eli Evans</Data></Cell>
+    <Cell><Data ss:Type="String">Visa & Passport Appointment</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="HalfDay"><Data ss:Type="String">Half day</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-089</Data></Cell>
+    <Cell><Data ss:Type="String">Eli Evans</Data></Cell>
+    <Cell><Data ss:Type="String">E-Commerce Core & Checkout</Data></Cell>
+    <Cell><Data ss:Type="String">Radhika Shukla</Data></Cell>
+    <Cell><Data ss:Type="String">Doctor & Health Checkup</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="HalfDay"><Data ss:Type="String">Half day</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-090</Data></Cell>
+    <Cell><Data ss:Type="String">Radhika Shukla</Data></Cell>
+    <Cell><Data ss:Type="String">Payment Gateway & Fraud Shield</Data></Cell>
+    <Cell><Data ss:Type="String">Karan Malhotra</Data></Cell>
+    <Cell><Data ss:Type="String">Family Function / Wedding</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-091</Data></Cell>
+    <Cell><Data ss:Type="String">Karan Malhotra</Data></Cell>
+    <Cell><Data ss:Type="String">Mobile Banking App (iOS/Android)</Data></Cell>
+    <Cell><Data ss:Type="String">Komal Biswas</Data></Cell>
+    <Cell><Data ss:Type="String">Annual Vacation & Travel</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-092</Data></Cell>
+    <Cell><Data ss:Type="String">Komal Biswas</Data></Cell>
+    <Cell><Data ss:Type="String">AI Recommendation Engine</Data></Cell>
+    <Cell><Data ss:Type="String">Landon Edwards</Data></Cell>
+    <Cell><Data ss:Type="String">Personal Emergency</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="HalfDay"><Data ss:Type="String">Half day</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-093</Data></Cell>
+    <Cell><Data ss:Type="String">Landon Edwards</Data></Cell>
+    <Cell><Data ss:Type="String">Cloud & DevOps Infrastructure</Data></Cell>
+    <Cell><Data ss:Type="String">Bhumika Tandon</Data></Cell>
+    <Cell><Data ss:Type="String">Home Maintenance</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="HalfDay"><Data ss:Type="String">Half day</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-094</Data></Cell>
+    <Cell><Data ss:Type="String">Bhumika Tandon</Data></Cell>
+    <Cell><Data ss:Type="String">Identity & Access Management (IAM)</Data></Cell>
+    <Cell><Data ss:Type="String">Connor Collins</Data></Cell>
+    <Cell><Data ss:Type="String">Parent-Teacher Conference</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="HalfDay"><Data ss:Type="String">Half day</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-095</Data></Cell>
+    <Cell><Data ss:Type="String">Connor Collins</Data></Cell>
+    <Cell><Data ss:Type="String">Data Warehouse & Analytics</Data></Cell>
+    <Cell><Data ss:Type="String">Richa Lal</Data></Cell>
+    <Cell><Data ss:Type="String">Certification Exam</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-096</Data></Cell>
+    <Cell><Data ss:Type="String">Richa Lal</Data></Cell>
+    <Cell><Data ss:Type="String">Customer Support Portal & CRM</Data></Cell>
+    <Cell><Data ss:Type="String">Jonathan Stewart</Data></Cell>
+    <Cell><Data ss:Type="String">Visa & Passport Appointment</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-097</Data></Cell>
+    <Cell><Data ss:Type="String">Jonathan Stewart</Data></Cell>
+    <Cell><Data ss:Type="String">E-Commerce Core & Checkout</Data></Cell>
+    <Cell><Data ss:Type="String">Payal Somani</Data></Cell>
+    <Cell><Data ss:Type="String">Doctor & Health Checkup</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-098</Data></Cell>
+    <Cell><Data ss:Type="String">Payal Somani</Data></Cell>
+    <Cell><Data ss:Type="String">Payment Gateway & Fraud Shield</Data></Cell>
+    <Cell><Data ss:Type="String">Aaron Sanchez</Data></Cell>
+    <Cell><Data ss:Type="String">Family Function / Wedding</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="HalfDay"><Data ss:Type="String">Half day</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-099</Data></Cell>
+    <Cell><Data ss:Type="String">Aaron Sanchez</Data></Cell>
+    <Cell><Data ss:Type="String">Mobile Banking App (iOS/Android)</Data></Cell>
+    <Cell><Data ss:Type="String">Sunita Dube</Data></Cell>
+    <Cell><Data ss:Type="String">Annual Vacation & Travel</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="HalfDay"><Data ss:Type="String">Half day</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MEM-100</Data></Cell>
+    <Cell><Data ss:Type="String">Sunita Dube</Data></Cell>
+    <Cell><Data ss:Type="String">AI Recommendation Engine</Data></Cell>
+    <Cell><Data ss:Type="String">Aarav Sharma</Data></Cell>
+    <Cell><Data ss:Type="String">Personal Emergency</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="NA"><Data ss:Type="String">Not Applicable</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Working"><Data ss:Type="String">Working</Data></Cell>
+    <Cell ss:StyleID="Leave"><Data ss:Type="String">Planned Leave</Data></Cell>
+   </Row>
+   <Row ss:Height="12"/>
+   <Row ss:Height="22">
+    <Cell><Data ss:Type="String">SUMMARY</Data></Cell>
+    <Cell><Data ss:Type="String">Full Working Count</Data></Cell>
+    <Cell/><Cell/><Cell/>
+    <Cell ss:Formula="=COUNTIF(R5C:R104C, &quot;Working&quot;)"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:Formula="=COUNTIF(R5C:R104C, &quot;Working&quot;)"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:Formula="=COUNTIF(R5C:R104C, &quot;Working&quot;)"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:Formula="=COUNTIF(R5C:R104C, &quot;Working&quot;)"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:Formula="=COUNTIF(R5C:R104C, &quot;Working&quot;)"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:Formula="=COUNTIF(R5C:R104C, &quot;Working&quot;)"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:Formula="=COUNTIF(R5C:R104C, &quot;Working&quot;)"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:Formula="=COUNTIF(R5C:R104C, &quot;Working&quot;)"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:Formula="=COUNTIF(R5C:R104C, &quot;Working&quot;)"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:Formula="=COUNTIF(R5C:R104C, &quot;Working&quot;)"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:Formula="=COUNTIF(R5C:R104C, &quot;Working&quot;)"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:Formula="=COUNTIF(R5C:R104C, &quot;Working&quot;)"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:Formula="=COUNTIF(R5C:R104C, &quot;Working&quot;)"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:Formula="=COUNTIF(R5C:R104C, &quot;Working&quot;)"><Data ss:Type="Number">0</Data></Cell>
+   </Row>
+   <Row ss:Height="22">
+    <Cell><Data ss:Type="String">SUMMARY</Data></Cell>
+    <Cell><Data ss:Type="String">Half Day Count</Data></Cell>
+    <Cell/><Cell/><Cell/>
+    <Cell ss:Formula="=COUNTIF(R5C:R104C, &quot;Half day&quot;)"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:Formula="=COUNTIF(R5C:R104C, &quot;Half day&quot;)"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:Formula="=COUNTIF(R5C:R104C, &quot;Half day&quot;)"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:Formula="=COUNTIF(R5C:R104C, &quot;Half day&quot;)"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:Formula="=COUNTIF(R5C:R104C, &quot;Half day&quot;)"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:Formula="=COUNTIF(R5C:R104C, &quot;Half day&quot;)"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:Formula="=COUNTIF(R5C:R104C, &quot;Half day&quot;)"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:Formula="=COUNTIF(R5C:R104C, &quot;Half day&quot;)"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:Formula="=COUNTIF(R5C:R104C, &quot;Half day&quot;)"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:Formula="=COUNTIF(R5C:R104C, &quot;Half day&quot;)"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:Formula="=COUNTIF(R5C:R104C, &quot;Half day&quot;)"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:Formula="=COUNTIF(R5C:R104C, &quot;Half day&quot;)"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:Formula="=COUNTIF(R5C:R104C, &quot;Half day&quot;)"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:Formula="=COUNTIF(R5C:R104C, &quot;Half day&quot;)"><Data ss:Type="Number">0</Data></Cell>
+   </Row>
+   <Row ss:Height="22">
+    <Cell><Data ss:Type="String">SUMMARY</Data></Cell>
+    <Cell><Data ss:Type="String">Planned Leave (Absent)</Data></Cell>
+    <Cell/><Cell/><Cell/>
+    <Cell ss:Formula="=COUNTIF(R5C:R104C, &quot;Planned Leave&quot;)"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:Formula="=COUNTIF(R5C:R104C, &quot;Planned Leave&quot;)"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:Formula="=COUNTIF(R5C:R104C, &quot;Planned Leave&quot;)"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:Formula="=COUNTIF(R5C:R104C, &quot;Planned Leave&quot;)"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:Formula="=COUNTIF(R5C:R104C, &quot;Planned Leave&quot;)"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:Formula="=COUNTIF(R5C:R104C, &quot;Planned Leave&quot;)"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:Formula="=COUNTIF(R5C:R104C, &quot;Planned Leave&quot;)"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:Formula="=COUNTIF(R5C:R104C, &quot;Planned Leave&quot;)"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:Formula="=COUNTIF(R5C:R104C, &quot;Planned Leave&quot;)"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:Formula="=COUNTIF(R5C:R104C, &quot;Planned Leave&quot;)"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:Formula="=COUNTIF(R5C:R104C, &quot;Planned Leave&quot;)"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:Formula="=COUNTIF(R5C:R104C, &quot;Planned Leave&quot;)"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:Formula="=COUNTIF(R5C:R104C, &quot;Planned Leave&quot;)"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:Formula="=COUNTIF(R5C:R104C, &quot;Planned Leave&quot;)"><Data ss:Type="Number">0</Data></Cell>
+   </Row>
+   <Row ss:Height="26">
+    <Cell ss:StyleID="Header"><Data ss:Type="String">TRIGGER</Data></Cell>
+    <Cell ss:StyleID="Header"><Data ss:Type="String">BANDWIDTH % CAPACITY</Data></Cell>
+    <Cell ss:StyleID="Header"><Data ss:Type="String">Target &gt;= 40%</Data></Cell>
+    <Cell ss:StyleID="Header"><Data ss:Type="String">Auto Lead Alert</Data></Cell>
+    <Cell ss:StyleID="Header"><Data ss:Type="String">&lt; 40% = Escalate</Data></Cell>
+    <Cell ss:StyleID="BwOK"><Data ss:Type="String">100%</Data></Cell>
+    <Cell ss:StyleID="BwOK"><Data ss:Type="String">100%</Data></Cell>
+    <Cell ss:StyleID="BwOK"><Data ss:Type="String">87%</Data></Cell>
+    <Cell ss:StyleID="BwOK"><Data ss:Type="String">87%</Data></Cell>
+    <Cell ss:StyleID="BwAlert"><Data ss:Type="String">26% (🚨 ALERT <40%)</Data></Cell>
+    <Cell ss:StyleID="BwOK"><Data ss:Type="String">87%</Data></Cell>
+    <Cell ss:StyleID="BwOK"><Data ss:Type="String">87%</Data></Cell>
+    <Cell ss:StyleID="BwOK"><Data ss:Type="String">100%</Data></Cell>
+    <Cell ss:StyleID="BwOK"><Data ss:Type="String">100%</Data></Cell>
+    <Cell ss:StyleID="BwOK"><Data ss:Type="String">87%</Data></Cell>
+    <Cell ss:StyleID="BwOK"><Data ss:Type="String">87%</Data></Cell>
+    <Cell ss:StyleID="BwOK"><Data ss:Type="String">87%</Data></Cell>
+    <Cell ss:StyleID="BwOK"><Data ss:Type="String">87%</Data></Cell>
+    <Cell ss:StyleID="BwOK"><Data ss:Type="String">87%</Data></Cell>
+   </Row>
+  </Table>
+ </Worksheet>
+</Workbook>
