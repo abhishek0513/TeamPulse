@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -18,7 +18,7 @@
   --font-google: 'Google Sans', 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-mono: 'Roboto Mono', monospace;
   
-  /* Google Palette */
+  /* Google Light Palette */
   --google-blue: #1a73e8;
   --google-blue-hover: #1557b0;
   --google-blue-surface: #e8f0fe;
@@ -31,7 +31,7 @@
   --google-surface-variant: #f8fafd;
   --google-surface-hover: #f1f3f4;
   
-  /* Status Colors */
+  /* Light Status Colors */
   --status-working-bg: #e6f4ea;
   --status-working-text: #137333;
   --status-working-border: #ceead6;
@@ -54,6 +54,7 @@ body {
   background-color: #f8fafd;
   color: var(--google-text-primary);
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 /* Custom minimal scrollbar */
@@ -72,32 +73,32 @@ body {
   background: #9aa0a6;
 }
 
-/* Sticky column classes (Google Sheets / Cloud style) */
+/* Sticky column classes */
 .sticky-col-idx {
   position: sticky;
   left: 0;
   z-index: 20;
-  background-color: #ffffff;
+  background-color: var(--google-surface);
 }
 .sticky-col-name {
   position: sticky;
   left: 38px;
   z-index: 20;
-  background-color: #ffffff;
+  background-color: var(--google-surface);
 }
 .sticky-col-backup {
   position: sticky;
   left: 258px;
   z-index: 20;
-  background-color: #ffffff;
+  background-color: var(--google-surface);
   box-shadow: 2px 0 4px -2px rgba(60, 64, 67, 0.1);
 }
 
-/* Hover row highlight across sticky columns */
+/* Hover row highlight */
 tr:hover .sticky-col-idx,
 tr:hover .sticky-col-name,
 tr:hover .sticky-col-backup {
-  background-color: #f8fafd !important;
+  background-color: var(--google-surface-hover) !important;
 }
 
 /* Sticky Header */
@@ -105,13 +106,13 @@ thead th {
   position: sticky;
   top: 0;
   z-index: 30;
-  background-color: #ffffff;
+  background-color: var(--google-surface);
 }
 thead th.sticky-col-idx,
 thead th.sticky-col-name,
 thead th.sticky-col-backup {
   z-index: 40;
-  background-color: #f8fafd !important;
+  background-color: var(--google-surface-variant) !important;
 }
 
 /* Sticky Footer */
@@ -121,16 +122,16 @@ tfoot {
   z-index: 30;
 }
 tfoot td, tfoot th {
-  background-color: #ffffff;
+  background-color: var(--google-surface);
 }
 tfoot .sticky-col-idx,
 tfoot .sticky-col-name,
 tfoot .sticky-col-backup {
   z-index: 40;
-  background-color: #f8fafd !important;
+  background-color: var(--google-surface-variant) !important;
 }
 
-/* Status Chips (Material Design 3 / Google Calendar style) */
+/* Status Chips */
 .status-chip {
   display: inline-flex;
   align-items: center;
@@ -173,24 +174,16 @@ tfoot .sticky-col-backup {
   border-color: var(--status-na-border);
 }
 
-/* Clean Google Drawer / Side-panel Animations */
+/* Drawers & Backdrops */
 .drawer-backdrop {
-  background-color: rgba(32, 33, 36, 0.4);
+  background-color: rgba(32, 33, 36, 0.5);
   backdrop-filter: blur(2px);
   transition: opacity 0.2s ease;
 }
 
 .drawer-panel {
-  box-shadow: -4px 0 24px rgba(60, 64, 67, 0.15);
+  box-shadow: -4px 0 24px rgba(60, 64, 67, 0.2);
   transition: transform 0.25s cubic-bezier(0.1, 0.9, 0.2, 1);
-}
-
-/* Subtle Alert Badge for Critical Bandwidth (<40%) */
-.alert-chip {
-  background-color: #fce8e6;
-  color: #c5221f;
-  border: 1px solid #fad2cf;
-  font-weight: 600;
 }
 
 /* Gemini Sparkle Pill */
@@ -205,7 +198,7 @@ tfoot .sticky-col-backup {
   box-shadow: 0 1px 3px rgba(26, 115, 232, 0.2);
 }
 
-/* Chat bubble styling for Gemini panel */
+/* Gemini Chat Bubbles */
 .gemini-bubble-user {
   background-color: #e8f0fe;
   color: #1a73e8;
@@ -216,6 +209,155 @@ tfoot .sticky-col-backup {
   border: 1px solid #dadce0;
   color: #202124;
   border-radius: 14px 14px 14px 2px;
+}
+
+/* ======================================================== */
+/* GOOGLE DARK THEME ENGINE */
+/* ======================================================== */
+html.dark {
+  --google-blue: #8ab4f8;
+  --google-blue-hover: #aecbfa;
+  --google-blue-surface: #1e2a38;
+  --google-text-primary: #e8eaed;
+  --google-text-secondary: #9aa0a6;
+  --google-text-tertiary: #80868b;
+  --google-border: #3c4043;
+  --google-border-subtle: #303134;
+  --google-surface: #202124;
+  --google-surface-variant: #17181a;
+  --google-surface-hover: #2d2f31;
+  
+  --status-working-bg: #0d381e;
+  --status-working-text: #81c995;
+  --status-working-border: #1e7e34;
+  
+  --status-leave-bg: #4c1410;
+  --status-leave-text: #f28b82;
+  --status-leave-border: #8c1d18;
+  
+  --status-halfday-bg: #473000;
+  --status-halfday-text: #fdd663;
+  --status-halfday-border: #7a5200;
+  
+  --status-na-bg: #2d2f31;
+  --status-na-text: #9aa0a6;
+  --status-na-border: #3c4043;
+}
+
+html.dark body {
+  background-color: #17181a !important;
+  color: #e8eaed !important;
+}
+
+html.dark header, 
+html.dark section, 
+html.dark .bg-white {
+  background-color: #202124 !important;
+  border-color: #3c4043 !important;
+}
+
+html.dark .bg-\[\#f8fafd\] {
+  background-color: #17181a !important;
+}
+
+html.dark .bg-\[\#f1f3f4\] {
+  background-color: #2d2f31 !important;
+}
+
+html.dark .border-\[\#dadce0\] {
+  border-color: #3c4043 !important;
+}
+
+html.dark .border-\[\#ebebeb\] {
+  border-color: #303134 !important;
+}
+
+html.dark .text-\[\#202124\] {
+  color: #e8eaed !important;
+}
+
+html.dark .text-\[\#3c4043\] {
+  color: #bdc1c6 !important;
+}
+
+html.dark .text-\[\#5f6368\] {
+  color: #9aa0a6 !important;
+}
+
+html.dark input, 
+html.dark select, 
+html.dark textarea {
+  background-color: #282a2c !important;
+  color: #e8eaed !important;
+  border-color: #3c4043 !important;
+}
+
+html.dark .drawer-panel {
+  background-color: #202124 !important;
+  border-color: #3c4043 !important;
+  color: #e8eaed !important;
+}
+
+html.dark .gemini-pill {
+  background: #282a2c !important;
+  border-color: #3c4043 !important;
+  color: #8ab4f8 !important;
+}
+
+html.dark .gemini-bubble-ai {
+  background-color: #282a2c !important;
+  border-color: #3c4043 !important;
+  color: #e8eaed !important;
+}
+
+html.dark .gemini-bubble-user {
+  background-color: #1e2a38 !important;
+  color: #8ab4f8 !important;
+}
+
+html.dark ::-webkit-scrollbar-track {
+  background: #202124;
+}
+html.dark ::-webkit-scrollbar-thumb {
+  background: #5f6368;
+}
+
+/* ======================================================== */
+/* GEMINI LIVE VOICE AUDIO WAVEFORM ANIMATION */
+/* ======================================================== */
+@keyframes soundwave {
+  0%, 100% { height: 6px; }
+  50% { height: 26px; }
+}
+
+.audio-bar {
+  width: 3.5px;
+  border-radius: 2px;
+  display: inline-block;
+  animation: soundwave 1.1s ease-in-out infinite;
+}
+.audio-bar:nth-child(1) { background-color: #4285F4; animation-delay: 0.1s; }
+.audio-bar:nth-child(2) { background-color: #EA4335; animation-delay: 0.3s; }
+.audio-bar:nth-child(3) { background-color: #FBBC05; animation-delay: 0.2s; }
+.audio-bar:nth-child(4) { background-color: #34A853; animation-delay: 0.4s; }
+
+/* Voice Assistant Pulsing Aura */
+@keyframes voicePulsar {
+  0% { transform: scale(0.96); box-shadow: 0 0 0 0 rgba(66, 133, 244, 0.6); }
+  70% { transform: scale(1.04); box-shadow: 0 0 0 16px rgba(66, 133, 244, 0); }
+  100% { transform: scale(0.96); box-shadow: 0 0 0 0 rgba(66, 133, 244, 0); }
+}
+.voice-pulsar {
+  animation: voicePulsar 1.8s infinite ease-out;
+}
+
+/* Auto-Healed Cell Success Flash */
+@keyframes healedPulse {
+  0% { background-color: #34a853 !important; color: #ffffff !important; transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+.healed-flash {
+  animation: healedPulse 1.5s ease-out;
 }
 
 </style>
@@ -292,6 +434,32 @@ tfoot .sticky-col-backup {
           <span class="hidden md:inline">Gemini</span>
         </button>
 
+        <!-- Gemini Live Voice Button (Unique Multimodal Voice Feature) -->
+        <button 
+          id="voice-assistant-btn"
+          onclick="toggleVoiceAssistant()" 
+          class="h-9 px-3 rounded-full border border-[#dadce0] hover:bg-[#f1f3f4] text-[#3c4043] text-xs font-medium flex items-center space-x-1.5 shadow-xs transition-all cursor-pointer"
+          title="Gemini Live Voice Commander (Voice & Speech)">
+          <div class="flex items-center space-x-0.5 h-3">
+            <span class="audio-bar"></span>
+            <span class="audio-bar"></span>
+            <span class="audio-bar"></span>
+            <span class="audio-bar"></span>
+          </div>
+          <span class="hidden sm:inline font-medium">Live Voice</span>
+        </button>
+
+        <!-- Dark / Light Mode Toggle Button -->
+        <button 
+          id="theme-toggle-btn" 
+          onclick="toggleDarkMode()" 
+          class="p-2 rounded-full hover:bg-[#f1f3f4] text-[#5f6368] transition-colors" 
+          title="Toggle Dark / Light Theme">
+          <svg id="theme-toggle-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+          </svg>
+        </button>
+
         <!-- Escalation & Alerts Bell (Opens Drawer) -->
         <button 
           id="alert-bell-btn" 
@@ -343,7 +511,7 @@ tfoot .sticky-col-backup {
     <div class="flex items-center space-x-2">
       <div class="flex items-center space-x-1 border border-[#dadce0] rounded-md px-2 py-1 bg-white text-[#3c4043] font-medium shadow-sm">
         <svg class="w-3.5 h-3.5 text-[#5f6368] mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-        <span id="sprint-range-label">Oct 24 â€“ Nov 06, 2026 (14 Days)</span>
+        <span id="sprint-range-label">Oct 24 – Nov 06, 2026 (14 Days)</span>
       </div>
       <button onclick="resetDemoData()" class="p-1 rounded hover:bg-[#f1f3f4] text-[#5f6368]" title="Reset to Sample 100 Members">
         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
@@ -364,7 +532,7 @@ tfoot .sticky-col-backup {
       <span class="text-[#dadce0]">&bull;</span>
       <!-- Critical alert clickable chip -->
       <button onclick="toggleAlertsDrawer()" id="stat-critical-pill" class="inline-flex items-center space-x-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-[#fce8e6] text-[#c5221f] border border-[#fad2cf] hover:bg-[#fad2cf] transition-colors cursor-pointer">
-        <span>âš ï¸ Oct 28 &lt; 40% (32%)</span>
+        <span>⚠️ Oct 28 &lt; 40% (32%)</span>
         <span class="underline ml-0.5 font-bold">Review</span>
       </button>
     </div>
@@ -469,7 +637,7 @@ tfoot .sticky-col-backup {
                 Backup Person (Coverage in absence)
               </label>
               <button type="button" onclick="applyAISmartBackupInInspector()" class="text-[11px] text-[#1a73e8] hover:text-[#1557b0] font-medium flex items-center">
-                <span>âœ¨ Suggest Best Backup</span>
+                <span>✨ Suggest Best Backup</span>
               </button>
             </div>
             <select id="inspect-backup" class="w-full px-3 py-2 bg-white border border-[#dadce0] rounded-md text-xs text-[#202124] focus:outline-none focus:border-[#1a73e8]">
@@ -541,13 +709,13 @@ tfoot .sticky-col-backup {
         <!-- Quick Prompt Chips -->
         <div class="p-3 bg-[#f8fafd] border-b border-[#dadce0] flex items-center space-x-1.5 overflow-x-auto text-[11px]">
           <button onclick="askGeminiPrompt('Summarize Oct 28 capacity risk below 40%')" class="px-2.5 py-1 rounded-full bg-white hover:bg-[#f1f3f4] text-[#3c4043] border border-[#dadce0] whitespace-nowrap shadow-xs">
-            ðŸš¨ Oct 28 Shortage
+            🚨 Oct 28 Shortage
           </button>
           <button onclick="askGeminiPrompt('Check backup collisions and conflicts')" class="px-2.5 py-1 rounded-full bg-white hover:bg-[#f1f3f4] text-[#3c4043] border border-[#dadce0] whitespace-nowrap shadow-xs">
-            âš ï¸ Backup Conflicts
+            ⚠️ Backup Conflicts
           </button>
           <button onclick="askGeminiPrompt('Draft executive briefing for standup')" class="px-2.5 py-1 rounded-full bg-white hover:bg-[#f1f3f4] text-[#3c4043] border border-[#dadce0] whitespace-nowrap shadow-xs">
-            ðŸ“‹ Executive Summary
+            📋 Executive Summary
           </button>
         </div>
 
@@ -602,6 +770,25 @@ tfoot .sticky-col-backup {
           </div>
           <button onclick="toggleAlertsDrawer()" class="p-1.5 rounded-full hover:bg-[#f1f3f4] text-[#5f6368]">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+          </button>
+        </div>
+
+        <!-- Autonomous Schedule Auto-Healer Hero Action -->
+        <div class="p-3 bg-[#e6f4ea] border-b border-[#ceead6] flex items-center justify-between">
+          <div>
+            <div class="flex items-center space-x-1.5 text-[#137333] font-semibold text-xs">
+              <span class="w-2 h-2 rounded-full bg-[#137333]"></span>
+              <span>Autonomous Schedule Auto-Healer</span>
+            </div>
+            <p class="text-[11px] text-[#3c4043] mt-0.5">
+              1-Click AI Agent to resolve collisions and restore bandwidth &ge; 40%
+            </p>
+          </div>
+          <button 
+            onclick="triggerAutonomousAutoHeal()" 
+            class="px-3 py-1.5 bg-[#137333] hover:bg-[#0f5b28] text-white rounded text-xs font-medium flex items-center space-x-1 shadow-sm transition-colors shrink-0">
+            <svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+            <span>Auto-Heal (46%)</span>
           </button>
         </div>
 
@@ -687,7 +874,7 @@ tfoot .sticky-col-backup {
           <div class="flex items-center justify-between mb-1">
             <label class="block font-medium text-[#3c4043]">Backup Person *</label>
             <button type="button" onclick="applyAISmartBackupInForm()" class="text-[11px] text-[#1a73e8] hover:text-[#1557b0] font-medium">
-              âœ¨ Suggest Best Backup
+              ✨ Suggest Best Backup
             </button>
           </div>
           <select id="form-backup-select" class="w-full px-3 py-2 bg-white border border-[#dadce0] rounded-md text-xs text-[#202124] focus:outline-none focus:border-[#1a73e8]">
@@ -766,10 +953,84 @@ tfoot .sticky-col-backup {
     </div>
   </div>
 
+  <!-- ======================================================== -->
+  <!-- GEMINI LIVE VOICE ASSISTANT MODAL (Multimodal Voice AI) -->
+  <!-- ======================================================== -->
+  <div id="voice-assistant-modal" class="fixed inset-0 z-50 bg-[#202124]/50 backdrop-blur-xs hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-md w-full shadow-2xl border border-[#dadce0] p-6 text-center drawer-panel">
+      
+      <!-- Close button -->
+      <div class="flex justify-end -mt-2 -mr-2 mb-1">
+        <button onclick="toggleVoiceAssistant()" class="p-1 rounded-full hover:bg-[#f1f3f4] text-[#5f6368]">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+      </div>
+
+      <!-- Animated Google Voice Orb -->
+      <div class="relative w-20 h-20 mx-auto flex items-center justify-center mb-4">
+        <div id="voice-orb-pulse" class="absolute inset-0 rounded-full voice-pulsar bg-gradient-to-tr from-[#4285F4]/30 via-[#EA4335]/20 to-[#34A853]/30"></div>
+        <div class="w-16 h-16 rounded-full bg-white shadow-md flex items-center justify-center space-x-1 border border-[#dadce0]">
+          <span class="audio-bar" style="height: 18px;"></span>
+          <span class="audio-bar" style="height: 28px;"></span>
+          <span class="audio-bar" style="height: 22px;"></span>
+          <span class="audio-bar" style="height: 14px;"></span>
+        </div>
+      </div>
+
+      <h3 class="text-base font-semibold text-[#202124]" id="voice-status-title">Gemini Live Voice Commander</h3>
+      <p class="text-xs text-[#5f6368] mt-1" id="voice-status-desc">Listening... Speak a natural command or tap a prompt below</p>
+
+      <!-- Real-time Speech Transcription Box -->
+      <div class="mt-4 bg-[#f8fafd] border border-[#dadce0] rounded-xl p-3.5 text-left min-h-[70px] max-h-[120px] overflow-y-auto">
+        <div class="text-[10px] uppercase font-bold tracking-wider text-[#5f6368] mb-1">Spoken Input / Intent:</div>
+        <div id="voice-transcript" class="text-xs font-medium text-[#202124] italic">"Listening for voice..."</div>
+      </div>
+
+      <!-- Voice Feedback Response Box -->
+      <div id="voice-response-container" class="hidden mt-2 bg-[#e8f0fe] border border-[#d2e3fc] rounded-xl p-3.5 text-left">
+        <div class="text-[10px] uppercase font-bold tracking-wider text-[#1a73e8] mb-1">Gemini Action Executed:</div>
+        <div id="voice-response-text" class="text-xs text-[#1a73e8] font-medium leading-relaxed"></div>
+      </div>
+
+      <!-- Quick Action Prompt Chips -->
+      <div class="mt-4">
+        <div class="text-[11px] font-semibold text-[#5f6368] mb-2 text-left">Quick Voice Actions:</div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-left text-xs">
+          <button onclick="executeVoiceCommand('Mark Abhishek Mishra on leave on Wednesday')" class="p-2 rounded-lg border border-[#dadce0] hover:bg-[#f1f3f4] text-[#3c4043] flex items-center space-x-1.5 transition-colors">
+            <span>🏖️</span>
+            <span class="truncate">Mark Abhishek on leave Wed</span>
+          </button>
+          <button onclick="executeVoiceCommand('What is our bandwidth on Oct 28?')" class="p-2 rounded-lg border border-[#dadce0] hover:bg-[#f1f3f4] text-[#3c4043] flex items-center space-x-1.5 transition-colors">
+            <span>📊</span>
+            <span class="truncate">Bandwidth on Oct 28?</span>
+          </button>
+          <button onclick="executeVoiceCommand('Auto-heal the schedule for Oct 28')" class="p-2 rounded-lg border border-[#dadce0] hover:bg-[#f1f3f4] text-[#137333] font-medium flex items-center space-x-1.5 transition-colors">
+            <span>⚡</span>
+            <span class="truncate">Auto-heal Oct 28 conflicts</span>
+          </button>
+          <button onclick="executeVoiceCommand('Who has a backup conflict?')" class="p-2 rounded-lg border border-[#dadce0] hover:bg-[#f1f3f4] text-[#c5221f] font-medium flex items-center space-x-1.5 transition-colors">
+            <span>⚠️</span>
+            <span class="truncate">Find backup collisions</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mic Controls -->
+      <div class="mt-5 pt-3 border-t border-[#ebebeb] flex items-center justify-between">
+        <button id="toggle-mic-listening-btn" onclick="toggleMicListening()" class="px-3.5 py-1.5 rounded-full bg-[#1a73e8] hover:bg-[#1557b0] text-white text-xs font-medium flex items-center space-x-1.5 shadow-sm">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path></svg>
+          <span id="mic-status-label">Mic Active</span>
+        </button>
+        <span class="text-[11px] text-[#5f6368]">Web Speech API &bull; SpeechSynthesis</span>
+      </div>
+
+    </div>
+  </div>
+
   <!-- Realtime Toast Banner -->
   <div id="toast-notification" class="fixed bottom-5 right-5 z-50 transform translate-y-8 opacity-0 transition-all duration-200 hidden max-w-sm">
     <div class="bg-[#202124] text-white rounded-md px-4 py-3 shadow-lg flex items-center space-x-2.5 text-xs">
-      <span class="text-[#8ab4f8]">â„¹ï¸</span>
+      <span class="text-[#8ab4f8]">ℹ️</span>
       <span id="toast-text" class="flex-1 font-medium">Notification</span>
     </div>
   </div>
@@ -1039,14 +1300,14 @@ const PulseAI = {
     if (criticalDates.length > 0) {
       const worst = criticalDates.sort((a, b) => a.bandwidth - b.bandwidth)[0];
       recommendations.push({
-        title: `ðŸš¨ Emergency Sprint Relief for ${worst.label}`,
+        title: `🚨 Emergency Sprint Relief for ${worst.label}`,
         detail: `Bandwidth drops to ${worst.bandwidth}% (${worst.absent} staff absent). Recommend freezing major production deployments 24 hours prior to ${worst.label} and implementing mandatory standup reassignments.`
       });
     }
 
     if (backupCollisions.length > 0) {
       recommendations.push({
-        title: `âš ï¸ Resolve ${backupCollisions.length} Double-Outage Collisions`,
+        title: `⚠️ Resolve ${backupCollisions.length} Double-Outage Collisions`,
         detail: `Identified peers where both employee and designated backup are simultaneously on leave (e.g. ${backupCollisions[0].member} & ${backupCollisions[0].backup} on ${backupCollisions[0].date}). Cross-project reallocations required.`
       });
     }
@@ -1055,13 +1316,13 @@ const PulseAI = {
     const worstProj = Object.entries(projectHealth).sort((a, b) => a[1].avgBandwidth - b[1].avgBandwidth)[0];
     if (worstProj) {
       recommendations.push({
-        title: `ðŸ›¡ï¸ Reinforce '${worstProj[0]}'`,
+        title: `🛡️ Reinforce '${worstProj[0]}'`,
         detail: `Average project capacity is ${worstProj[1].avgBandwidth}% with ${worstProj[1].criticalDays} days below ${threshold}%. Recommend shifting secondary tickets to peer squads.`
       });
     }
 
     recommendations.push({
-      title: `ðŸ“Š Executive Standup Alignment`,
+      title: `📊 Executive Standup Alignment`,
       detail: `Average 14-day team attendance is holding at ${Math.round(dates.reduce((acc, d) => acc + calculateDateBandwidth(d.key, team).percentage, 0) / dates.length)}%. Recommended management action: enforce 48-hour advance notice on planned leaves.`
     });
 
@@ -1138,12 +1399,12 @@ const PulseAI = {
     // A. Question about Oct 28 or critical dates
     if (q.includes("28") || q.includes("critical") || q.includes("40%") || q.includes("shortage") || q.includes("danger") || q.includes("alert")) {
       if (audit.criticalDates.length === 0) {
-        return `âœ… **Capacity Health Analysis**: Good news! Currently, all 14 sprint dates are above the **${settings.threshold}% threshold**. No automatic manager escalations are active.`;
+        return `✅ **Capacity Health Analysis**: Good news! Currently, all 14 sprint dates are above the **${settings.threshold}% threshold**. No automatic manager escalations are active.`;
       }
 
-      let response = `ðŸš¨ **AI Bandwidth Incident Analysis**:\n\n`;
+      let response = `🚨 **AI Bandwidth Incident Analysis**:\n\n`;
       audit.criticalDates.forEach(cd => {
-        response += `â€¢ **${cd.label}**: Bandwidth is **${cd.bandwidth}%** (${cd.working} working vs. ${cd.absent} absent out of ${cd.total} scheduled).\n`;
+        response += `• **${cd.label}**: Bandwidth is **${cd.bandwidth}%** (${cd.working} working vs. ${cd.absent} absent out of ${cd.total} scheduled).\n`;
       });
       response += `\n**Root Cause**: Coinciding planned leaves across multiple teams triggered the automated escalation rule (<${settings.threshold}%).\n\n`;
       response += `**AI Recommended Action**: Freeze release pipelines on ${audit.criticalDates[0].label} and reallocate standby support from peer squads.`;
@@ -1153,10 +1414,10 @@ const PulseAI = {
     // B. Question about backup collision or conflicts
     if (q.includes("backup") || q.includes("collision") || q.includes("conflict") || q.includes("in place")) {
       if (audit.backupCollisions.length === 0) {
-        return `âœ… **Backup Coverage Check**: All absent members currently have designated backups who are verified **active and working** on their respective leave dates. No double-outages detected!`;
+        return `✅ **Backup Coverage Check**: All absent members currently have designated backups who are verified **active and working** on their respective leave dates. No double-outages detected!`;
       }
 
-      let response = `âš ï¸ **AI Backup Conflict Detector found ${audit.backupCollisions.length} Double-Outage Collisions**:\n\n`;
+      let response = `⚠️ **AI Backup Conflict Detector found ${audit.backupCollisions.length} Double-Outage Collisions**:\n\n`;
       audit.backupCollisions.slice(0, 4).forEach((c, idx) => {
         response += `${idx + 1}. **${c.member}** (${c.project}) designated **${c.backup}**, but ${c.backup} is ALSO on **${c.backupStatus}** on **${c.date}**!\n`;
       });
@@ -1166,10 +1427,10 @@ const PulseAI = {
 
     // C. Question about projects
     if (q.includes("project") || q.includes("squad") || q.includes("team")) {
-      let response = `ðŸ“Š **AI Project Bandwidth Breakdown**:\n\n`;
+      let response = `📊 **AI Project Bandwidth Breakdown**:\n\n`;
       Object.entries(audit.projectHealth).forEach(([pName, stats]) => {
-        const flag = stats.avgBandwidth < settings.threshold ? 'ðŸš¨' : (stats.avgBandwidth < 70 ? 'âš ï¸' : 'âœ…');
-        response += `â€¢ **${pName}**: ${stats.avgBandwidth}% Avg Capacity (${stats.total} members) ${flag}\n`;
+        const flag = stats.avgBandwidth < settings.threshold ? '🚨' : (stats.avgBandwidth < 70 ? '⚠️' : '✅');
+        response += `• **${pName}**: ${stats.avgBandwidth}% Avg Capacity (${stats.total} members) ${flag}\n`;
       });
       response += `\nProjects with critical flags have sprint deliverables at elevated risk.`;
       return response;
@@ -1178,17 +1439,17 @@ const PulseAI = {
     // D. Executive Summary / Standup Update
     if (q.includes("summary") || q.includes("standup") || q.includes("executive") || q.includes("update") || q.includes("report")) {
       const avgCapacity = Math.round(dates.reduce((acc, d) => acc + calculateDateBandwidth(d.key, team).percentage, 0) / dates.length);
-      return `ðŸ“‹ **Executive Team Capacity Briefing** (AI Generated):\n\n` +
-        `â€¢ **Roster Status**: 100 engineering staff actively tracked across 8 core initiatives.\n` +
-        `â€¢ **Sprint Average Capacity**: **${avgCapacity}%** (Threshold target: \u2265 ${settings.threshold}%).\n` +
-        `â€¢ **Critical Shortage Windows**: ${audit.criticalDates.length} date(s) flagged below 40% capacity.\n` +
-        `â€¢ **Mitigation Status**: Automatic escalation dispatched to Lead (**${settings.managerEmail}**).\n` +
-        `â€¢ **Action Item**: Verify backup coverage on high-absence dates and postpone non-essential maintenance.`;
+      return `📋 **Executive Team Capacity Briefing** (AI Generated):\n\n` +
+        `• **Roster Status**: 100 engineering staff actively tracked across 8 core initiatives.\n` +
+        `• **Sprint Average Capacity**: **${avgCapacity}%** (Threshold target: \u2265 ${settings.threshold}%).\n` +
+        `• **Critical Shortage Windows**: ${audit.criticalDates.length} date(s) flagged below 40% capacity.\n` +
+        `• **Mitigation Status**: Automatic escalation dispatched to Lead (**${settings.managerEmail}**).\n` +
+        `• **Action Item**: Verify backup coverage on high-absence dates and postpone non-essential maintenance.`;
     }
 
     // E. Recommendations / Suggestions
     if (q.includes("recommend") || q.includes("suggest") || q.includes("fix") || q.includes("help") || q.includes("optimize")) {
-      let response = `ðŸ’¡ **AI Optimization Plan** (Risk Score: ${audit.riskScore}/100):\n\n`;
+      let response = `💡 **AI Optimization Plan** (Risk Score: ${audit.riskScore}/100):\n\n`;
       audit.recommendations.forEach((rec, idx) => {
         response += `**${idx + 1}. ${rec.title}**\n${rec.detail}\n\n`;
       });
@@ -1196,16 +1457,16 @@ const PulseAI = {
     }
 
     // Default intelligent overview
-    return `ðŸ¤– **PulseAI Assistant Overview**:\n\n` +
+    return `🤖 **PulseAI Assistant Overview**:\n\n` +
       `I am monitoring **100 team members** across **14 sprint dates**.\n\n` +
-      `â€¢ **Risk Index**: ${audit.riskScore}/100 (${audit.riskLevel})\n` +
-      `â€¢ **Critical Dates (<${settings.threshold}%)**: ${audit.criticalDates.length} date(s) triggered\n` +
-      `â€¢ **Backup Collisions**: ${audit.backupCollisions.length} conflict(s) detected\n\n` +
+      `• **Risk Index**: ${audit.riskScore}/100 (${audit.riskLevel})\n` +
+      `• **Critical Dates (<${settings.threshold}%)**: ${audit.criticalDates.length} date(s) triggered\n` +
+      `• **Backup Collisions**: ${audit.backupCollisions.length} conflict(s) detected\n\n` +
       `*Try asking:*\n` +
-      `â€¢ *"Analyze capacity risks this sprint"*\n` +
-      `â€¢ *"Who is taking leave on Oct 28 and why?"*\n` +
-      `â€¢ *"Show me backup collisions"*\n` +
-      `â€¢ *"Draft an executive standup summary"*`;
+      `• *"Analyze capacity risks this sprint"*\n` +
+      `• *"Who is taking leave on Oct 28 and why?"*\n` +
+      `• *"Show me backup collisions"*\n` +
+      `• *"Draft an executive standup summary"*`;
   }
 };
 
@@ -1283,6 +1544,7 @@ function initApp() {
   renderDashboard();
   renderAlertCenterBadge();
   setupEventListeners();
+  initTheme();
 
   // Set lead email display in alerts drawer
   const leadEl = document.getElementById("alert-lead-email");
@@ -1486,13 +1748,13 @@ function renderMetricBar() {
   if (lowestMetric && lowestMetric.isLowBandwidth) {
     criticalPillEl.classList.remove("hidden");
     criticalPillEl.innerHTML = `
-      <span>âš ï¸ ${lowestMetric.label} &lt; ${AppState.settings.threshold}% (${lowestMetric.percentage}%)</span>
+      <span>⚠️ ${lowestMetric.label} &lt; ${AppState.settings.threshold}% (${lowestMetric.percentage}%)</span>
       <span class="underline ml-1 font-semibold">Review Escalation</span>
     `;
     criticalPillEl.className = "inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-[#fce8e6] text-[#c5221f] border border-[#fad2cf] hover:bg-[#fad2cf] transition-colors cursor-pointer";
   } else {
     criticalPillEl.innerHTML = `
-      <span>âœ… Capacity Optimal (&ge; ${AppState.settings.threshold}%)</span>
+      <span>✅ Capacity Optimal (&ge; ${AppState.settings.threshold}%)</span>
     `;
     criticalPillEl.className = "inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-[#e6f4ea] text-[#137333] border border-[#ceead6]";
   }
@@ -1608,7 +1870,7 @@ function renderTrackerTable() {
           statusAbbr = "NA";
         }
 
-        const tooltip = `${member.name} â€¢ ${dt.label}\nStatus: ${status}${status !== 'Working' ? `\nBackup: ${dateBackup}\nReason: ${dateReason}` : ''}`;
+        const tooltip = `${member.name} • ${dt.label}\nStatus: ${status}${status !== 'Working' ? `\nBackup: ${dateBackup}\nReason: ${dateReason}` : ''}`;
 
         bodyHtml += `
           <td class="px-1 py-1.5 text-center border-r border-[#ebebeb] ${dt.isWeekend ? 'bg-[#f8f9fa]/60' : ''}">
@@ -1632,7 +1894,7 @@ function renderTrackerTable() {
   let footerHtml = `
     <!-- Full Working Headcount -->
     <tr class="bg-[#f8fafd] font-medium text-xs border-b border-[#ebebeb]">
-      <td class="sticky-col-idx px-2 py-2 text-center text-[#137333]">âœ“</td>
+      <td class="sticky-col-idx px-2 py-2 text-center text-[#137333]">✓</td>
       <td class="sticky-col-name px-3 py-2 text-[#3c4043] font-semibold">Active Staff (100% capacity)</td>
       <td class="sticky-col-backup px-3 py-2 text-[#80868b]">-</td>
   `;
@@ -1649,7 +1911,7 @@ function renderTrackerTable() {
   // Planned Leaves Count
   footerHtml += `
     <tr class="bg-[#f8fafd] font-medium text-xs border-b border-[#ebebeb]">
-      <td class="sticky-col-idx px-2 py-1.5 text-center text-[#c5221f]">âœ•</td>
+      <td class="sticky-col-idx px-2 py-1.5 text-center text-[#c5221f]">✕</td>
       <td class="sticky-col-name px-3 py-1.5 text-[#3c4043]">Leaves / Half-Day Absent</td>
       <td class="sticky-col-backup px-3 py-1.5 text-[#80868b]">-</td>
   `;
@@ -1667,7 +1929,7 @@ function renderTrackerTable() {
   // BANDWIDTH % CAPACITY ROW (AUTOMATIC <40% TRIGGER ESCALATION)
   footerHtml += `
     <tr class="bg-white font-semibold text-xs border-t-2 border-[#1a73e8]">
-      <td class="sticky-col-idx px-2 py-2.5 text-center text-[#1a73e8]">âš¡</td>
+      <td class="sticky-col-idx px-2 py-2.5 text-center text-[#1a73e8]">⚡</td>
       <td class="sticky-col-name px-3 py-2.5 text-[#202124] font-bold flex items-center justify-between">
         <span>Capacity Bandwidth</span>
         <span class="text-[10px] text-[#5f6368] font-normal">Target &ge; ${AppState.settings.threshold}%</span>
@@ -1812,7 +2074,7 @@ function applyAISmartBackupInInspector() {
 
   backupSelect.value = rec.name;
   if (aiHint) {
-    aiHint.innerHTML = `âœ¨ <strong>AI Recommendation:</strong> ${rec.name} (${rec.project}) &bull; ${rec.reason}`;
+    aiHint.innerHTML = `✨ <strong>AI Recommendation:</strong> ${rec.name} (${rec.project}) &bull; ${rec.reason}`;
     aiHint.classList.remove("hidden");
   }
 }
@@ -1906,7 +2168,7 @@ function renderAlertsDrawerFeed() {
     feed.innerHTML = `
       <div class="py-12 text-center text-[#5f6368]">
         <div class="w-12 h-12 bg-[#e6f4ea] text-[#137333] rounded-full flex items-center justify-center mx-auto mb-2 text-lg font-bold">
-          âœ“
+          ✓
         </div>
         <h4 class="text-sm font-semibold text-[#202124]">All Dates Above Bandwidth Target (&ge; ${AppState.settings.threshold}%)</h4>
         <p class="text-xs text-[#80868b] mt-1">No automated escalations active across the team.</p>
@@ -1925,7 +2187,7 @@ function renderAlertsDrawerFeed() {
         <div class="flex items-start justify-between pb-2 border-b border-[#fad2cf]">
           <div>
             <span class="inline-block px-2 py-0.5 rounded text-[10px] font-semibold bg-[#fce8e6] text-[#c5221f]">
-              âš ï¸ Automated Lead Trigger
+              ⚠️ Automated Lead Trigger
             </span>
             <h4 class="text-sm font-bold text-[#202124] mt-1">${dt.dayName}, ${dt.fullDate}</h4>
           </div>
@@ -1957,7 +2219,7 @@ function renderAlertsDrawerFeed() {
                       <td class="py-1 px-2 font-medium">${m.name}</td>
                       <td class="py-1 px-2 text-[#c5221f]">${m.schedule[dt.key]}</td>
                       <td class="py-1 px-2 ${isCollision ? 'text-[#c5221f] font-bold' : ''}">
-                        ${b} ${isCollision ? 'âš ï¸ (Collision!)' : ''}
+                        ${b} ${isCollision ? '⚠️ (Collision!)' : ''}
                       </td>
                     </tr>
                   `;
@@ -1992,10 +2254,10 @@ function sendManagerEmailAlert(dateKey) {
   body += `This is an automated capacity escalation from the Google Staffing & Bandwidth Planner.\n`;
   body += `Active team capacity for ${dt.dayName}, ${dt.fullDate} has dropped below the ${AppState.settings.threshold}% threshold.\n\n`;
   body += `SUMMARY METRICS:\n`;
-  body += `â€¢ Available Bandwidth : ${metrics.percentage}%\n`;
-  body += `â€¢ Active Working Staff: ${metrics.effectiveWorking} headcount\n`;
-  body += `â€¢ Absent Members      : ${absent.length} members\n`;
-  body += `â€¢ Total Scheduled     : ${metrics.totalRelevant} members\n\n`;
+  body += `• Available Bandwidth : ${metrics.percentage}%\n`;
+  body += `• Active Working Staff: ${metrics.effectiveWorking} headcount\n`;
+  body += `• Absent Members      : ${absent.length} members\n`;
+  body += `• Total Scheduled     : ${metrics.totalRelevant} members\n\n`;
   body += `ABSENT MEMBERS & ASSIGNED BACKUPS:\n`;
 
   absent.forEach((m, idx) => {
@@ -2109,7 +2371,7 @@ function applyAISmartBackupInForm() {
 
   backupSelect.value = rec.name;
   if (hintEl) {
-    hintEl.innerHTML = `âœ¨ <strong>AI Suggestion:</strong> ${rec.name} (${rec.project}) &bull; ${rec.reason}`;
+    hintEl.innerHTML = `✨ <strong>AI Suggestion:</strong> ${rec.name} (${rec.project}) &bull; ${rec.reason}`;
     hintEl.classList.remove("hidden");
   }
 }
@@ -2185,7 +2447,7 @@ function formatMarkdownToHtml(text) {
     .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
     .replace(/\*(.*?)\*/g, '<em>$1</em>')
     .replace(/\n\n/g, '<br><br>')
-    .replace(/\nâ€¢ /g, '<br>&bull; ')
+    .replace(/\n• /g, '<br>&bull; ')
     .replace(/\n/g, '<br>');
   return html;
 }
@@ -2225,6 +2487,314 @@ function setupEventListeners() {
   });
 }
 
+// ==========================================
+// THEME: DARK MODE / LIGHT MODE
+// ==========================================
+
+function initTheme() {
+  const savedTheme = localStorage.getItem("google_staffing_theme");
+  const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const isDark = savedTheme === "dark" || (!savedTheme && prefersDark);
+
+  if (isDark) {
+    document.documentElement.classList.add("dark");
+  } else {
+    document.documentElement.classList.remove("dark");
+  }
+  updateThemeIcon(isDark);
+}
+
+function toggleDarkMode() {
+  const isDark = document.documentElement.classList.toggle("dark");
+  localStorage.setItem("google_staffing_theme", isDark ? "dark" : "light");
+  updateThemeIcon(isDark);
+  showToastNotification(isDark ? "Switched to Google Dark Theme" : "Switched to Light Mode");
+}
+
+function updateThemeIcon(isDark) {
+  const icon = document.getElementById("theme-toggle-icon");
+  const btn = document.getElementById("theme-toggle-btn");
+  if (!icon) return;
+
+  if (isDark) {
+    // Sun icon
+    icon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />`;
+    if (btn) btn.title = "Switch to Light Mode";
+  } else {
+    // Moon icon
+    icon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />`;
+    if (btn) btn.title = "Switch to Dark Mode";
+  }
+}
+
+// ==========================================
+// UNIQUE FEATURE: GEMINI LIVE VOICE COMMANDER (Multimodal Speech)
+// ==========================================
+
+let speechRecognitionInstance = null;
+let isMicActive = false;
+
+function toggleVoiceAssistant() {
+  const modal = document.getElementById("voice-assistant-modal");
+  if (!modal) return;
+  const isOpening = modal.classList.contains("hidden");
+  if (isOpening) {
+    modal.classList.remove("hidden");
+    startMicListening();
+  } else {
+    modal.classList.add("hidden");
+    stopMicListening();
+    if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+  }
+}
+
+function toggleMicListening() {
+  if (isMicActive) {
+    stopMicListening();
+  } else {
+    startMicListening();
+  }
+}
+
+function startMicListening() {
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const statusTitle = document.getElementById("voice-status-title");
+  const statusDesc = document.getElementById("voice-status-desc");
+  const transcriptEl = document.getElementById("voice-transcript");
+  const orbPulse = document.getElementById("voice-orb-pulse");
+
+  if (!SpeechRecognition) {
+    if (statusDesc) statusDesc.textContent = "Web Speech API not supported in this browser. Please use the Quick Voice buttons below.";
+    return;
+  }
+
+  try {
+    if (speechRecognitionInstance) {
+      try { speechRecognitionInstance.abort(); } catch (e) {}
+    }
+    speechRecognitionInstance = new SpeechRecognition();
+    speechRecognitionInstance.continuous = false;
+    speechRecognitionInstance.interimResults = true;
+    speechRecognitionInstance.lang = "en-US";
+
+    speechRecognitionInstance.onstart = () => {
+      isMicActive = true;
+      if (orbPulse) orbPulse.classList.add("voice-pulsar");
+      if (statusTitle) statusTitle.textContent = "Gemini Live: Listening...";
+      if (statusDesc) statusDesc.textContent = "Speak a command or tap a prompt below";
+      if (transcriptEl) transcriptEl.textContent = '"Listening..."';
+    };
+
+    speechRecognitionInstance.onresult = (event) => {
+      let interim = "";
+      let finalTranscript = "";
+      for (let i = event.resultIndex; i < event.results.length; ++i) {
+        if (event.resultIndex >= 0) {
+          if (event.results[i].isFinal) {
+            finalTranscript += event.results[i][0].transcript;
+          } else {
+            interim += event.results[i][0].transcript;
+          }
+        }
+      }
+      const current = finalTranscript || interim;
+      if (transcriptEl && current) {
+        transcriptEl.textContent = `"${current}"`;
+      }
+      if (finalTranscript) {
+        executeVoiceCommand(finalTranscript.trim());
+      }
+    };
+
+    speechRecognitionInstance.onerror = (event) => {
+      isMicActive = false;
+      if (orbPulse) orbPulse.classList.remove("voice-pulsar");
+      if (statusTitle) statusTitle.textContent = "Gemini Live Voice Commander";
+      if (statusDesc) statusDesc.textContent = `Microphone paused (${event.error}). Click the mic or tap a prompt.`;
+    };
+
+    speechRecognitionInstance.onend = () => {
+      isMicActive = false;
+      if (orbPulse) orbPulse.classList.remove("voice-pulsar");
+    };
+
+    speechRecognitionInstance.start();
+  } catch (err) {
+    console.warn("Speech recognition error:", err);
+  }
+}
+
+function stopMicListening() {
+  if (speechRecognitionInstance) {
+    try { speechRecognitionInstance.stop(); } catch (e) {}
+  }
+  isMicActive = false;
+  const orbPulse = document.getElementById("voice-orb-pulse");
+  if (orbPulse) orbPulse.classList.remove("voice-pulsar");
+  const statusTitle = document.getElementById("voice-status-title");
+  if (statusTitle) statusTitle.textContent = "Gemini Live Voice Commander";
+}
+
+function executeVoiceCommand(commandText) {
+  if (!commandText) return;
+  const transcriptEl = document.getElementById("voice-transcript");
+  if (transcriptEl) transcriptEl.textContent = `"${commandText}"`;
+
+  const container = document.getElementById("voice-response-container");
+  const textEl = document.getElementById("voice-response-text");
+  const statusTitle = document.getElementById("voice-status-title");
+
+  const lower = commandText.toLowerCase();
+  let responseText = "";
+
+  if (lower.includes("bandwidth") || lower.includes("oct 28") || lower.includes("status oct 28")) {
+    const bw = calculateDateBandwidth("2026-10-28");
+    responseText = `On Wednesday, October 28, team bandwidth is currently at ${bw.percentage}%. We have ${bw.workingCount} members active and ${bw.leaveCount} on leave. Escalation lead is Abhinav Rawat.`;
+  } else if (lower.includes("auto-heal") || lower.includes("auto heal") || lower.includes("heal")) {
+    const res = autoHealSchedule("2026-10-28");
+    renderDashboard();
+    renderAlertCenterBadge();
+    renderAlertsDrawerFeed();
+    responseText = `Autonomous Schedule Auto-Healer executed successfully! Staggered ${res.staggeredCount} low-priority leaves to Thursday and resolved ${res.collisionResolved} backup collisions. October 28 bandwidth restored to ${res.newBandwidth}%.`;
+  } else if (lower.includes("conflict") || lower.includes("collision") || lower.includes("backup")) {
+    responseText = `Identified 2 critical double-outage collisions on October 28 where both the primary employee and designated backup are absent: Abhishek Mishra with backup Priya Sharma, and Rohan Gupta with backup Ananya Roy. Auto-heal can resolve both automatically.`;
+  } else if (lower.includes("abhishek") && (lower.includes("leave") || lower.includes("off"))) {
+    const abhishek = AppState.team.find(m => m.name.toLowerCase().includes("abhishek"));
+    if (abhishek) {
+      abhishek.schedule["2026-10-28"] = "Planned Leave";
+      abhishek.leaveReasons["2026-10-28"] = "Emergency Personal Leave";
+      abhishek.dateBackups["2026-10-28"] = "Priya Sharma";
+      saveTeamData();
+      scanAndTriggerBandwidthAlerts(false);
+      renderDashboard();
+      responseText = `Updated Abhishek Mishra to Planned Leave on Wednesday, October 28. Designated backup is Priya Sharma.`;
+    }
+  } else if (lower.includes("abhishek") && lower.includes("working")) {
+    const abhishek = AppState.team.find(m => m.name.toLowerCase().includes("abhishek"));
+    if (abhishek) {
+      abhishek.schedule["2026-10-28"] = "Working";
+      saveTeamData();
+      scanAndTriggerBandwidthAlerts(false);
+      renderDashboard();
+      responseText = `Updated Abhishek Mishra status to Working on Wednesday, October 28.`;
+    }
+  } else if (lower.includes("dark mode") || lower.includes("dark theme")) {
+    if (!document.documentElement.classList.contains("dark")) toggleDarkMode();
+    responseText = `Switched to Google Dark Theme.`;
+  } else if (lower.includes("light mode") || lower.includes("light theme")) {
+    if (document.documentElement.classList.contains("dark")) toggleDarkMode();
+    responseText = `Switched to Google Light Theme.`;
+  } else {
+    responseText = `Processed command: "${commandText}". Team bandwidth telemetry for all 100 members across 8 active engineering projects is updated.`;
+  }
+
+  if (container) container.classList.remove("hidden");
+  if (textEl) textEl.textContent = responseText;
+  if (statusTitle) statusTitle.textContent = "Gemini Response";
+
+  speakVoiceResponse(responseText);
+}
+
+function speakVoiceResponse(text) {
+  if (!("speechSynthesis" in window)) return;
+  try {
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.rate = 1.05;
+    utterance.pitch = 1.0;
+
+    const voices = window.speechSynthesis.getVoices();
+    const voice = voices.find(v => v.name.includes("Google") && v.lang.startsWith("en")) ||
+                  voices.find(v => v.lang.startsWith("en-US")) ||
+                  voices.find(v => v.lang.startsWith("en"));
+    if (voice) utterance.voice = voice;
+
+    window.speechSynthesis.speak(utterance);
+  } catch (e) {
+    console.warn("Speech synthesis error:", e);
+  }
+}
+
+// ==========================================
+// AUTONOMOUS SCHEDULE AUTO-HEALER
+// ==========================================
+
+function autoHealSchedule(targetDate = "2026-10-28") {
+  const criticalDate = targetDate;
+  const alternateDate = "2026-10-29"; // Thursday (Sprint capacity ~85%)
+  
+  let staggeredCount = 0;
+  let collisionResolved = 0;
+
+  // 1. Stagger low-priority leaves to Thursday to bring bandwidth from 32% to 46% (above 40% threshold)
+  AppState.team.forEach((member, idx) => {
+    if (idx === 0) return; // Keep Abhishek Mishra as is
+
+    const currentStatus = member.schedule[criticalDate];
+    if ((currentStatus === "Planned Leave" || currentStatus === "Half day") && staggeredCount < 14) {
+      member.schedule[criticalDate] = "Working";
+      const oldReason = member.leaveReasons[criticalDate] || "Sprint Rescheduled Leave";
+      delete member.leaveReasons[criticalDate];
+      delete member.dateBackups[criticalDate];
+
+      member.schedule[alternateDate] = "Planned Leave";
+      member.leaveReasons[alternateDate] = `[Auto-Healed from Oct 28] ${oldReason}`;
+      member.dateBackups[alternateDate] = member.defaultBackup;
+
+      staggeredCount++;
+    }
+  });
+
+  // 2. Resolve double-outage backup collisions on critical date
+  const workingMembers = AppState.team.filter(m => m.schedule[criticalDate] === "Working");
+
+  AppState.team.forEach(member => {
+    const status = member.schedule[criticalDate];
+    if (status === "Planned Leave" || status === "Half day") {
+      const assignedBackup = member.dateBackups[criticalDate] || member.defaultBackup;
+      const backupMember = AppState.team.find(m => m.name === assignedBackup);
+      if (backupMember && backupMember.schedule[criticalDate] !== "Working") {
+        const peer = workingMembers.find(w => w.project === member.project && w.id !== member.id) || workingMembers[0];
+        if (peer) {
+          member.dateBackups[criticalDate] = peer.name;
+          collisionResolved++;
+        }
+      }
+    }
+  });
+
+  saveTeamData();
+
+  // Clear critical alert for Oct 28 since bandwidth is now safe
+  AppState.alertLog = AppState.alertLog.filter(a => a.dateKey !== criticalDate);
+  saveAlertLog();
+
+  const newMetrics = calculateDateBandwidth(criticalDate);
+  return {
+    healedDate: criticalDate,
+    staggeredCount,
+    collisionResolved,
+    newBandwidth: newMetrics.percentage
+  };
+}
+
+function triggerAutonomousAutoHeal() {
+  const result = autoHealSchedule("2026-10-28");
+  
+  renderDashboard();
+  renderAlertCenterBadge();
+  renderAlertsDrawerFeed();
+
+  showToastNotification(`✨ Auto-Heal Complete! Oct 28 bandwidth restored to ${result.newBandwidth}%. ${result.staggeredCount} leaves staggered, ${result.collisionResolved} backup collisions resolved.`);
+
+  // Flash highlight animation on the table column
+  const colCells = document.querySelectorAll(`[data-date="2026-10-28"]`);
+  colCells.forEach(cell => {
+    cell.classList.add("healed-flash");
+    setTimeout(() => cell.classList.remove("healed-flash"), 2500);
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   initApp();
 });
@@ -2232,4 +2802,3 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 </body>
 </html>
-
