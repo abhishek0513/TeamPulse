@@ -1,4 +1,4 @@
-// TeamPulse Bandwidth & Leave Tracker - Core Application Logic
+// Google Internal Staffing & Bandwidth Planner - Core Application Logic
 
 // Application State
 const AppState = {
@@ -6,15 +6,13 @@ const AppState = {
   dates: [],
   searchQuery: "",
   projectFilter: "ALL",
-  directorySearchQuery: "",
-  activeTab: "tracker",
   settings: {
-    managerName: "Sarah Jenkins (Director of Engineering)",
-    managerEmail: "sarah.lead@company.com",
+    managerName: "Abhinav Rawat (Engineering Lead)",
+    managerEmail: "rawatabhinav@google.com",
     threshold: 40 // percent
   },
   alertLog: [],
-  activeCellEdit: null // { memberId, dateKey }
+  activeInspect: null // { memberId, dateKey }
 };
 
 // Initialize App
@@ -23,12 +21,19 @@ function initApp() {
   AppState.dates = generateDateRange("2026-10-24", 14);
 
   // Load saved state or generate fresh
-  const savedTeam = localStorage.getItem("teampulse_team_data");
-  const savedSettings = localStorage.getItem("teampulse_settings");
-  const savedAlerts = localStorage.getItem("teampulse_alert_log");
+  const savedTeam = localStorage.getItem("google_staffing_team_data");
+  const savedSettings = localStorage.getItem("google_staffing_settings");
+  const savedAlerts = localStorage.getItem("google_staffing_alert_log");
 
   if (savedSettings) {
     try { AppState.settings = JSON.parse(savedSettings); } catch (e) {}
+  }
+
+  // Ensure default manager is Abhinav Rawat
+  if (!AppState.settings.managerEmail || AppState.settings.managerEmail.includes("sarah") || AppState.settings.managerEmail.includes("company")) {
+    AppState.settings.managerName = "Abhinav Rawat (Engineering Lead)";
+    AppState.settings.managerEmail = "rawatabhinav@google.com";
+    localStorage.setItem("google_staffing_settings", JSON.stringify(AppState.settings));
   }
 
   if (savedTeam) {
@@ -39,6 +44,14 @@ function initApp() {
     }
   } else {
     AppState.team = generateInitialTeam(AppState.dates);
+    saveTeamData();
+  }
+
+  // Ensure Member #1 is Abhishek Mishra
+  if (AppState.team.length > 0 && (AppState.team[0].name !== "Abhishek Mishra" || AppState.team[0].email !== "abhishmishra@google.com")) {
+    AppState.team[0].name = "Abhishek Mishra";
+    AppState.team[0].email = "abhishmishra@google.com";
+    AppState.team[0].project = "AI Recommendation Engine";
     saveTeamData();
   }
 
@@ -58,18 +71,18 @@ function initApp() {
   renderAlertCenterBadge();
   setupEventListeners();
 
-  // Update lead email in header / modals
-  const leadEl = document.getElementById("alert-manager-email-display");
+  // Set lead email display in alerts drawer
+  const leadEl = document.getElementById("alert-lead-email");
   if (leadEl) leadEl.textContent = AppState.settings.managerEmail;
 }
 
 // LocalStorage helpers
 function saveTeamData() {
-  localStorage.setItem("teampulse_team_data", JSON.stringify(AppState.team));
+  localStorage.setItem("google_staffing_team_data", JSON.stringify(AppState.team));
 }
 
 function saveAlertLog() {
-  localStorage.setItem("teampulse_alert_log", JSON.stringify(AppState.alertLog));
+  localStorage.setItem("google_staffing_alert_log", JSON.stringify(AppState.alertLog));
 }
 
 // Calculate Bandwidth Metrics for a specific date
@@ -161,41 +174,10 @@ function scanAndTriggerBandwidthAlerts(showNotification = true) {
   saveAlertLog();
 
   if (newTriggers > 0 && showNotification) {
-    showToastNotification(`🚨 Automatic Trigger: Low Bandwidth (<${AppState.settings.threshold}%) detected! Escalation dispatched to ${AppState.settings.managerEmail}`);
+    showToastNotification(`Automatic Trigger: Low Bandwidth (<${AppState.settings.threshold}%) detected. Escalated to ${AppState.settings.managerEmail}`);
   }
 
   renderAlertCenterBadge();
-}
-
-// Switch between Website Views / Tabs
-function switchTab(tabId) {
-  AppState.activeTab = tabId;
-
-  document.querySelectorAll(".nav-tab").forEach(tab => {
-    tab.classList.remove("active", "text-indigo-300", "bg-indigo-950/60");
-    tab.classList.add("text-slate-400");
-  });
-
-  const activeTabBtn = document.getElementById(`tab-${tabId}`);
-  if (activeTabBtn) {
-    activeTabBtn.classList.add("active");
-    activeTabBtn.classList.remove("text-slate-400");
-  }
-
-  document.querySelectorAll(".tab-content").forEach(el => el.classList.add("hidden"));
-
-  const targetView = document.getElementById(`view-${tabId}`);
-  if (targetView) targetView.classList.remove("hidden");
-
-  if (tabId === "tracker") {
-    renderTrackerTable();
-  } else if (tabId === "analytics") {
-    renderAnalyticsView();
-  } else if (tabId === "alerts") {
-    renderAlertsView();
-  } else if (tabId === "directory") {
-    renderDirectoryView();
-  }
 }
 
 // Populate Project Filter Options
@@ -204,7 +186,7 @@ function populateProjectFilter() {
   if (!filterSelect) return;
 
   const currentVal = filterSelect.value;
-  filterSelect.innerHTML = `<option value="ALL">All Projects (100 Members)</option>`;
+  filterSelect.innerHTML = `<option value="ALL">All Squads (100 Members)</option>`;
   
   PROJECTS.forEach(proj => {
     const count = AppState.team.filter(m => m.project === proj).length;
@@ -214,7 +196,7 @@ function populateProjectFilter() {
   if (currentVal) filterSelect.value = currentVal;
 }
 
-// Populate Self-Service Leave Modal Options
+// Populate Leave Modal Dropdowns
 function populateLeaveModalOptions() {
   const memberSelect = document.getElementById("form-member-select");
   const projectSelect = document.getElementById("form-project-select");
@@ -224,8 +206,8 @@ function populateLeaveModalOptions() {
   if (!memberSelect || !projectSelect || !dateSelect || !backupSelect) return;
 
   memberSelect.innerHTML = `
-    <option value="__NEW__">+ Add New Member Name</option>
-    <optgroup label="Select Existing Member (${AppState.team.length})">
+    <option value="__NEW__">+ Register New Member Name</option>
+    <optgroup label="Select Existing Staff (${AppState.team.length})">
       ${AppState.team.map(m => `<option value="${m.id}">${m.name} (${m.project})</option>`).join('')}
     </optgroup>
   `;
@@ -238,7 +220,6 @@ function populateLeaveModalOptions() {
   `;
 }
 
-// Handle member select change in leave form
 function handleMemberSelectChange(selectEl) {
   const newNameInput = document.getElementById("form-new-name");
   const projectSelect = document.getElementById("form-project-select");
@@ -259,41 +240,48 @@ function handleMemberSelectChange(selectEl) {
   }
 }
 
-// Render Dashboard
+// Render Dashboard (Metrics Bar & Table)
 function renderDashboard() {
-  renderMetricCards();
+  renderMetricBar();
   renderTrackerTable();
-  if (AppState.activeTab === "analytics") renderAnalyticsView();
-  if (AppState.activeTab === "alerts") renderAlertsView();
-  if (AppState.activeTab === "directory") renderDirectoryView();
 }
 
-// Render Metric Cards
-function renderMetricCards() {
-  const totalMembers = AppState.team.length;
+// Render Compact Metric Bar (Google style)
+function renderMetricBar() {
+  const totalCountEl = document.getElementById("stat-total-count");
+  const todayPctEl = document.getElementById("stat-today-pct");
+  const criticalPillEl = document.getElementById("stat-critical-pill");
+
+  if (!totalCountEl || !todayPctEl || !criticalPillEl) return;
+
+  totalCountEl.textContent = `${AppState.team.length} staff`;
+
   const todayKey = AppState.dates[0].key;
   const todayMetrics = calculateDateBandwidth(todayKey);
-  
-  const criticalDatesCount = AppState.dates.filter(d => calculateDateBandwidth(d.key).isLowBandwidth).length;
-  
-  document.getElementById("stat-total-members").textContent = totalMembers;
-  document.getElementById("stat-today-bandwidth").textContent = `${todayMetrics.percentage}%`;
-  document.getElementById("stat-today-bandwidth").className = `text-3xl font-extrabold ${
-    todayMetrics.percentage < AppState.settings.threshold ? 'text-red-400' : 'text-emerald-400'
-  }`;
-  
-  document.getElementById("stat-today-leaves").textContent = todayMetrics.leaveCount + todayMetrics.halfDayCount;
-  
-  const alertCard = document.getElementById("stat-critical-card");
-  const alertCountEl = document.getElementById("stat-critical-dates");
-  alertCountEl.textContent = criticalDatesCount;
+  todayPctEl.textContent = `${todayMetrics.percentage}%`;
+  todayPctEl.className = `font-semibold ${todayMetrics.percentage < AppState.settings.threshold ? 'text-[#c5221f]' : 'text-[#137333]'}`;
 
-  if (criticalDatesCount > 0) {
-    alertCard.classList.add("border-red-500", "bg-red-950/40");
-    alertCard.classList.remove("border-slate-800", "bg-slate-900/80");
+  // Find lowest bandwidth date in current sprint
+  let lowestMetric = null;
+  AppState.dates.forEach(d => {
+    const m = calculateDateBandwidth(d.key);
+    if (!lowestMetric || m.percentage < lowestMetric.percentage) {
+      lowestMetric = { ...m, label: d.label };
+    }
+  });
+
+  if (lowestMetric && lowestMetric.isLowBandwidth) {
+    criticalPillEl.classList.remove("hidden");
+    criticalPillEl.innerHTML = `
+      <span>⚠️ ${lowestMetric.label} &lt; ${AppState.settings.threshold}% (${lowestMetric.percentage}%)</span>
+      <span class="underline ml-1 font-semibold">Review Escalation</span>
+    `;
+    criticalPillEl.className = "inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-[#fce8e6] text-[#c5221f] border border-[#fad2cf] hover:bg-[#fad2cf] transition-colors cursor-pointer";
   } else {
-    alertCard.classList.remove("border-red-500", "bg-red-950/40");
-    alertCard.classList.add("border-slate-800", "bg-slate-900/80");
+    criticalPillEl.innerHTML = `
+      <span>✅ Capacity Optimal (&ge; ${AppState.settings.threshold}%)</span>
+    `;
+    criticalPillEl.className = "inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-[#e6f4ea] text-[#137333] border border-[#ceead6]";
   }
 }
 
@@ -316,16 +304,12 @@ function renderTrackerTable() {
     return matchesSearch && matchesProject;
   });
 
-  document.getElementById("visible-count").textContent = `Showing ${filteredTeam.length} of ${AppState.team.length} members`;
-
   // 1. Table Header
   let headerHtml = `
-    <tr>
-      <th class="sticky-col-idx px-3 py-3 text-xs font-semibold uppercase tracking-wider text-slate-400 w-11 text-center border-b border-slate-700">#</th>
-      <th class="sticky-col-name px-4 py-3 text-xs font-semibold uppercase tracking-wider text-slate-300 w-48 text-left border-b border-slate-700">Team Member Name</th>
-      <th class="sticky-col-proj px-4 py-3 text-xs font-semibold uppercase tracking-wider text-slate-300 w-44 text-left border-b border-slate-700">Project Name</th>
-      <th class="sticky-col-backup px-4 py-3 text-xs font-semibold uppercase tracking-wider text-slate-300 w-44 text-left border-b border-slate-700">Backup Person</th>
-      <th class="sticky-col-reason px-4 py-3 text-xs font-semibold uppercase tracking-wider text-slate-300 w-44 text-left border-b border-slate-700">Reason / Notes</th>
+    <tr class="bg-[#f8fafd] border-b border-[#dadce0] text-[#5f6368] font-medium text-[11px]">
+      <th class="sticky-col-idx px-2.5 py-2.5 w-10 text-center border-r border-[#dadce0]">#</th>
+      <th class="sticky-col-name px-3 py-2.5 w-56 text-left border-r border-[#dadce0]">Team Member</th>
+      <th class="sticky-col-backup px-3 py-2.5 w-44 text-left border-r border-[#dadce0]">Default Backup</th>
   `;
 
   AppState.dates.forEach(dt => {
@@ -333,14 +317,14 @@ function renderTrackerTable() {
     const isCritical = metrics.isLowBandwidth;
 
     headerHtml += `
-      <th class="px-2 py-2 text-center min-w-[76px] border-b border-l border-slate-800 ${dt.isWeekend ? 'bg-slate-900/90' : 'bg-slate-900'} ${isCritical ? 'bg-red-950/60 border-red-500' : ''}">
-        <div class="text-[11px] font-medium ${dt.isWeekend ? 'text-slate-500' : 'text-slate-400'}">${dt.dayName}</div>
-        <div class="text-xs font-bold text-slate-200">${dt.label}</div>
+      <th class="px-1.5 py-2 text-center min-w-[68px] border-r border-[#dadce0] ${dt.isWeekend ? 'bg-[#f1f3f4]/70' : 'bg-[#f8fafd]'} ${isCritical ? 'bg-[#fce8e6]/80 text-[#c5221f]' : ''}">
+        <div class="text-[10px] uppercase tracking-wider ${dt.isWeekend ? 'text-[#80868b]' : (isCritical ? 'text-[#c5221f] font-semibold' : 'text-[#5f6368]')}">${dt.dayName}</div>
+        <div class="text-xs font-semibold ${isCritical ? 'text-[#c5221f]' : 'text-[#202124]'}">${dt.label}</div>
         <div class="mt-1">
-          <span class="inline-block px-1.5 py-0.5 text-[10px] rounded font-bold ${
-            isCritical ? 'bg-red-600 text-white alert-pulse' : (metrics.percentage < 70 ? 'bg-amber-600/80 text-amber-100' : 'bg-emerald-600/80 text-emerald-100')
+          <span class="inline-block px-1.5 py-0.2 rounded text-[10px] font-semibold ${
+            isCritical ? 'bg-[#d93025] text-white shadow-xs' : (metrics.percentage < 70 ? 'bg-[#fef7e0] text-[#b06000] border border-[#feefc3]' : 'bg-[#e6f4ea] text-[#137333] border border-[#ceead6]')
           }">
-            ${isCritical ? '🚨 ' : ''}${metrics.percentage}%
+            ${metrics.percentage}%
           </span>
         </div>
       </th>
@@ -354,77 +338,71 @@ function renderTrackerTable() {
   if (filteredTeam.length === 0) {
     tbody.innerHTML = `
       <tr>
-        <td colspan="${5 + AppState.dates.length}" class="py-12 text-center text-slate-400">
-          <div class="text-base font-medium text-slate-300">No team members match your criteria</div>
-          <p class="text-xs text-slate-500 mt-1">Try clearing your search query or selecting "All Projects".</p>
+        <td colspan="${3 + AppState.dates.length}" class="py-12 text-center text-[#5f6368]">
+          <div class="text-sm font-medium text-[#202124]">No team members match your criteria</div>
+          <p class="text-xs text-[#80868b] mt-1">Try clearing your search query or selecting "All Squads".</p>
         </td>
       </tr>
     `;
   } else {
     let bodyHtml = "";
     filteredTeam.forEach((member, index) => {
-      const displayReason = member.defaultReason || "General Availability";
-      const displayBackup = member.defaultBackup || "Not Assigned";
+      const displayBackup = member.defaultBackup || "None assigned";
 
       bodyHtml += `
-        <tr class="border-b border-slate-800/80 hover:bg-slate-800/50 transition-colors">
-          <td class="sticky-col-idx px-3 py-2 text-xs text-slate-400 text-center font-mono">${index + 1}</td>
+        <tr class="hover:bg-[#f8fafd] transition-colors border-b border-[#ebebeb]">
+          <td class="sticky-col-idx px-2.5 py-2 text-[11px] text-[#80868b] text-center font-mono border-r border-[#ebebeb]">${index + 1}</td>
           
-          <td class="sticky-col-name px-4 py-2 text-sm text-slate-100 font-medium">
+          <td class="sticky-col-name px-3 py-2 text-xs border-r border-[#ebebeb]">
             <div class="flex items-center space-x-2">
-              <span class="w-6 h-6 rounded-full bg-indigo-600/60 text-indigo-200 text-xs flex items-center justify-center font-bold">
+              <span class="w-6 h-6 rounded-full bg-[#e8f0fe] text-[#1a73e8] font-bold text-[11px] flex items-center justify-center shrink-0">
                 ${member.name.charAt(0)}
               </span>
-              <button onclick="openCellEditModal('${member.id}', '${AppState.dates[0].key}')" class="hover:text-indigo-300 text-left truncate max-w-[140px] font-semibold">
-                ${member.name}
-              </button>
+              <div class="truncate max-w-[170px]">
+                <button onclick="openInspectorDrawer('${member.id}', '${AppState.dates[0].key}')" class="font-medium text-[#202124] hover:text-[#1a73e8] hover:underline truncate text-left block">
+                  ${member.name}
+                </button>
+                <span class="text-[10px] text-[#5f6368] truncate block" title="${member.project}">
+                  ${member.project}
+                </span>
+              </div>
             </div>
           </td>
 
-          <td class="sticky-col-proj px-4 py-2 text-xs text-slate-300 truncate max-w-[170px]" title="${member.project}">
-            <span class="inline-block px-2 py-0.5 bg-slate-800 text-slate-300 rounded border border-slate-700/60 truncate max-w-full">
-              ${member.project}
-            </span>
-          </td>
-
-          <td class="sticky-col-backup px-4 py-2 text-xs text-slate-300 truncate max-w-[170px]" title="Backup: ${displayBackup}">
-            <span class="text-indigo-300 font-medium flex items-center">
-              <svg class="w-3.5 h-3.5 mr-1 text-indigo-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+          <td class="sticky-col-backup px-3 py-2 text-xs text-[#3c4043] border-r border-[#ebebeb]">
+            <div class="flex items-center space-x-1.5 truncate max-w-[150px]" title="Backup: ${displayBackup}">
               <span class="truncate">${displayBackup}</span>
-            </span>
-          </td>
-
-          <td class="sticky-col-reason px-4 py-2 text-xs text-slate-400 truncate max-w-[170px]" title="${displayReason}">
-            <span class="truncate block text-slate-400 italic">${displayReason}</span>
+            </div>
           </td>
       `;
 
+      // Date cells
       AppState.dates.forEach(dt => {
         const status = member.schedule[dt.key] || "Working";
         const dateReason = member.leaveReasons[dt.key] || member.defaultReason || "";
         const dateBackup = member.dateBackups[dt.key] || member.defaultBackup || "";
         
-        let pillClass = "status-working";
+        let chipClass = "status-chip-working";
         let statusAbbr = "W";
         if (status === "Planned Leave") {
-          pillClass = "status-leave";
+          chipClass = "status-chip-leave";
           statusAbbr = "PL";
         } else if (status === "Half day") {
-          pillClass = "status-halfday";
+          chipClass = "status-chip-halfday";
           statusAbbr = "HD";
         } else if (status === "Not Applicable") {
-          pillClass = "status-na";
+          chipClass = "status-chip-na";
           statusAbbr = "NA";
         }
 
-        const tooltip = `${member.name} | ${dt.label}\nStatus: ${status}${status !== 'Working' ? `\nBackup: ${dateBackup}\nReason: ${dateReason}` : ''}`;
+        const tooltip = `${member.name} • ${dt.label}\nStatus: ${status}${status !== 'Working' ? `\nBackup: ${dateBackup}\nReason: ${dateReason}` : ''}`;
 
         bodyHtml += `
-          <td class="px-1.5 py-1.5 text-center border-l border-slate-800/80 ${dt.isWeekend ? 'bg-slate-900/40' : ''}">
+          <td class="px-1 py-1.5 text-center border-r border-[#ebebeb] ${dt.isWeekend ? 'bg-[#f8f9fa]/60' : ''}">
             <button 
               type="button"
-              onclick="openCellEditModal('${member.id}', '${dt.key}')"
-              class="status-pill ${pillClass}" 
+              onclick="openInspectorDrawer('${member.id}', '${dt.key}')"
+              class="status-chip ${chipClass}" 
               title="${tooltip}">
               ${statusAbbr}
             </button>
@@ -437,74 +415,52 @@ function renderTrackerTable() {
     tbody.innerHTML = bodyHtml;
   }
 
-  // 3. Table Footer
+  // 3. Table Footer (Clean Google Sheets Summary)
   let footerHtml = `
-    <tr class="border-t-2 border-slate-700 bg-slate-900/95 font-semibold text-xs">
-      <td class="sticky-col-idx px-3 py-2 text-center text-emerald-400">📊</td>
-      <td class="sticky-col-name px-4 py-2 text-slate-200">Full Working Count</td>
-      <td class="sticky-col-proj px-4 py-2 text-slate-400">-</td>
-      <td class="sticky-col-backup px-4 py-2 text-slate-400">-</td>
-      <td class="sticky-col-reason px-4 py-2 text-slate-400 text-xs">100% staff</td>
+    <!-- Full Working Headcount -->
+    <tr class="bg-[#f8fafd] font-medium text-xs border-b border-[#ebebeb]">
+      <td class="sticky-col-idx px-2 py-2 text-center text-[#137333]">✓</td>
+      <td class="sticky-col-name px-3 py-2 text-[#3c4043] font-semibold">Active Staff (100% capacity)</td>
+      <td class="sticky-col-backup px-3 py-2 text-[#80868b]">-</td>
   `;
-
   AppState.dates.forEach(dt => {
     const m = calculateDateBandwidth(dt.key, filteredTeam);
     footerHtml += `
-      <td class="px-2 py-2 text-center border-l border-slate-700 text-emerald-400 font-bold">
+      <td class="px-1.5 py-2 text-center border-r border-[#ebebeb] text-[#137333] font-semibold">
         ${m.workingCount}
       </td>
     `;
   });
   footerHtml += `</tr>`;
 
+  // Planned Leaves Count
   footerHtml += `
-    <tr class="border-t border-slate-800 bg-slate-900/95 font-medium text-xs">
-      <td class="sticky-col-idx px-3 py-1.5 text-center text-amber-400">⏱️</td>
-      <td class="sticky-col-name px-4 py-1.5 text-slate-300">Half Day Count</td>
-      <td class="sticky-col-proj px-4 py-1.5 text-slate-400">-</td>
-      <td class="sticky-col-backup px-4 py-1.5 text-slate-400">-</td>
-      <td class="sticky-col-reason px-4 py-1.5 text-slate-400 text-xs">0.5x capacity</td>
+    <tr class="bg-[#f8fafd] font-medium text-xs border-b border-[#ebebeb]">
+      <td class="sticky-col-idx px-2 py-1.5 text-center text-[#c5221f]">✕</td>
+      <td class="sticky-col-name px-3 py-1.5 text-[#3c4043]">Leaves / Half-Day Absent</td>
+      <td class="sticky-col-backup px-3 py-1.5 text-[#80868b]">-</td>
   `;
   AppState.dates.forEach(dt => {
     const m = calculateDateBandwidth(dt.key, filteredTeam);
+    const totalAbsent = m.leaveCount + m.halfDayCount;
     footerHtml += `
-      <td class="px-2 py-1.5 text-center border-l border-slate-700 text-amber-400 font-bold">
-        ${m.halfDayCount}
+      <td class="px-1.5 py-1.5 text-center border-r border-[#ebebeb] text-[#c5221f] font-semibold">
+        ${totalAbsent}
       </td>
     `;
   });
   footerHtml += `</tr>`;
 
+  // BANDWIDTH % CAPACITY ROW (AUTOMATIC <40% TRIGGER ESCALATION)
   footerHtml += `
-    <tr class="border-t border-slate-800 bg-slate-900/95 font-medium text-xs">
-      <td class="sticky-col-idx px-3 py-1.5 text-center text-red-400">🏖️</td>
-      <td class="sticky-col-name px-4 py-1.5 text-slate-300">Planned Leaves (Absent)</td>
-      <td class="sticky-col-proj px-4 py-1.5 text-slate-400">-</td>
-      <td class="sticky-col-backup px-4 py-1.5 text-slate-400">-</td>
-      <td class="sticky-col-reason px-4 py-1.5 text-slate-400 text-xs">0% capacity</td>
-  `;
-  AppState.dates.forEach(dt => {
-    const m = calculateDateBandwidth(dt.key, filteredTeam);
-    footerHtml += `
-      <td class="px-2 py-1.5 text-center border-l border-slate-700 text-red-400 font-bold">
-        ${m.leaveCount}
+    <tr class="bg-white font-semibold text-xs border-t-2 border-[#1a73e8]">
+      <td class="sticky-col-idx px-2 py-2.5 text-center text-[#1a73e8]">⚡</td>
+      <td class="sticky-col-name px-3 py-2.5 text-[#202124] font-bold flex items-center justify-between">
+        <span>Capacity Bandwidth</span>
+        <span class="text-[10px] text-[#5f6368] font-normal">Target &ge; ${AppState.settings.threshold}%</span>
       </td>
-    `;
-  });
-  footerHtml += `</tr>`;
-
-  // BANDWIDTH ROW
-  footerHtml += `
-    <tr class="border-t-2 border-indigo-500 bg-slate-950 font-bold text-sm shadow-xl">
-      <td class="sticky-col-idx px-3 py-3 text-center text-indigo-400">⚡</td>
-      <td class="sticky-col-name px-4 py-3 text-white font-black flex items-center">
-        <span>BANDWIDTH %</span>
-        <span class="ml-2 px-1.5 py-0.5 bg-indigo-500/20 text-indigo-300 text-[10px] rounded uppercase">Target &ge; 40%</span>
-      </td>
-      <td class="sticky-col-proj px-4 py-3 text-xs text-indigo-200">Capacity Ratio</td>
-      <td class="sticky-col-backup px-4 py-3 text-xs text-indigo-200">Auto Lead Alert</td>
-      <td class="sticky-col-reason px-4 py-3 text-xs text-slate-300">
-        <span class="text-red-400 font-bold">&lt; 40% = Escalate</span>
+      <td class="sticky-col-backup px-3 py-2.5 text-[11px] text-[#5f6368]">
+        Auto Lead Trigger
       </td>
   `;
 
@@ -513,16 +469,16 @@ function renderTrackerTable() {
     const isCritical = m.isLowBandwidth;
 
     footerHtml += `
-      <td class="px-2 py-3 text-center border-l border-slate-700 ${isCritical ? 'bg-red-950/90 text-red-300 border-red-500' : 'text-slate-100'}">
-        <div class="text-sm font-extrabold ${isCritical ? 'text-red-400 alert-pulse' : (m.percentage < 70 ? 'text-amber-400' : 'text-emerald-400')}">
+      <td class="px-1.5 py-2.5 text-center border-r border-[#ebebeb] ${isCritical ? 'bg-[#fce8e6]' : ''}">
+        <div class="text-xs font-bold ${isCritical ? 'text-[#c5221f]' : (m.percentage < 70 ? 'text-[#b06000]' : 'text-[#137333]')}">
           ${m.percentage}%
         </div>
-        <div class="text-[10px] text-slate-400 font-normal mt-0.5">
+        <div class="text-[10px] text-[#80868b] font-normal">
           ${m.effectiveWorking}/${m.totalRelevant}
         </div>
         ${isCritical ? `
-          <button onclick="switchTab('alerts')" class="mt-1 px-1.5 py-0.5 bg-red-600 hover:bg-red-500 text-white text-[9px] rounded font-bold shadow uppercase block w-full">
-            🚨 ALERT
+          <button onclick="toggleAlertsDrawer()" class="mt-1 px-1.5 py-0.5 bg-[#d93025] hover:bg-[#c5221f] text-white text-[9px] rounded font-semibold block w-full shadow-xs">
+            Alert
           </button>
         ` : ''}
       </td>
@@ -533,554 +489,75 @@ function renderTrackerTable() {
   tfoot.innerHTML = footerHtml;
 }
 
-// Render Tab 2: Capacity Analytics View
-function renderAnalyticsView() {
-  const chartContainer = document.getElementById("analytics-chart-container");
-  const projectCardsContainer = document.getElementById("project-breakdown-cards");
-  if (!chartContainer || !projectCardsContainer) return;
-
-  let chartHtml = "";
-  AppState.dates.forEach(dt => {
-    const m = calculateDateBandwidth(dt.key);
-    const isCritical = m.isLowBandwidth;
-    const heightPct = Math.max(m.percentage, 10);
-    
-    let barColor = "bg-emerald-500";
-    if (isCritical) barColor = "bg-red-600 alert-pulse";
-    else if (m.percentage < 70) barColor = "bg-amber-500";
-
-    chartHtml += `
-      <div class="flex flex-col items-center group cursor-pointer" onclick="openCellEditModal('${AppState.team[0].id}', '${dt.key}')">
-        <span class="text-[11px] font-bold ${isCritical ? 'text-red-400' : 'text-slate-300'} mb-1">
-          ${isCritical ? '🚨 ' : ''}${m.percentage}%
-        </span>
-        <div class="w-full bg-slate-950 rounded-t-lg h-44 flex items-end p-1 border border-slate-800">
-          <div class="w-full ${barColor} rounded-t transition-all duration-300 group-hover:brightness-125" style="height: ${heightPct}%"></div>
-        </div>
-        <div class="mt-2 text-center">
-          <div class="text-[11px] font-semibold text-white">${dt.label}</div>
-          <div class="text-[10px] text-slate-500">${dt.dayName}</div>
-        </div>
-      </div>
-    `;
-  });
-  chartContainer.innerHTML = chartHtml;
-
-  let projHtml = "";
-  PROJECTS.forEach(p => {
-    const membersInProj = AppState.team.filter(m => m.project === p);
-    let totalBw = 0;
-    AppState.dates.forEach(d => {
-      totalBw += calculateDateBandwidth(d.key, membersInProj).percentage;
-    });
-    const avgBw = Math.round(totalBw / AppState.dates.length);
-
-    projHtml += `
-      <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 hover:border-slate-700 transition-colors">
-        <div class="text-xs font-semibold text-slate-400 truncate" title="${p}">${p}</div>
-        <div class="mt-2 flex items-baseline justify-between">
-          <span class="text-2xl font-bold ${avgBw < AppState.settings.threshold ? 'text-red-400' : 'text-emerald-400'}">${avgBw}% Avg</span>
-          <span class="text-xs text-slate-400">${membersInProj.length} members</span>
-        </div>
-        <div class="w-full bg-slate-800 rounded-full h-1.5 mt-3 overflow-hidden">
-          <div class="h-1.5 ${avgBw < AppState.settings.threshold ? 'bg-red-500' : 'bg-emerald-500'}" style="width: ${avgBw}%"></div>
-        </div>
-      </div>
-    `;
-  });
-  projectCardsContainer.innerHTML = projHtml;
-}
-
-// Render Tab 3: Alerts View (Manager Escalation Feed)
-function renderAlertsView() {
-  const alertsFeed = document.getElementById("alerts-tab-feed");
-  if (!alertsFeed) return;
-
-  const criticalDates = AppState.dates.filter(d => calculateDateBandwidth(d.key).isLowBandwidth);
-
-  if (criticalDates.length === 0) {
-    alertsFeed.innerHTML = `
-      <div class="py-12 text-center">
-        <div class="w-16 h-16 bg-emerald-950/60 text-emerald-400 rounded-full flex items-center justify-center mx-auto mb-3 border border-emerald-500/40">
-          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-        </div>
-        <h3 class="text-lg font-bold text-slate-100">Optimal Bandwidth across All Dates (&ge; ${AppState.settings.threshold}%)</h3>
-        <p class="text-xs text-slate-400 mt-1 max-w-md mx-auto">No critical shortages detected. Sufficient coverage is maintained across all teams.</p>
-      </div>
-    `;
-    return;
-  }
-
-  let html = "";
-  criticalDates.forEach(dt => {
-    const metrics = calculateDateBandwidth(dt.key);
-    const absentMembers = AppState.team.filter(m => m.schedule[dt.key] === "Planned Leave" || m.schedule[dt.key] === "Half day");
-
-    html += `
-      <div class="bg-slate-950 border border-red-500/60 rounded-2xl p-5 shadow-lg">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-slate-800 gap-3">
-          <div>
-            <div class="flex items-center space-x-2">
-              <span class="px-2.5 py-1 rounded bg-red-600 text-white text-xs font-bold alert-pulse">
-                🚨 CRITICAL CAPACITY SHORTAGE (&lt; ${AppState.settings.threshold}%)
-              </span>
-              <span class="text-xs text-slate-400">Trigger Sent to: <strong class="text-indigo-300">${AppState.settings.managerEmail}</strong></span>
-            </div>
-            <h4 class="text-lg font-black text-white mt-2">${dt.dayName}, ${dt.fullDate}</h4>
-          </div>
-
-          <div class="text-right">
-            <div class="text-3xl font-black text-red-400">${metrics.percentage}% Bandwidth</div>
-            <div class="text-xs text-slate-400">Available: ${metrics.effectiveWorking} / ${metrics.totalRelevant} members</div>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 my-4">
-          <div class="bg-slate-900 p-3 rounded-xl border border-slate-800 text-center">
-            <div class="text-xs text-slate-400">Working Staff</div>
-            <div class="text-lg font-bold text-emerald-400">${metrics.workingCount} Full + ${metrics.halfDayCount} Half</div>
-          </div>
-          <div class="bg-slate-900 p-3 rounded-xl border border-slate-800 text-center">
-            <div class="text-xs text-slate-400">Absent on Leave</div>
-            <div class="text-lg font-bold text-red-400">${absentMembers.length} Members</div>
-          </div>
-          <div class="bg-slate-900 p-3 rounded-xl border border-slate-800 text-center">
-            <div class="text-xs text-slate-400">Escalation Recipient</div>
-            <div class="text-xs font-semibold text-indigo-300 truncate mt-1" title="${AppState.settings.managerEmail}">
-              ${AppState.settings.managerEmail}
-            </div>
-          </div>
-        </div>
-
-        <!-- Absent Roster & Designated Backups -->
-        <div class="mt-4">
-          <h5 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Absent Members &amp; Designated Backup Coverage:</h5>
-          <div class="max-h-52 overflow-y-auto rounded-xl border border-slate-800 bg-slate-900">
-            <table class="w-full text-left text-xs">
-              <thead class="bg-slate-950 sticky top-0 text-slate-400">
-                <tr>
-                  <th class="py-2.5 px-3">Member Name</th>
-                  <th class="py-2.5 px-3">Project</th>
-                  <th class="py-2.5 px-3">Status</th>
-                  <th class="py-2.5 px-3">Reason for Leave</th>
-                  <th class="py-2.5 px-3">Backup Assigned</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-slate-800 text-slate-300">
-                ${absentMembers.map(m => {
-                  const st = m.schedule[dt.key];
-                  const r = m.leaveReasons[dt.key] || m.defaultReason || "Not specified";
-                  const b = m.dateBackups[dt.key] || m.defaultBackup || "None";
-                  
-                  const backupObj = AppState.team.find(t => t.name === b);
-                  const backupAlsoAbsent = backupObj && (backupObj.schedule[dt.key] === "Planned Leave" || backupObj.schedule[dt.key] === "Half day");
-
-                  return `
-                    <tr class="hover:bg-slate-800/50">
-                      <td class="py-2 px-3 font-semibold text-white">${m.name}</td>
-                      <td class="py-2 px-3 text-slate-400">${m.project}</td>
-                      <td class="py-2 px-3">
-                        <span class="px-2 py-0.5 rounded text-[10px] font-bold ${st === 'Half day' ? 'bg-amber-900/80 text-amber-300' : 'bg-red-900/80 text-red-300'}">
-                          ${st}
-                        </span>
-                      </td>
-                      <td class="py-2 px-3 italic text-slate-400">${r}</td>
-                      <td class="py-2 px-3">
-                        <span class="font-medium ${backupAlsoAbsent ? 'text-red-400 font-bold' : 'text-indigo-300'}">
-                          ${b} ${backupAlsoAbsent ? '⚠️ (Also Absent!)' : '✅'}
-                        </span>
-                      </td>
-                    </tr>
-                  `;
-                }).join('')}
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between">
-          <span class="text-xs text-slate-400">
-            Escalation Status: <span class="text-emerald-400 font-bold">AUTOMATIC TRIGGER SENT TO LEAD</span>
-          </span>
-          <button onclick="sendManagerEmailAlert('${dt.key}')" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-xs font-semibold flex items-center shadow transition-colors">
-            <svg class="w-3.5 h-3.5 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-            Copy / Dispatch Escalation Email to Manager
-          </button>
-        </div>
-      </div>
-    `;
-  });
-
-  alertsFeed.innerHTML = html;
-}
-
-// Render Tab 4: Team Directory (100 Member Cards)
-function renderDirectoryView() {
-  const grid = document.getElementById("directory-grid");
-  if (!grid) return;
-
-  const query = (AppState.directorySearchQuery || "").toLowerCase();
-  const filtered = AppState.team.filter(m => 
-    m.name.toLowerCase().includes(query) ||
-    m.project.toLowerCase().includes(query) ||
-    (m.defaultBackup && m.defaultBackup.toLowerCase().includes(query))
-  );
-
-  if (filtered.length === 0) {
-    grid.innerHTML = `<div class="col-span-full py-12 text-center text-slate-400">No members match "${query}"</div>`;
-    return;
-  }
-
-  const todayKey = AppState.dates[0].key;
-
-  let html = "";
-  filtered.forEach(m => {
-    const todayStatus = m.schedule[todayKey] || "Working";
-    let statusBadge = "bg-emerald-950 text-emerald-400 border-emerald-500/40";
-    if (todayStatus === "Planned Leave") statusBadge = "bg-red-950 text-red-400 border-red-500/40";
-    else if (todayStatus === "Half day") statusBadge = "bg-amber-950 text-amber-400 border-amber-500/40";
-    else if (todayStatus === "Not Applicable") statusBadge = "bg-slate-800 text-slate-400 border-slate-700";
-
-    html += `
-      <div class="bg-slate-900 border border-slate-800 hover:border-slate-700 rounded-2xl p-4 flex flex-col justify-between shadow-sm transition-all hover:-translate-y-0.5">
-        <div>
-          <div class="flex items-start justify-between">
-            <div class="flex items-center space-x-3">
-              <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-indigo-600 to-indigo-400 text-white font-bold flex items-center justify-center text-sm shadow">
-                ${m.name.charAt(0)}
-              </div>
-              <div>
-                <h4 class="text-sm font-bold text-white truncate max-w-[140px]">${m.name}</h4>
-                <span class="text-[11px] text-slate-400 font-mono">${m.id}</span>
-              </div>
-            </div>
-            <span class="px-2 py-0.5 rounded-full text-[10px] font-bold border ${statusBadge}">
-              ${todayStatus}
-            </span>
-          </div>
-
-          <div class="mt-3 space-y-1.5 text-xs">
-            <div class="flex items-center justify-between text-slate-400">
-              <span>Project:</span>
-              <span class="text-slate-200 font-medium truncate max-w-[140px]" title="${m.project}">${m.project}</span>
-            </div>
-            <div class="flex items-center justify-between text-slate-400">
-              <span>Backup Colleague:</span>
-              <span class="text-indigo-300 font-medium truncate max-w-[140px]" title="${m.defaultBackup || 'None'}">
-                ${m.defaultBackup || 'None'}
-              </span>
-            </div>
-            <div class="flex items-center justify-between text-slate-400">
-              <span>Default Note:</span>
-              <span class="text-slate-400 italic truncate max-w-[140px]" title="${m.defaultReason}">${m.defaultReason}</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-end">
-          <button onclick="openCellEditModal('${m.id}', '${todayKey}')" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg text-xs font-semibold transition-colors">
-            Update Attendance
-          </button>
-        </div>
-      </div>
-    `;
-  });
-
-  grid.innerHTML = html;
-}
-
-// Render Badge on Header Alert Button
+// Render Badge on Header Alert Bell
 function renderAlertCenterBadge() {
-  const alertCountBtn = document.getElementById("open-alert-center-btn");
-  const tabAlertBadge = document.getElementById("tab-alert-badge");
-  const alertBtnLabel = document.getElementById("nav-alert-btn-label");
+  const bellBadge = document.getElementById("alert-bell-badge");
+  if (!bellBadge) return;
 
   const criticalDates = AppState.dates.filter(d => calculateDateBandwidth(d.key).isLowBandwidth);
   const count = criticalDates.length;
 
-  if (tabAlertBadge) tabAlertBadge.textContent = count;
-
-  if (!alertCountBtn || !alertBtnLabel) return;
-
   if (count > 0) {
-    alertBtnLabel.textContent = `Manager Alerts (${count})`;
-    alertCountBtn.className = "px-3.5 py-2 rounded-lg bg-red-600/30 hover:bg-red-600/50 text-red-200 border border-red-500/50 text-xs font-semibold flex items-center transition-all alert-pulse";
+    bellBadge.textContent = count;
+    bellBadge.classList.remove("hidden");
   } else {
-    alertBtnLabel.textContent = "Optimal (0 Alerts)";
-    alertCountBtn.className = "px-3.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-xs font-medium flex items-center transition-all";
+    bellBadge.classList.add("hidden");
   }
 }
 
 // ==========================================
-// AI FEATURES IMPLEMENTATION
+// DRAWER 1: INSPECTOR SLIDE-OVER PANEL
 // ==========================================
 
-// 1. Toggle AI Copilot Drawer
-function toggleAICopilot() {
-  const drawer = document.getElementById("ai-copilot-drawer");
-  if (!drawer) return;
-  drawer.classList.toggle("hidden");
-  if (!drawer.classList.contains("hidden")) {
-    document.getElementById("ai-chat-input").focus();
-  }
-}
-
-// 2. Click a prompt suggestion
-function askAIPrompt(promptText) {
-  const input = document.getElementById("ai-chat-input");
-  if (input) {
-    input.value = promptText;
-    handleAIChatSubmit(new Event("submit"));
-  }
-}
-
-// 3. Handle AI Copilot Chat Form Submission
-async function handleAIChatSubmit(e) {
-  e.preventDefault();
-  const input = document.getElementById("ai-chat-input");
-  const question = input.value.trim();
-  if (!question) return;
-
-  const messagesContainer = document.getElementById("ai-chat-messages");
-  
-  // Append User message
-  messagesContainer.innerHTML += `
-    <div class="flex justify-end">
-      <div class="ai-chat-bubble-user p-3 max-w-[85%] font-medium">
-        ${escapeHtml(question)}
-      </div>
-    </div>
-  `;
-  input.value = "";
-  messagesContainer.scrollTop = messagesContainer.scrollHeight;
-
-  // Append Thinking Indicator
-  const thinkingId = `ai-thinking-${Date.now()}`;
-  messagesContainer.innerHTML += `
-    <div id="${thinkingId}" class="flex items-center space-x-2 text-indigo-400 text-xs py-1">
-      <svg class="w-3.5 h-3.5 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-      <span>PulseAI analyzing 100 members &amp; bandwidth patterns...</span>
-    </div>
-  `;
-  messagesContainer.scrollTop = messagesContainer.scrollHeight;
-
-  // Ask PulseAI Engine
-  const answer = await PulseAI.askCopilot(question, AppState.team, AppState.dates, AppState.settings);
-
-  // Remove thinking indicator
-  const thinkingEl = document.getElementById(thinkingId);
-  if (thinkingEl) thinkingEl.remove();
-
-  // Format response into HTML
-  const formattedAnswer = formatMarkdownToHtml(answer);
-
-  messagesContainer.innerHTML += `
-    <div class="ai-chat-bubble-bot p-3 text-xs leading-relaxed max-w-[95%]">
-      ${formattedAnswer}
-    </div>
-  `;
-  messagesContainer.scrollTop = messagesContainer.scrollHeight;
-}
-
-// 4. Open and Render AI Capacity & Risk Audit Modal
-function openAIAuditModal() {
-  const audit = PulseAI.runCapacityAudit(AppState.team, AppState.dates, AppState.settings.threshold);
-  const container = document.getElementById("ai-audit-content");
-  if (!container) return;
-
-  let html = `
-    <!-- Top Risk Gauge Card -->
-    <div class="bg-slate-950 p-5 rounded-2xl border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div>
-        <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Overall Sprint Risk Assessment</span>
-        <div class="flex items-center space-x-3 mt-1.5">
-          <span class="text-3xl font-black text-white">${audit.riskScore}<span class="text-lg text-slate-500 font-normal">/100</span></span>
-          <span class="px-2.5 py-1 rounded-full text-xs font-bold border ${audit.riskBadgeColor}">
-            ${audit.riskLevel}
-          </span>
-        </div>
-        <p class="text-xs text-slate-400 mt-1">Evaluated across 100 engineering staff &amp; 14 sprint dates.</p>
-      </div>
-
-      <div class="grid grid-cols-2 gap-3 text-center w-full sm:w-auto">
-        <div class="bg-slate-900 p-2.5 rounded-xl border border-slate-800">
-          <div class="text-[10px] text-slate-400 font-semibold uppercase">Breach Dates (&lt;${AppState.settings.threshold}%)</div>
-          <div class="text-xl font-bold text-red-400">${audit.criticalDates.length}</div>
-        </div>
-        <div class="bg-slate-900 p-2.5 rounded-xl border border-slate-800">
-          <div class="text-[10px] text-slate-400 font-semibold uppercase">Backup Collisions</div>
-          <div class="text-xl font-bold ${audit.backupCollisions.length > 0 ? 'text-amber-400' : 'text-emerald-400'}">${audit.backupCollisions.length}</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Identified Hazards -->
-    <div>
-      <h4 class="text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Identified Vulnerabilities &amp; Conflicts:</h4>
-      <div class="space-y-2">
-  `;
-
-  if (audit.criticalDates.length > 0) {
-    audit.criticalDates.forEach(cd => {
-      html += `
-        <div class="bg-red-950/30 border border-red-500/40 rounded-xl p-3 flex items-start justify-between">
-          <div class="flex items-start space-x-2">
-            <span class="text-red-400 text-sm mt-0.5">🚨</span>
-            <div>
-              <div class="text-xs font-bold text-red-200">${cd.label}: Severe Capacity Drop (${cd.bandwidth}%)</div>
-              <div class="text-[11px] text-slate-400 mt-0.5">${cd.absent} members on leave, leaving only ${cd.working} active staff.</div>
-            </div>
-          </div>
-          <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-red-600 text-white">Trigger Sent</span>
-        </div>
-      `;
-    });
-  }
-
-  if (audit.backupCollisions.length > 0) {
-    audit.backupCollisions.forEach(col => {
-      html += `
-        <div class="bg-amber-950/30 border border-amber-500/40 rounded-xl p-3 flex items-start space-x-2">
-          <span class="text-amber-400 text-sm mt-0.5">⚠️</span>
-          <div>
-            <div class="text-xs font-bold text-amber-200">Double-Outage Hazard: ${col.member} &amp; ${col.backup} on ${col.date}</div>
-            <div class="text-[11px] text-slate-400 mt-0.5">Designated backup is also absent (${col.backupStatus}). Project '${col.project}' has no primary coverage.</div>
-          </div>
-        </div>
-      `;
-    });
-  }
-
-  html += `
-      </div>
-    </div>
-
-    <!-- AI Strategic Recommendations -->
-    <div>
-      <h4 class="text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">PulseAI Recommended Mitigation Actions:</h4>
-      <div class="space-y-2.5">
-  `;
-
-  audit.recommendations.forEach(rec => {
-    html += `
-      <div class="bg-slate-950 border border-indigo-500/30 rounded-xl p-3.5">
-        <div class="text-xs font-bold text-indigo-300">${rec.title}</div>
-        <p class="text-xs text-slate-300 mt-1 leading-relaxed">${rec.detail}</p>
-      </div>
-    `;
-  });
-
-  html += `
-      </div>
-    </div>
-  `;
-
-  container.innerHTML = html;
-  document.getElementById("ai-audit-modal").classList.remove("hidden");
-}
-
-// 5. Smart AI Backup Auto-Recommendation in Leave Form
-function applyAISmartBackupInForm() {
-  const memberSelectVal = document.getElementById("form-member-select").value;
-  const dateKey = document.getElementById("form-date-select").value;
-  const backupSelect = document.getElementById("form-backup-select");
-  const hintEl = document.getElementById("ai-backup-hint");
-
-  let targetId = memberSelectVal;
-  if (targetId === "__NEW__") {
-    targetId = AppState.team[0].id; // fallback
-  }
-
-  const rec = PulseAI.recommendSmartBackup(targetId, dateKey, AppState.team);
-  if (!rec) {
-    showToastNotification("No available peer found for that date.");
-    return;
-  }
-
-  backupSelect.value = rec.name;
-  if (hintEl) {
-    hintEl.innerHTML = `✨ <strong>AI Match:</strong> Selected <strong>${rec.name}</strong> &bull; ${rec.reason}`;
-    hintEl.classList.remove("hidden");
-  }
-
-  showToastNotification(`✨ AI suggested ${rec.name} (${rec.project})`);
-}
-
-// 6. Smart AI Backup in Cell Modal
-function applyAISmartBackupInCellModal() {
-  if (!AppState.activeCellEdit) return;
-  const { memberId, dateKey } = AppState.activeCellEdit;
-  const backupSelect = document.getElementById("edit-cell-backup");
-
-  const rec = PulseAI.recommendSmartBackup(memberId, dateKey, AppState.team);
-  if (!rec) return;
-
-  backupSelect.value = rec.name;
-  showToastNotification(`✨ AI assigned optimal backup: ${rec.name}`);
-}
-
-// Helper: Escape HTML & format markdown bold / bullets
-function escapeHtml(text) {
-  const div = document.createElement("div");
-  div.innerText = text;
-  return div.innerHTML;
-}
-
-function formatMarkdownToHtml(text) {
-  let html = text
-    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-    .replace(/\*(.*?)\*/g, '<em>$1</em>')
-    .replace(/\n\n/g, '<br><br>')
-    .replace(/\n• /g, '<br>&bull; ')
-    .replace(/\n/g, '<br>');
-  return html;
-}
-
-// ==========================================
-// MODAL CONTROLS & EVENT HANDLERS
-// ==========================================
-
-function openCellEditModal(memberId, dateKey) {
+function openInspectorDrawer(memberId, dateKey) {
   const member = AppState.team.find(m => m.id === memberId);
   const dateObj = AppState.dates.find(d => d.key === dateKey);
   if (!member || !dateObj) return;
 
-  AppState.activeCellEdit = { memberId, dateKey };
-  
+  AppState.activeInspect = { memberId, dateKey };
+
   const currentStatus = member.schedule[dateKey] || "Working";
   const currentReason = member.leaveReasons[dateKey] || member.defaultReason || "";
   const currentBackup = member.dateBackups[dateKey] || member.defaultBackup || "";
 
-  document.getElementById("edit-cell-member-name").textContent = member.name;
-  document.getElementById("edit-cell-project").textContent = member.project;
-  document.getElementById("edit-cell-date").textContent = `${dateObj.dayName}, ${dateObj.fullDate}`;
+  document.getElementById("inspect-member-name").textContent = member.name;
+  document.getElementById("inspect-member-squad").textContent = member.project;
+  document.getElementById("inspect-date").textContent = `${dateObj.dayName}, ${dateObj.fullDate}`;
   
-  document.getElementById("edit-cell-status").value = currentStatus;
-  document.getElementById("edit-cell-reason").value = currentReason;
+  document.getElementById("inspect-status").value = currentStatus;
+  document.getElementById("inspect-reason").value = currentReason;
   
-  const backupSelect = document.getElementById("edit-cell-backup");
-  backupSelect.innerHTML = `<option value="">Select backup colleague...</option>`;
+  const backupSelect = document.getElementById("inspect-backup");
+  backupSelect.innerHTML = `<option value="">Select a backup colleague...</option>`;
   AppState.team.forEach(m => {
     if (m.id !== member.id) {
       backupSelect.innerHTML += `<option value="${m.name}" ${m.name === currentBackup ? 'selected' : ''}>${m.name} (${m.project})</option>`;
     }
   });
 
-  document.getElementById("cell-edit-modal").classList.remove("hidden");
+  const aiHint = document.getElementById("inspect-ai-hint");
+  if (aiHint) aiHint.classList.add("hidden");
+
+  document.getElementById("inspector-drawer").classList.remove("hidden");
 }
 
-function saveCellEdit() {
-  if (!AppState.activeCellEdit) return;
-  const { memberId, dateKey } = AppState.activeCellEdit;
+function closeInspectorDrawer() {
+  document.getElementById("inspector-drawer").classList.add("hidden");
+  AppState.activeInspect = null;
+}
+
+function saveInspectorEdit() {
+  if (!AppState.activeInspect) return;
+  const { memberId, dateKey } = AppState.activeInspect;
   const member = AppState.team.find(m => m.id === memberId);
   if (!member) return;
 
-  const newStatus = document.getElementById("edit-cell-status").value;
-  const newReason = document.getElementById("edit-cell-reason").value;
-  const newBackup = document.getElementById("edit-cell-backup").value;
-  const applyAllWeek = document.getElementById("edit-cell-apply-all").checked;
+  const newStatus = document.getElementById("inspect-status").value;
+  const newReason = document.getElementById("inspect-reason").value.trim();
+  const newBackup = document.getElementById("inspect-backup").value;
+  const applyAll = document.getElementById("inspect-apply-all").checked;
 
-  if (applyAllWeek) {
+  if (applyAll) {
     AppState.dates.forEach(d => {
       if (!d.isWeekend || newStatus === "Not Applicable") {
         member.schedule[d.key] = newStatus;
@@ -1102,17 +579,238 @@ function saveCellEdit() {
   if (newReason) member.defaultReason = newReason;
 
   saveTeamData();
-  closeModal("cell-edit-modal");
+  closeInspectorDrawer();
   
   scanAndTriggerBandwidthAlerts(true);
   renderDashboard();
 }
 
-function openLeaveRequestModal() {
+function applyAISmartBackupInInspector() {
+  if (!AppState.activeInspect) return;
+  const { memberId, dateKey } = AppState.activeInspect;
+  const backupSelect = document.getElementById("inspect-backup");
+  const aiHint = document.getElementById("inspect-ai-hint");
+
+  const rec = PulseAI.recommendSmartBackup(memberId, dateKey, AppState.team);
+  if (!rec) {
+    showToastNotification("No available peers found for this date.");
+    return;
+  }
+
+  backupSelect.value = rec.name;
+  if (aiHint) {
+    aiHint.innerHTML = `✨ <strong>AI Recommendation:</strong> ${rec.name} (${rec.project}) &bull; ${rec.reason}`;
+    aiHint.classList.remove("hidden");
+  }
+}
+
+// ==========================================
+// DRAWER 2: GEMINI WORKSPACE ASSISTANT
+// ==========================================
+
+function toggleGeminiDrawer() {
+  const drawer = document.getElementById("gemini-drawer");
+  if (!drawer) return;
+  drawer.classList.toggle("hidden");
+  if (!drawer.classList.contains("hidden")) {
+    document.getElementById("gemini-input").focus();
+  }
+}
+
+function askGeminiPrompt(promptText) {
+  const input = document.getElementById("gemini-input");
+  if (input) {
+    input.value = promptText;
+    handleGeminiSubmit(new Event("submit"));
+  }
+}
+
+async function handleGeminiSubmit(e) {
+  e.preventDefault();
+  const input = document.getElementById("gemini-input");
+  const question = input.value.trim();
+  if (!question) return;
+
+  const messagesContainer = document.getElementById("gemini-messages");
+  
+  // Append User message
+  messagesContainer.innerHTML += `
+    <div class="flex justify-end">
+      <div class="gemini-bubble-user p-3 max-w-[85%] font-medium">
+        ${escapeHtml(question)}
+      </div>
+    </div>
+  `;
+  input.value = "";
+  messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+  // Thinking indicator
+  const thinkingId = `gemini-thinking-${Date.now()}`;
+  messagesContainer.innerHTML += `
+    <div id="${thinkingId}" class="flex items-center space-x-2 text-[#1a73e8] text-xs py-1">
+      <svg class="w-3.5 h-3.5 animate-spin" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+      <span>Gemini analyzing 100 members &amp; bandwidth patterns...</span>
+    </div>
+  `;
+  messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+  // Query PulseAI engine
+  const answer = await PulseAI.askCopilot(question, AppState.team, AppState.dates, AppState.settings);
+
+  const thinkingEl = document.getElementById(thinkingId);
+  if (thinkingEl) thinkingEl.remove();
+
+  const formattedAnswer = formatMarkdownToHtml(answer);
+
+  messagesContainer.innerHTML += `
+    <div class="gemini-bubble-ai p-3 text-xs leading-relaxed max-w-[95%]">
+      ${formattedAnswer}
+    </div>
+  `;
+  messagesContainer.scrollTop = messagesContainer.scrollHeight;
+}
+
+// ==========================================
+// DRAWER 3: ESCALATIONS & ALERTS CENTER
+// ==========================================
+
+function toggleAlertsDrawer() {
+  const drawer = document.getElementById("alerts-drawer");
+  if (!drawer) return;
+  drawer.classList.toggle("hidden");
+  if (!drawer.classList.contains("hidden")) {
+    renderAlertsDrawerFeed();
+  }
+}
+
+function renderAlertsDrawerFeed() {
+  const feed = document.getElementById("alerts-drawer-feed");
+  if (!feed) return;
+
+  const criticalDates = AppState.dates.filter(d => calculateDateBandwidth(d.key).isLowBandwidth);
+
+  if (criticalDates.length === 0) {
+    feed.innerHTML = `
+      <div class="py-12 text-center text-[#5f6368]">
+        <div class="w-12 h-12 bg-[#e6f4ea] text-[#137333] rounded-full flex items-center justify-center mx-auto mb-2 text-lg font-bold">
+          ✓
+        </div>
+        <h4 class="text-sm font-semibold text-[#202124]">All Dates Above Bandwidth Target (&ge; ${AppState.settings.threshold}%)</h4>
+        <p class="text-xs text-[#80868b] mt-1">No automated escalations active across the team.</p>
+      </div>
+    `;
+    return;
+  }
+
+  let html = "";
+  criticalDates.forEach(dt => {
+    const metrics = calculateDateBandwidth(dt.key);
+    const absentMembers = AppState.team.filter(m => m.schedule[dt.key] === "Planned Leave" || m.schedule[dt.key] === "Half day");
+
+    html += `
+      <div class="bg-white border border-[#fad2cf] rounded-lg p-4 shadow-xs">
+        <div class="flex items-start justify-between pb-2 border-b border-[#fad2cf]">
+          <div>
+            <span class="inline-block px-2 py-0.5 rounded text-[10px] font-semibold bg-[#fce8e6] text-[#c5221f]">
+              ⚠️ Automated Lead Trigger
+            </span>
+            <h4 class="text-sm font-bold text-[#202124] mt-1">${dt.dayName}, ${dt.fullDate}</h4>
+          </div>
+          <div class="text-right">
+            <div class="text-xl font-bold text-[#c5221f]">${metrics.percentage}% Capacity</div>
+            <div class="text-[10px] text-[#5f6368]">${metrics.effectiveWorking}/${metrics.totalRelevant} Available</div>
+          </div>
+        </div>
+
+        <div class="mt-3">
+          <div class="text-[11px] font-semibold text-[#3c4043] mb-1">Absent Staff &amp; Coverage (${absentMembers.length}):</div>
+          <div class="max-h-36 overflow-y-auto border border-[#ebebeb] rounded">
+            <table class="w-full text-left text-[11px]">
+              <thead class="bg-[#f8fafd] text-[#5f6368] sticky top-0">
+                <tr>
+                  <th class="py-1 px-2">Member</th>
+                  <th class="py-1 px-2">Status</th>
+                  <th class="py-1 px-2">Backup</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-[#ebebeb] text-[#3c4043]">
+                ${absentMembers.map(m => {
+                  const b = m.dateBackups[dt.key] || m.defaultBackup || "None";
+                  const bObj = AppState.team.find(t => t.name === b);
+                  const isCollision = bObj && (bObj.schedule[dt.key] === "Planned Leave" || bObj.schedule[dt.key] === "Half day");
+
+                  return `
+                    <tr class="hover:bg-[#f8fafd]">
+                      <td class="py-1 px-2 font-medium">${m.name}</td>
+                      <td class="py-1 px-2 text-[#c5221f]">${m.schedule[dt.key]}</td>
+                      <td class="py-1 px-2 ${isCollision ? 'text-[#c5221f] font-bold' : ''}">
+                        ${b} ${isCollision ? '⚠️ (Collision!)' : ''}
+                      </td>
+                    </tr>
+                  `;
+                }).join('')}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="mt-3 pt-2 border-t border-[#ebebeb] flex items-center justify-between">
+          <span class="text-[10px] text-[#5f6368]">Escalated to: <strong>${AppState.settings.managerEmail}</strong></span>
+          <button onclick="sendManagerEmailAlert('${dt.key}')" class="px-3 py-1 bg-[#1a73e8] hover:bg-[#1557b0] text-white text-[11px] rounded font-medium shadow-xs">
+            Draft Email to Lead
+          </button>
+        </div>
+      </div>
+    `;
+  });
+
+  feed.innerHTML = html;
+}
+
+// Send escalation email draft to lead/manager
+function sendManagerEmailAlert(dateKey) {
+  const dt = AppState.dates.find(d => d.key === dateKey);
+  const metrics = calculateDateBandwidth(dateKey);
+  const absent = AppState.team.filter(m => m.schedule[dateKey] === "Planned Leave" || m.schedule[dateKey] === "Half day");
+
+  const subject = `[URGENT] Team Bandwidth Escalation (${metrics.percentage}%) on ${dt.fullDate}`;
+  
+  let body = `Hi ${AppState.settings.managerName},\n\n`;
+  body += `This is an automated capacity escalation from the Google Staffing & Bandwidth Planner.\n`;
+  body += `Active team capacity for ${dt.dayName}, ${dt.fullDate} has dropped below the ${AppState.settings.threshold}% threshold.\n\n`;
+  body += `SUMMARY METRICS:\n`;
+  body += `• Available Bandwidth : ${metrics.percentage}%\n`;
+  body += `• Active Working Staff: ${metrics.effectiveWorking} headcount\n`;
+  body += `• Absent Members      : ${absent.length} members\n`;
+  body += `• Total Scheduled     : ${metrics.totalRelevant} members\n\n`;
+  body += `ABSENT MEMBERS & ASSIGNED BACKUPS:\n`;
+
+  absent.forEach((m, idx) => {
+    const backup = m.dateBackups[dateKey] || m.defaultBackup || "None";
+    const reason = m.leaveReasons[dateKey] || m.defaultReason || "Not specified";
+    body += `${idx + 1}. ${m.name} [${m.project}] - Status: ${m.schedule[dateKey]} | Backup: ${backup} | Notes: ${reason}\n`;
+  });
+
+  body += `\nPlease review sprint deliverables and arrange secondary cross-squad coverage.\n\n`;
+  body += `Google Engineering Staffing & Capacity Engine`;
+
+  navigator.clipboard.writeText(body).then(() => {
+    showToastNotification(`Escalation email draft copied to clipboard!`);
+  }).catch(() => {
+    showToastNotification(`Email drafted for ${AppState.settings.managerEmail}`);
+  });
+
+  const mailtoUrl = `mailto:${encodeURIComponent(AppState.settings.managerEmail)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  window.open(mailtoUrl, '_blank');
+}
+
+// ==========================================
+// MODALS: ADD ENTRY & SETTINGS
+// ==========================================
+
+function openAddEntryModal() {
   populateLeaveModalOptions();
-  const hintEl = document.getElementById("ai-backup-hint");
-  if (hintEl) hintEl.classList.add("hidden");
-  document.getElementById("leave-request-modal").classList.remove("hidden");
+  document.getElementById("add-member-modal").classList.remove("hidden");
 }
 
 function handleLeaveFormSubmit(e) {
@@ -1129,7 +827,7 @@ function handleLeaveFormSubmit(e) {
 
   if (memberSelectVal === "__NEW__") {
     if (!newNameInput) {
-      alert("Please provide the full name of the new member.");
+      alert("Please enter the full name.");
       return;
     }
 
@@ -1153,15 +851,15 @@ function handleLeaveFormSubmit(e) {
       name: newNameInput,
       project: project,
       defaultBackup: backup || "None",
-      defaultReason: reason || "Standard Work",
-      email: `${newNameInput.toLowerCase().replace(/\s+/g, '.')}@company.com`,
+      defaultReason: reason || "Standard Schedule",
+      email: `${newNameInput.toLowerCase().replace(/\s+/g, '.')}@google.com`,
       schedule: schedule,
       leaveReasons: leaveReasons,
       dateBackups: dateBackups
     };
 
     AppState.team.push(targetMember);
-    showToastNotification(`✅ Registered new member: ${newNameInput}`);
+    showToastNotification(`Registered new member: ${newNameInput}`);
   } else {
     targetMember = AppState.team.find(m => m.id === memberSelectVal);
     if (!targetMember) return;
@@ -1173,55 +871,34 @@ function handleLeaveFormSubmit(e) {
     if (backup) targetMember.defaultBackup = backup;
     if (reason) targetMember.defaultReason = reason;
 
-    showToastNotification(`✅ Updated leave for ${targetMember.name} on ${dateKey}`);
+    showToastNotification(`Updated attendance for ${targetMember.name}`);
   }
 
   saveTeamData();
   populateProjectFilter();
-  closeModal("leave-request-modal");
+  closeModal("add-member-modal");
 
   scanAndTriggerBandwidthAlerts(true);
   renderDashboard();
 }
 
-function sendManagerEmailAlert(dateKey) {
-  const dt = AppState.dates.find(d => d.key === dateKey);
-  const metrics = calculateDateBandwidth(dateKey);
-  const absent = AppState.team.filter(m => m.schedule[dateKey] === "Planned Leave" || m.schedule[dateKey] === "Half day");
+function applyAISmartBackupInForm() {
+  const memberSelectVal = document.getElementById("form-member-select").value;
+  const dateKey = document.getElementById("form-date-select").value;
+  const backupSelect = document.getElementById("form-backup-select");
+  const hintEl = document.getElementById("ai-backup-hint");
 
-  const subject = `[URGENT INCIDENT] Low Bandwidth Alert (${metrics.percentage}%) on ${dt.fullDate} - Action Required`;
-  
-  let body = `Dear ${AppState.settings.managerName},\n\n`;
-  body += `This is an automated bandwidth alert from TeamPulse Tracker Web Portal.\n`;
-  body += `The active team capacity for ${dt.dayName}, ${dt.fullDate} has dropped below the threshold of ${AppState.settings.threshold}%.\n\n`;
-  body += `SUMMARY METRICS:\n`;
-  body += `--------------------------------------------------\n`;
-  body += `• Available Bandwidth : ${metrics.percentage}%\n`;
-  body += `• Active Working Staff: ${metrics.effectiveWorking} headcount\n`;
-  body += `• Absent Members      : ${absent.length} members\n`;
-  body += `• Total Scheduled     : ${metrics.totalRelevant} members\n\n`;
-  body += `ABSENT MEMBERS & ASSIGNED BACKUPS:\n`;
-  body += `--------------------------------------------------\n`;
+  let targetId = memberSelectVal;
+  if (targetId === "__NEW__") targetId = AppState.team[0].id;
 
-  absent.forEach((m, idx) => {
-    const backup = m.dateBackups[dateKey] || m.defaultBackup || "None";
-    const reason = m.leaveReasons[dateKey] || m.defaultReason || "Not specified";
-    body += `${idx + 1}. ${m.name} [${m.project}]\n`;
-    body += `   Status: ${m.schedule[dateKey]} | Reason: ${reason}\n`;
-    body += `   Designated Backup: ${backup}\n\n`;
-  });
+  const rec = PulseAI.recommendSmartBackup(targetId, dateKey, AppState.team);
+  if (!rec) return;
 
-  body += `Please review project deliverables and arrange emergency cross-team coverage.\n\n`;
-  body += `TeamPulse Web Portal - Automated Escalation Engine`;
-
-  navigator.clipboard.writeText(body).then(() => {
-    showToastNotification(`📋 Escalation email copied to clipboard! (Lead: ${AppState.settings.managerEmail})`);
-  }).catch(() => {
-    showToastNotification(`🚨 Email notification prepared for ${AppState.settings.managerEmail}`);
-  });
-
-  const mailtoUrl = `mailto:${encodeURIComponent(AppState.settings.managerEmail)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  window.open(mailtoUrl, '_blank');
+  backupSelect.value = rec.name;
+  if (hintEl) {
+    hintEl.innerHTML = `✨ <strong>AI Suggestion:</strong> ${rec.name} (${rec.project}) &bull; ${rec.reason}`;
+    hintEl.classList.remove("hidden");
+  }
 }
 
 function openSettingsModal() {
@@ -1237,35 +914,34 @@ function saveSettings(e) {
   AppState.settings.managerEmail = document.getElementById("settings-manager-email").value.trim();
   AppState.settings.threshold = parseInt(document.getElementById("settings-threshold").value, 10) || 40;
 
-  localStorage.setItem("teampulse_settings", JSON.stringify(AppState.settings));
+  localStorage.setItem("google_staffing_settings", JSON.stringify(AppState.settings));
   closeModal("settings-modal");
   
-  const leadEl = document.getElementById("alert-manager-email-display");
+  const leadEl = document.getElementById("alert-lead-email");
   if (leadEl) leadEl.textContent = AppState.settings.managerEmail;
 
   scanAndTriggerBandwidthAlerts(true);
   renderDashboard();
-  showToastNotification(`⚙️ Settings saved. Alert threshold set to < ${AppState.settings.threshold}%`);
+  showToastNotification(`Settings saved. Escalation threshold set to < ${AppState.settings.threshold}%`);
 }
 
 function resetDemoData() {
-  if (confirm("Reset to default 100 members with initial sample data? Any manual entries will be restored to default.")) {
-    localStorage.removeItem("teampulse_team_data");
-    localStorage.removeItem("teampulse_alert_log");
+  if (confirm("Reset to default 100 staff with initial sample data?")) {
+    localStorage.removeItem("google_staffing_team_data");
+    localStorage.removeItem("google_staffing_alert_log");
     AppState.team = generateInitialTeam(AppState.dates);
     AppState.alertLog = [];
     saveTeamData();
     populateProjectFilter();
     scanAndTriggerBandwidthAlerts(true);
     renderDashboard();
-    showToastNotification("🔄 Restored sample 100 team members.");
+    showToastNotification("Reset to default 100 members successfully.");
   }
 }
 
 function closeModal(modalId) {
   const modal = document.getElementById(modalId);
   if (modal) modal.classList.add("hidden");
-  AppState.activeCellEdit = null;
 }
 
 function showToastNotification(message) {
@@ -1280,8 +956,25 @@ function showToastNotification(message) {
   setTimeout(() => {
     toast.classList.remove("translate-y-0", "opacity-100");
     toast.classList.add("translate-y-8", "opacity-0");
-    setTimeout(() => toast.classList.add("hidden"), 300);
-  }, 4500);
+    setTimeout(() => toast.classList.add("hidden"), 250);
+  }, 4000);
+}
+
+// Helpers
+function escapeHtml(text) {
+  const div = document.createElement("div");
+  div.innerText = text;
+  return div.innerHTML;
+}
+
+function formatMarkdownToHtml(text) {
+  let html = text
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.*?)\*/g, '<em>$1</em>')
+    .replace(/\n\n/g, '<br><br>')
+    .replace(/\n• /g, '<br>&bull; ')
+    .replace(/\n/g, '<br>');
+  return html;
 }
 
 function setupEventListeners() {
@@ -1293,14 +986,6 @@ function setupEventListeners() {
     });
   }
 
-  const dirSearch = document.getElementById("directory-search-input");
-  if (dirSearch) {
-    dirSearch.addEventListener("input", (e) => {
-      AppState.directorySearchQuery = e.target.value;
-      renderDirectoryView();
-    });
-  }
-
   const projectFilter = document.getElementById("project-filter");
   if (projectFilter) {
     projectFilter.addEventListener("change", (e) => {
@@ -1309,14 +994,20 @@ function setupEventListeners() {
     });
   }
 
+  // Keyboard shortcut '/' to focus search
   document.addEventListener("keydown", (e) => {
+    if (e.key === "/" && document.activeElement.tagName !== "INPUT" && document.activeElement.tagName !== "TEXTAREA") {
+      e.preventDefault();
+      if (searchInput) searchInput.focus();
+    }
     if (e.key === "Escape") {
-      closeModal("cell-edit-modal");
-      closeModal("leave-request-modal");
+      closeInspectorDrawer();
+      const gemini = document.getElementById("gemini-drawer");
+      if (gemini && !gemini.classList.contains("hidden")) gemini.classList.add("hidden");
+      const alerts = document.getElementById("alerts-drawer");
+      if (alerts && !alerts.classList.contains("hidden")) alerts.classList.add("hidden");
+      closeModal("add-member-modal");
       closeModal("settings-modal");
-      closeModal("ai-audit-modal");
-      const drawer = document.getElementById("ai-copilot-drawer");
-      if (drawer && !drawer.classList.contains("hidden")) drawer.classList.add("hidden");
     }
   });
 }

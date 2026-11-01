@@ -1,204 +1,350 @@
-/* Modern SaaS Styling for TeamPulse Web Portal */
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
+/* Google Internal Tool Theme - Capacity & Bandwidth Planner
+   Inspired by Google Workspace, Critique, and Google Cloud Console */
+
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap');
 
 :root {
-  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --font-google: 'Google Sans', 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: 'Roboto Mono', monospace;
+  
+  /* Google Light Palette */
+  --google-blue: #1a73e8;
+  --google-blue-hover: #1557b0;
+  --google-blue-surface: #e8f0fe;
+  --google-text-primary: #202124;
+  --google-text-secondary: #5f6368;
+  --google-text-tertiary: #80868b;
+  --google-border: #dadce0;
+  --google-border-subtle: #ebebeb;
+  --google-surface: #ffffff;
+  --google-surface-variant: #f8fafd;
+  --google-surface-hover: #f1f3f4;
+  
+  /* Light Status Colors */
+  --status-working-bg: #e6f4ea;
+  --status-working-text: #137333;
+  --status-working-border: #ceead6;
+  
+  --status-leave-bg: #fce8e6;
+  --status-leave-text: #c5221f;
+  --status-leave-border: #fad2cf;
+  
+  --status-halfday-bg: #fef7e0;
+  --status-halfday-text: #b06000;
+  --status-halfday-border: #feefc3;
+  
+  --status-na-bg: #f1f3f4;
+  --status-na-text: #5f6368;
+  --status-na-border: #e0e0e0;
 }
 
 body {
-  font-family: var(--font-sans);
-  background-color: #090d16;
-  color: #f1f5f9;
+  font-family: var(--font-google);
+  background-color: #f8fafd;
+  color: var(--google-text-primary);
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-/* Custom smooth scrollbars */
+/* Custom minimal scrollbar */
 ::-webkit-scrollbar {
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0f172a;
+  background: #f1f3f4;
 }
 ::-webkit-scrollbar-thumb {
-  background: #334155;
+  background: #c4c7c5;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #475569;
+  background: #9aa0a6;
 }
 
-/* Table Sticky Headers & Columns */
+/* Sticky column classes */
 .sticky-col-idx {
   position: sticky;
   left: 0;
-  z-index: 25;
-  background-color: #0f172a;
+  z-index: 20;
+  background-color: var(--google-surface);
 }
 .sticky-col-name {
   position: sticky;
-  left: 44px;
-  z-index: 25;
-  background-color: #0f172a;
-}
-.sticky-col-proj {
-  position: sticky;
-  left: 234px;
-  z-index: 25;
-  background-color: #0f172a;
+  left: 38px;
+  z-index: 20;
+  background-color: var(--google-surface);
 }
 .sticky-col-backup {
   position: sticky;
-  left: 404px;
-  z-index: 25;
-  background-color: #0f172a;
-}
-.sticky-col-reason {
-  position: sticky;
-  left: 574px;
-  z-index: 25;
-  background-color: #0f172a;
+  left: 258px;
+  z-index: 20;
+  background-color: var(--google-surface);
+  box-shadow: 2px 0 4px -2px rgba(60, 64, 67, 0.1);
 }
 
-/* Hover highlights for sticky columns */
+/* Hover row highlight */
 tr:hover .sticky-col-idx,
 tr:hover .sticky-col-name,
-tr:hover .sticky-col-proj,
-tr:hover .sticky-col-backup,
-tr:hover .sticky-col-reason {
-  background-color: #1e293b !important;
+tr:hover .sticky-col-backup {
+  background-color: var(--google-surface-hover) !important;
 }
 
-/* Table Head Sticking */
+/* Sticky Header */
 thead th {
   position: sticky;
   top: 0;
   z-index: 30;
+  background-color: var(--google-surface);
 }
 thead th.sticky-col-idx,
 thead th.sticky-col-name,
-thead th.sticky-col-proj,
-thead th.sticky-col-backup,
-thead th.sticky-col-reason {
+thead th.sticky-col-backup {
   z-index: 40;
-  background-color: #090d16 !important;
+  background-color: var(--google-surface-variant) !important;
 }
 
-/* Table Footer Sticking */
+/* Sticky Footer */
 tfoot {
   position: sticky;
   bottom: 0;
   z-index: 30;
 }
 tfoot td, tfoot th {
-  background-color: #030712;
+  background-color: var(--google-surface);
 }
 tfoot .sticky-col-idx,
 tfoot .sticky-col-name,
-tfoot .sticky-col-proj,
-tfoot .sticky-col-backup,
-tfoot .sticky-col-reason {
+tfoot .sticky-col-backup {
   z-index: 40;
-  background-color: #030712 !important;
+  background-color: var(--google-surface-variant) !important;
 }
 
-/* Status Badges */
-.status-pill {
+/* Status Chips */
+.status-chip {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font-mono);
-  font-weight: 700;
-  font-size: 0.72rem;
-  border-radius: 0.375rem;
-  transition: all 0.15s ease-in-out;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 4px;
+  width: 38px;
+  height: 28px;
+  transition: all 0.12s ease;
   cursor: pointer;
   user-select: none;
-  min-width: 36px;
-  height: 28px;
+  border: 1px solid transparent;
 }
-.status-pill:hover {
-  transform: translateY(-1px) scale(1.08);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-}
-
-.status-working {
-  background: linear-gradient(135deg, #064e3b 0%, #065f46 100%);
-  color: #34d399;
-  border: 1px solid #059669;
-}
-.status-leave {
-  background: linear-gradient(135deg, #7f1d1d 0%, #991b1b 100%);
-  color: #f87171;
-  border: 1px solid #dc2626;
-}
-.status-halfday {
-  background: linear-gradient(135deg, #78350f 0%, #92400e 100%);
-  color: #fbbf24;
-  border: 1px solid #d97706;
-}
-.status-na {
-  background-color: #1e293b;
-  color: #64748b;
-  border: 1px solid #334155;
+.status-chip:hover {
+  filter: brightness(0.96);
+  transform: translateY(-1px);
+  box-shadow: 0 1px 3px rgba(60, 64, 67, 0.15);
 }
 
-/* Pulsing alert animation for low bandwidth */
-@keyframes criticalPulse {
-  0%, 100% {
-    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
-  }
-  50% {
-    box-shadow: 0 0 0 10px rgba(239, 68, 68, 0);
-  }
+.status-chip-working {
+  background-color: var(--status-working-bg);
+  color: var(--status-working-text);
+  border-color: var(--status-working-border);
 }
-.alert-pulse {
-  animation: criticalPulse 1.8s infinite;
+.status-chip-leave {
+  background-color: var(--status-leave-bg);
+  color: var(--status-leave-text);
+  border-color: var(--status-leave-border);
 }
-
-/* Glowing AI pulse animation */
-@keyframes aiGlow {
-  0%, 100% {
-    box-shadow: 0 0 15px rgba(129, 140, 248, 0.4), inset 0 0 15px rgba(129, 140, 248, 0.2);
-  }
-  50% {
-    box-shadow: 0 0 25px rgba(168, 85, 247, 0.7), inset 0 0 20px rgba(168, 85, 247, 0.4);
-  }
+.status-chip-halfday {
+  background-color: var(--status-halfday-bg);
+  color: var(--status-halfday-text);
+  border-color: var(--status-halfday-border);
 }
-.ai-glow {
-  animation: aiGlow 3s infinite ease-in-out;
+.status-chip-na {
+  background-color: var(--status-na-bg);
+  color: var(--status-na-text);
+  border-color: var(--status-na-border);
 }
 
-/* Glowing live indicator */
-@keyframes liveDot {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(0.85); }
-}
-.live-dot {
-  animation: liveDot 2s ease-in-out infinite;
+/* Drawers & Backdrops */
+.drawer-backdrop {
+  background-color: rgba(32, 33, 36, 0.5);
+  backdrop-filter: blur(2px);
+  transition: opacity 0.2s ease;
 }
 
-/* Active Tab indicator */
-.nav-tab.active {
-  background-color: #1e1b4b;
-  color: #a5b4fc;
-  border-bottom: 2px solid #6366f1;
+.drawer-panel {
+  box-shadow: -4px 0 24px rgba(60, 64, 67, 0.2);
+  transition: transform 0.25s cubic-bezier(0.1, 0.9, 0.2, 1);
 }
 
-/* Transitions */
-.tab-content {
-  transition: opacity 0.2s ease-in-out;
+/* Gemini Sparkle Pill */
+.gemini-pill {
+  background: linear-gradient(135deg, #f0f4f9 0%, #e8f0fe 100%);
+  border: 1px solid #d2e3fc;
+  color: #1a73e8;
+  transition: all 0.15s ease;
+}
+.gemini-pill:hover {
+  background: linear-gradient(135deg, #e8f0fe 0%, #d2e3fc 100%);
+  box-shadow: 0 1px 3px rgba(26, 115, 232, 0.2);
 }
 
-/* AI Copilot Drawer styles */
-.ai-chat-bubble-user {
-  background: #1e293b;
-  color: #f8fafc;
-  border-radius: 1rem 1rem 0.25rem 1rem;
+/* Gemini Chat Bubbles */
+.gemini-bubble-user {
+  background-color: #e8f0fe;
+  color: #1a73e8;
+  border-radius: 14px 14px 2px 14px;
 }
-.ai-chat-bubble-bot {
-  background: linear-gradient(135deg, #1e1b4b 0%, #1e293b 100%);
-  border: 1px solid rgba(99, 102, 241, 0.3);
-  color: #f1f5f9;
-  border-radius: 1rem 1rem 1rem 0.25rem;
+.gemini-bubble-ai {
+  background-color: #ffffff;
+  border: 1px solid #dadce0;
+  color: #202124;
+  border-radius: 14px 14px 14px 2px;
+}
+
+/* ======================================================== */
+/* GOOGLE DARK THEME ENGINE */
+/* ======================================================== */
+html.dark {
+  --google-blue: #8ab4f8;
+  --google-blue-hover: #aecbfa;
+  --google-blue-surface: #1e2a38;
+  --google-text-primary: #e8eaed;
+  --google-text-secondary: #9aa0a6;
+  --google-text-tertiary: #80868b;
+  --google-border: #3c4043;
+  --google-border-subtle: #303134;
+  --google-surface: #202124;
+  --google-surface-variant: #17181a;
+  --google-surface-hover: #2d2f31;
+  
+  --status-working-bg: #0d381e;
+  --status-working-text: #81c995;
+  --status-working-border: #1e7e34;
+  
+  --status-leave-bg: #4c1410;
+  --status-leave-text: #f28b82;
+  --status-leave-border: #8c1d18;
+  
+  --status-halfday-bg: #473000;
+  --status-halfday-text: #fdd663;
+  --status-halfday-border: #7a5200;
+  
+  --status-na-bg: #2d2f31;
+  --status-na-text: #9aa0a6;
+  --status-na-border: #3c4043;
+}
+
+html.dark body {
+  background-color: #17181a !important;
+  color: #e8eaed !important;
+}
+
+html.dark header, 
+html.dark section, 
+html.dark .bg-white {
+  background-color: #202124 !important;
+  border-color: #3c4043 !important;
+}
+
+html.dark .bg-\[\#f8fafd\] {
+  background-color: #17181a !important;
+}
+
+html.dark .bg-\[\#f1f3f4\] {
+  background-color: #2d2f31 !important;
+}
+
+html.dark .border-\[\#dadce0\] {
+  border-color: #3c4043 !important;
+}
+
+html.dark .border-\[\#ebebeb\] {
+  border-color: #303134 !important;
+}
+
+html.dark .text-\[\#202124\] {
+  color: #e8eaed !important;
+}
+
+html.dark .text-\[\#3c4043\] {
+  color: #bdc1c6 !important;
+}
+
+html.dark .text-\[\#5f6368\] {
+  color: #9aa0a6 !important;
+}
+
+html.dark input, 
+html.dark select, 
+html.dark textarea {
+  background-color: #282a2c !important;
+  color: #e8eaed !important;
+  border-color: #3c4043 !important;
+}
+
+html.dark .drawer-panel {
+  background-color: #202124 !important;
+  border-color: #3c4043 !important;
+  color: #e8eaed !important;
+}
+
+html.dark .gemini-pill {
+  background: #282a2c !important;
+  border-color: #3c4043 !important;
+  color: #8ab4f8 !important;
+}
+
+html.dark .gemini-bubble-ai {
+  background-color: #282a2c !important;
+  border-color: #3c4043 !important;
+  color: #e8eaed !important;
+}
+
+html.dark .gemini-bubble-user {
+  background-color: #1e2a38 !important;
+  color: #8ab4f8 !important;
+}
+
+html.dark ::-webkit-scrollbar-track {
+  background: #202124;
+}
+html.dark ::-webkit-scrollbar-thumb {
+  background: #5f6368;
+}
+
+/* ======================================================== */
+/* GEMINI LIVE VOICE AUDIO WAVEFORM ANIMATION */
+/* ======================================================== */
+@keyframes soundwave {
+  0%, 100% { height: 6px; }
+  50% { height: 26px; }
+}
+
+.audio-bar {
+  width: 3.5px;
+  border-radius: 2px;
+  display: inline-block;
+  animation: soundwave 1.1s ease-in-out infinite;
+}
+.audio-bar:nth-child(1) { background-color: #4285F4; animation-delay: 0.1s; }
+.audio-bar:nth-child(2) { background-color: #EA4335; animation-delay: 0.3s; }
+.audio-bar:nth-child(3) { background-color: #FBBC05; animation-delay: 0.2s; }
+.audio-bar:nth-child(4) { background-color: #34A853; animation-delay: 0.4s; }
+
+/* Voice Assistant Pulsing Aura */
+@keyframes voicePulsar {
+  0% { transform: scale(0.96); box-shadow: 0 0 0 0 rgba(66, 133, 244, 0.6); }
+  70% { transform: scale(1.04); box-shadow: 0 0 0 16px rgba(66, 133, 244, 0); }
+  100% { transform: scale(0.96); box-shadow: 0 0 0 0 rgba(66, 133, 244, 0); }
+}
+.voice-pulsar {
+  animation: voicePulsar 1.8s infinite ease-out;
+}
+
+/* Auto-Healed Cell Success Flash */
+@keyframes healedPulse {
+  0% { background-color: #34a853 !important; color: #ffffff !important; transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+.healed-flash {
+  animation: healedPulse 1.5s ease-out;
 }

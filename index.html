@@ -3,664 +3,555 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TeamPulse | Team Leave &amp; Bandwidth Management Portal (with AI Copilot)</title>
+  <title>Staffing &amp; Bandwidth Planner | Google Engineering Internal</title>
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   
   <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-indigo-600 selection:text-white">
+<body class="bg-[#f8fafd] text-[#202124] min-h-screen flex flex-col antialiased">
 
-  <!-- Main Website Navigation Bar -->
-  <header class="bg-slate-900/90 backdrop-blur-md border-b border-slate-800 sticky top-0 z-50 shadow-xl">
-    <div class="max-w-[1920px] mx-auto px-4 sm:px-6">
+  <!-- ======================================================== -->
+  <!-- GOOGLE INTERNAL TOP APP BAR -->
+  <!-- ======================================================== -->
+  <header class="bg-white border-b border-[#dadce0] sticky top-0 z-50 h-16 flex items-center px-4 sm:px-6 shadow-[0_1px_2px_0_rgba(60,64,67,0.06)]">
+    <div class="w-full flex items-center justify-between gap-4">
       
-      <!-- Top Bar: Brand, Status, Actions -->
-      <div class="py-3 flex flex-wrap items-center justify-between gap-4 border-b border-slate-800/80">
-        
-        <!-- Brand & System Status -->
-        <div class="flex items-center space-x-3">
-          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-emerald-400 flex items-center justify-center shadow-lg shadow-indigo-500/20">
-            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+      <!-- Brand & Product Identity -->
+      <div class="flex items-center space-x-3 shrink-0">
+        <!-- Google 9-dot launcher icon -->
+        <button class="p-2 -ml-2 rounded-full hover:bg-[#f1f3f4] text-[#5f6368] transition-colors" title="Google apps">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM6 4c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 12c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+          </svg>
+        </button>
+
+        <!-- Google Logo & Wordmark -->
+        <div class="flex items-center space-x-2">
+          <svg class="w-6 h-6 shrink-0" viewBox="0 0 24 24">
+            <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.8-2.4 3.65v3h3.88c2.27-2.09 3.665-5.17 3.665-9.09z"/>
+            <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.28v3.09C3.29 21.41 7.37 24 12 24z"/>
+            <path fill="#FBBC05" d="M5.28 14.32c-.25-.72-.38-1.49-.38-2.32s.13-1.6.38-2.32V6.59H1.28C.46 8.21 0 10.05 0 12s.46 3.79 1.28 5.41l4-3.09z"/>
+            <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.37 0 3.29 2.59 1.28 6.59l4 3.09c.95-2.83 3.6-4.93 6.72-4.93z"/>
+          </svg>
+          <div class="flex items-baseline space-x-2">
+            <span class="text-base font-medium tracking-tight text-[#202124]">Staffing &amp; Bandwidth</span>
+            <span class="hidden md:inline-block px-1.5 py-0.5 rounded text-[10px] font-medium bg-[#e8f0fe] text-[#1a73e8] border border-[#d2e3fc]">Internal</span>
           </div>
-          <div>
-            <div class="flex items-center space-x-2">
-              <span class="text-lg font-black tracking-tight text-white">TeamPulse</span>
-              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 uppercase tracking-wider">Enterprise Web Portal</span>
-              <div class="hidden sm:flex items-center space-x-1 px-2 py-0.5 rounded-full bg-emerald-950/60 border border-emerald-500/40 text-[11px] text-emerald-400 font-medium">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 live-dot"></span>
-                <span>Portal Live &bull; 100 Members Synced</span>
-              </div>
-            </div>
-            <p class="text-xs text-slate-400 hidden sm:block">Automated Capacity Planning &amp; Manager Alert Escalation System</p>
-          </div>
-        </div>
-
-        <!-- Top Right Action Controls -->
-        <div class="flex flex-wrap items-center gap-2.5">
-          
-          <!-- AI Capacity Audit Button (NEW AI FEATURE) -->
-          <button onclick="openAIAuditModal()" class="px-3.5 py-2 rounded-lg bg-gradient-to-r from-purple-600/40 via-indigo-600/40 to-sky-600/40 hover:from-purple-600/60 hover:to-sky-600/60 text-purple-200 border border-purple-500/50 text-xs font-semibold flex items-center shadow-lg transition-all ai-glow">
-            <svg class="w-4 h-4 mr-1.5 text-purple-300 animate-spin" style="animation-duration: 6s;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-            <span>✨ AI Capacity Audit</span>
-          </button>
-
-          <!-- Manager Alert Trigger Button with Pulsing Dot -->
-          <button id="open-alert-center-btn" onclick="switchTab('alerts')" class="px-3.5 py-2 rounded-lg bg-red-600/20 hover:bg-red-600/40 text-red-200 border border-red-500/50 text-xs font-semibold flex items-center transition-all alert-pulse">
-            <span class="relative flex h-2.5 w-2.5 mr-2">
-              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-500"></span>
-            </span>
-            <span id="nav-alert-btn-label">Manager Alerts</span>
-          </button>
-
-          <!-- Submit Leave / Add Member Button -->
-          <button onclick="openLeaveRequestModal()" class="px-3.5 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold flex items-center shadow-lg shadow-indigo-600/30 transition-all">
-            <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
-            Mark Leave / Add Member
-          </button>
-
-          <!-- Settings Button -->
-          <button onclick="openSettingsModal()" title="Manager &amp; Alert Settings" class="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition-colors">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-          </button>
-
-          <!-- Reset Sample Data -->
-          <button onclick="resetDemoData()" title="Reset to Sample 100 Members" class="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-slate-200 border border-slate-700 transition-colors">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
-          </button>
-
         </div>
       </div>
 
-      <!-- Navigation Tabs (SaaS Website Views) -->
-      <nav class="flex space-x-1 overflow-x-auto py-2 text-xs font-semibold">
-        <button onclick="switchTab('tracker')" id="tab-tracker" class="nav-tab active px-4 py-2 rounded-lg flex items-center space-x-2 transition-all">
-          <svg class="w-4 h-4 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-          <span>Attendance &amp; Bandwidth Grid</span>
+      <!-- Center: Google Clean Rounded Search Bar -->
+      <div class="flex-1 max-w-xl mx-2 sm:mx-6 hidden sm:block">
+        <div class="relative flex items-center">
+          <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#5f6368]">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+          </div>
+          <input 
+            type="text" 
+            id="search-input" 
+            placeholder="Search 100 members, squads, or backups (Press '/' to search)" 
+            class="w-full pl-10 pr-12 py-2 bg-[#f1f3f4] hover:bg-[#e8eaed] focus:bg-white border border-transparent focus:border-[#1a73e8] rounded-full text-xs text-[#202124] placeholder-[#5f6368] focus:outline-none focus:shadow-[0_1px_3px_0_rgba(60,64,67,0.3)] transition-all">
+          <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+            <kbd class="text-[10px] px-1.5 py-0.5 bg-white border border-[#dadce0] rounded text-[#80868b] shadow-sm">/</kbd>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Action Controls -->
+      <div class="flex items-center space-x-2 shrink-0">
+        
+        <!-- Squad / Project Filter Dropdown -->
+        <div class="hidden lg:block">
+          <select 
+            id="project-filter" 
+            class="h-9 px-3 bg-[#f1f3f4] hover:bg-[#e8eaed] border border-transparent rounded-lg text-xs font-medium text-[#3c4043] focus:outline-none focus:border-[#1a73e8] cursor-pointer transition-colors">
+            <option value="ALL">All Squads (100 Members)</option>
+          </select>
+        </div>
+
+        <!-- Gemini Workspace Assistant Button -->
+        <button 
+          onclick="toggleGeminiDrawer()" 
+          class="gemini-pill h-9 px-3 rounded-full text-xs font-medium flex items-center space-x-1.5 shadow-sm"
+          title="Open Gemini in Bandwidth Planner">
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+          <span class="hidden md:inline">Gemini</span>
         </button>
 
-        <button onclick="switchTab('analytics')" id="tab-analytics" class="nav-tab px-4 py-2 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800 flex items-center space-x-2 transition-all">
-          <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
-          <span>Bandwidth Analytics</span>
+        <!-- Gemini Live Voice Button (Unique Multimodal Voice Feature) -->
+        <button 
+          id="voice-assistant-btn"
+          onclick="toggleVoiceAssistant()" 
+          class="h-9 px-3 rounded-full border border-[#dadce0] hover:bg-[#f1f3f4] text-[#3c4043] text-xs font-medium flex items-center space-x-1.5 shadow-xs transition-all cursor-pointer"
+          title="Gemini Live Voice Commander (Voice & Speech)">
+          <div class="flex items-center space-x-0.5 h-3">
+            <span class="audio-bar"></span>
+            <span class="audio-bar"></span>
+            <span class="audio-bar"></span>
+            <span class="audio-bar"></span>
+          </div>
+          <span class="hidden sm:inline font-medium">Live Voice</span>
         </button>
 
-        <button onclick="switchTab('alerts')" id="tab-alerts" class="nav-tab px-4 py-2 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800 flex items-center space-x-2 transition-all">
-          <svg class="w-4 h-4 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
-          <span>Manager Escalation Center</span>
-          <span id="tab-alert-badge" class="ml-1 px-1.5 py-0.2 rounded-full bg-red-600 text-[10px] text-white font-bold">0</span>
+        <!-- Dark / Light Mode Toggle Button -->
+        <button 
+          id="theme-toggle-btn" 
+          onclick="toggleDarkMode()" 
+          class="p-2 rounded-full hover:bg-[#f1f3f4] text-[#5f6368] transition-colors" 
+          title="Toggle Dark / Light Theme">
+          <svg id="theme-toggle-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+          </svg>
         </button>
 
-        <button onclick="switchTab('directory')" id="tab-directory" class="nav-tab px-4 py-2 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800 flex items-center space-x-2 transition-all">
-          <svg class="w-4 h-4 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-          <span>Team Directory (100 Members)</span>
+        <!-- Escalation & Alerts Bell (Opens Drawer) -->
+        <button 
+          id="alert-bell-btn" 
+          onclick="toggleAlertsDrawer()" 
+          class="relative p-2 rounded-full hover:bg-[#f1f3f4] text-[#5f6368] transition-colors"
+          title="Manager Escalation Alerts">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+          <span id="alert-bell-badge" class="hidden absolute top-1.5 right-1.5 w-4 h-4 rounded-full bg-[#d93025] text-white text-[9px] font-bold flex items-center justify-center">1</span>
         </button>
-      </nav>
+
+        <!-- "+ New Entry / Add Member" Google Primary Button -->
+        <button 
+          onclick="openAddEntryModal()" 
+          class="h-9 px-4 rounded-lg bg-[#1a73e8] hover:bg-[#1557b0] text-white text-xs font-medium flex items-center shadow-sm transition-all">
+          <svg class="w-3.5 h-3.5 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+          <span>Mark Leave</span>
+        </button>
+
+        <!-- Settings Gear -->
+        <button 
+          onclick="openSettingsModal()" 
+          class="p-2 rounded-full hover:bg-[#f1f3f4] text-[#5f6368] transition-colors" 
+          title="Escalation &amp; Planner Settings">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+        </button>
+
+        <!-- User Profile Avatar (Abhishek Mishra) -->
+        <div class="flex items-center space-x-2 ml-1 cursor-pointer" title="Signed in as Abhishek Mishra (abhishmishra@google.com)">
+          <div class="w-8 h-8 rounded-full bg-[#1a73e8] text-white flex items-center justify-center font-medium text-xs shadow-sm">
+            A
+          </div>
+          <div class="hidden xl:block text-left text-xs leading-tight">
+            <div class="font-medium text-[#202124]">Abhishek Mishra</div>
+            <div class="text-[10px] text-[#5f6368]">abhishmishra@google.com</div>
+          </div>
+        </div>
+
+      </div>
 
     </div>
   </header>
 
-  <!-- Main Website Body Container -->
-  <main class="max-w-[1920px] mx-auto px-4 sm:px-6 py-5 flex-1 flex flex-col w-full">
+  <!-- ======================================================== -->
+  <!-- COMPACT SECONDARY TOOLBAR (Sleek, Uncluttered, Functional) -->
+  <!-- ======================================================== -->
+  <section class="bg-white border-b border-[#dadce0] px-4 sm:px-6 py-2 flex flex-wrap items-center justify-between gap-3 text-xs">
     
-    <!-- KPI Overview Cards -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-5">
-      
-      <!-- Card 1: Total Team -->
-      <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 shadow-sm hover:border-slate-700 transition-colors">
-        <div class="flex items-center justify-between">
-          <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Total Team Roster</span>
-          <span class="p-2 rounded-xl bg-indigo-500/10 text-indigo-400">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-          </span>
-        </div>
-        <div class="mt-3 flex items-baseline">
-          <span id="stat-total-members" class="text-3xl font-extrabold text-white">100</span>
-          <span class="ml-2 text-xs text-slate-400">across 8 active projects</span>
-        </div>
+    <!-- Left: Sprint Window & Date Stepper -->
+    <div class="flex items-center space-x-2">
+      <div class="flex items-center space-x-1 border border-[#dadce0] rounded-md px-2 py-1 bg-white text-[#3c4043] font-medium shadow-sm">
+        <svg class="w-3.5 h-3.5 text-[#5f6368] mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+        <span id="sprint-range-label">Oct 24 – Nov 06, 2026 (14 Days)</span>
       </div>
-
-      <!-- Card 2: Today's Bandwidth -->
-      <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 shadow-sm hover:border-slate-700 transition-colors">
-        <div class="flex items-center justify-between">
-          <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Today's Bandwidth Capacity</span>
-          <span class="p-2 rounded-xl bg-emerald-500/10 text-emerald-400">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-          </span>
-        </div>
-        <div class="mt-3 flex items-baseline">
-          <span id="stat-today-bandwidth" class="text-3xl font-extrabold text-emerald-400">--%</span>
-          <span class="ml-2 text-xs text-slate-400">Target &ge; 40%</span>
-        </div>
-      </div>
-
-      <!-- Card 3: Today's Leaves -->
-      <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 shadow-sm hover:border-slate-700 transition-colors">
-        <div class="flex items-center justify-between">
-          <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">On Leave / Half Day Today</span>
-          <span class="p-2 rounded-xl bg-amber-500/10 text-amber-400">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-          </span>
-        </div>
-        <div class="mt-3 flex items-baseline">
-          <span id="stat-today-leaves" class="text-3xl font-extrabold text-amber-400">--</span>
-          <span class="ml-2 text-xs text-slate-400">Backups assigned</span>
-        </div>
-      </div>
-
-      <!-- Card 4: Critical Bandwidth Alerts (<40%) -->
-      <div id="stat-critical-card" class="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 shadow-sm transition-all cursor-pointer hover:border-red-500" onclick="switchTab('alerts')">
-        <div class="flex items-center justify-between">
-          <span class="text-xs font-semibold text-red-300 uppercase tracking-wider">Critical Dates (&lt;40% Bandwidth)</span>
-          <span class="p-2 rounded-xl bg-red-500/20 text-red-400">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
-          </span>
-        </div>
-        <div class="mt-3 flex items-baseline justify-between">
-          <div class="flex items-baseline">
-            <span id="stat-critical-dates" class="text-3xl font-extrabold text-red-400">0</span>
-            <span class="ml-2 text-xs text-red-300">Manager Triggered</span>
-          </div>
-          <span class="text-xs font-bold text-red-400 hover:underline flex items-center">
-            View Alerts &rarr;
-          </span>
-        </div>
-      </div>
-
+      <button onclick="resetDemoData()" class="p-1 rounded hover:bg-[#f1f3f4] text-[#5f6368]" title="Reset to Sample 100 Members">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+      </button>
     </div>
 
-    <!-- ======================================================== -->
-    <!-- TAB VIEW 1: ATTENDANCE & BANDWIDTH TRACKER MATRIX (MAIN) -->
-    <!-- ======================================================== -->
-    <div id="view-tracker" class="tab-content flex-1 flex flex-col">
-      
-      <!-- Filter & Legend Toolbar -->
-      <div class="bg-slate-900 border border-slate-800 rounded-t-2xl px-5 py-3.5 flex flex-wrap items-center justify-between gap-4">
-        
-        <!-- Search & Project Controls -->
-        <div class="flex flex-wrap items-center gap-3 flex-1 min-w-[280px]">
-          
-          <!-- Search Input -->
-          <div class="relative w-full sm:w-64">
-            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-            </div>
-            <input 
-              type="text" 
-              id="search-input" 
-              placeholder="Search member, backup, project..." 
-              class="w-full pl-9 pr-3 py-2 bg-slate-950 border border-slate-700/80 rounded-xl text-xs text-slate-100 placeholder-slate-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500">
-          </div>
-
-          <!-- Project Filter -->
-          <div class="w-full sm:w-64">
-            <select 
-              id="project-filter" 
-              class="w-full px-3 py-2 bg-slate-950 border border-slate-700/80 rounded-xl text-xs text-slate-100 focus:outline-none focus:border-indigo-500">
-              <option value="ALL">All Projects (100 Members)</option>
-            </select>
-          </div>
-
-          <span id="visible-count" class="text-xs text-slate-400 font-medium">Showing 100 of 100 members</span>
-        </div>
-
-        <!-- Category Legend (Req #5) -->
-        <div class="flex flex-wrap items-center gap-3 text-xs">
-          <span class="text-slate-400 font-bold uppercase text-[10px] tracking-wider">Status Legend:</span>
-          <div class="flex items-center space-x-1.5">
-            <span class="status-pill status-working text-[11px] px-2 py-0.5">W</span>
-            <span class="text-slate-300 font-medium">Working (1.0)</span>
-          </div>
-          <div class="flex items-center space-x-1.5">
-            <span class="status-pill status-halfday text-[11px] px-2 py-0.5">HD</span>
-            <span class="text-slate-300 font-medium">Half day (0.5)</span>
-          </div>
-          <div class="flex items-center space-x-1.5">
-            <span class="status-pill status-leave text-[11px] px-2 py-0.5">PL</span>
-            <span class="text-slate-300 font-medium">Planned Leave (0.0)</span>
-          </div>
-          <div class="flex items-center space-x-1.5">
-            <span class="status-pill status-na text-[11px] px-2 py-0.5">NA</span>
-            <span class="text-slate-400 font-medium">Not Applicable</span>
-          </div>
-          <div class="flex items-center space-x-1.5 pl-2 border-l border-slate-800">
-            <span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-red-600 text-white alert-pulse">&lt;40%</span>
-            <span class="text-red-400 font-bold">Auto Escalation</span>
-          </div>
-        </div>
-
+    <!-- Center: Inline Key Metrics (Replaces 4 bulky dark cards) -->
+    <div class="flex items-center space-x-4 text-xs">
+      <div class="flex items-center space-x-1.5 text-[#5f6368]">
+        <span>Roster:</span>
+        <strong id="stat-total-count" class="text-[#202124] font-semibold">100 staff</strong>
       </div>
+      <span class="text-[#dadce0]">&bull;</span>
+      <div class="flex items-center space-x-1.5 text-[#5f6368]">
+        <span>Today's Capacity:</span>
+        <strong id="stat-today-pct" class="text-[#137333] font-semibold">88%</strong>
+      </div>
+      <span class="text-[#dadce0]">&bull;</span>
+      <!-- Critical alert clickable chip -->
+      <button onclick="toggleAlertsDrawer()" id="stat-critical-pill" class="inline-flex items-center space-x-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-[#fce8e6] text-[#c5221f] border border-[#fad2cf] hover:bg-[#fad2cf] transition-colors cursor-pointer">
+        <span>⚠️ Oct 28 &lt; 40% (32%)</span>
+        <span class="underline ml-0.5 font-bold">Review</span>
+      </button>
+    </div>
 
-      <!-- Main Responsive Table Container -->
-      <div class="border border-t-0 border-slate-800 rounded-b-2xl overflow-x-auto shadow-2xl bg-slate-900/60 max-h-[70vh]">
-        <table class="w-full border-collapse text-left" id="tracker-table">
+    <!-- Right: Legend & Filters -->
+    <div class="flex items-center space-x-3 text-[11px] text-[#5f6368]">
+      <div class="flex items-center space-x-2">
+        <span class="flex items-center space-x-1">
+          <span class="w-2.5 h-2.5 rounded-sm bg-[#e6f4ea] border border-[#ceead6]"></span>
+          <span>Working (W)</span>
+        </span>
+        <span class="flex items-center space-x-1">
+          <span class="w-2.5 h-2.5 rounded-sm bg-[#fce8e6] border border-[#fad2cf]"></span>
+          <span>Leave (PL)</span>
+        </span>
+        <span class="flex items-center space-x-1">
+          <span class="w-2.5 h-2.5 rounded-sm bg-[#fef7e0] border border-[#feefc3]"></span>
+          <span>Half day (HD)</span>
+        </span>
+        <span class="flex items-center space-x-1">
+          <span class="w-2.5 h-2.5 rounded-sm bg-[#f1f3f4] border border-[#e0e0e0]"></span>
+          <span>Off (NA)</span>
+        </span>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- MAIN TABLE CONTAINER (Clean, Responsive, High-Density) -->
+  <!-- ======================================================== -->
+  <main class="flex-1 px-4 sm:px-6 py-4 flex flex-col overflow-hidden">
+    <div class="bg-white border border-[#dadce0] rounded-lg shadow-sm flex-1 flex flex-col overflow-hidden">
+      
+      <!-- Table Scroll Area -->
+      <div class="flex-1 overflow-auto">
+        <table class="w-full border-collapse text-left text-xs" id="tracker-table">
           <thead id="table-head">
             <!-- Dynamically populated in app.js -->
           </thead>
-          <tbody id="table-body" class="divide-y divide-slate-800/80">
-            <!-- Dynamically populated 100 member rows -->
+          <tbody id="table-body" class="divide-y divide-[#ebebeb]">
+            <!-- Dynamically populated 100 rows -->
           </tbody>
-          <tfoot id="table-foot" class="border-t-2 border-slate-700">
-            <!-- Bandwidth Summary & <40% Alert Escalation Row -->
+          <tfoot id="table-foot" class="border-t border-[#dadce0] shadow-[0_-2px_6px_rgba(60,64,67,0.04)]">
+            <!-- Dynamically populated Bandwidth Calculations & Alerts -->
           </tfoot>
         </table>
       </div>
 
     </div>
-
-    <!-- ======================================================== -->
-    <!-- TAB VIEW 2: CAPACITY & BANDWIDTH ANALYTICS -->
-    <!-- ======================================================== -->
-    <div id="view-analytics" class="tab-content hidden flex-1 flex flex-col space-y-6">
-      
-      <!-- Analytics Header -->
-      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div>
-            <h2 class="text-xl font-bold text-white flex items-center">
-              <span>Team Bandwidth Capacity Timeline</span>
-              <span class="ml-2 px-2.5 py-0.5 rounded text-xs font-bold bg-indigo-500/20 text-indigo-300">14-Day Sprint Window</span>
-            </h2>
-            <p class="text-xs text-slate-400 mt-1">
-              Visualizes daily team capacity percentage. Days below the <strong class="text-red-400">40% Alert Threshold</strong> trigger an automatic notification to leadership.
-            </p>
-          </div>
-          <div class="flex items-center space-x-4 text-xs font-semibold">
-            <div class="flex items-center space-x-1.5">
-              <span class="w-3 h-3 rounded bg-emerald-500"></span>
-              <span class="text-slate-300">Healthy (&ge; 70%)</span>
-            </div>
-            <div class="flex items-center space-x-1.5">
-              <span class="w-3 h-3 rounded bg-amber-500"></span>
-              <span class="text-slate-300">Moderate (40%–69%)</span>
-            </div>
-            <div class="flex items-center space-x-1.5">
-              <span class="w-3 h-3 rounded bg-red-600 alert-pulse"></span>
-              <span class="text-red-400">Critical Shortage (&lt; 40%)</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Daily Bandwidth Visual Bar Chart -->
-        <div class="mt-8 grid grid-cols-2 sm:grid-cols-7 lg:grid-cols-14 gap-3 items-end" id="analytics-chart-container">
-          <!-- Dynamically populated in app.js -->
-        </div>
-      </div>
-
-      <!-- Projects Breakdown Grid -->
-      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6">
-        <h3 class="text-base font-bold text-white mb-4">Capacity Breakdown by Project</h3>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" id="project-breakdown-cards">
-          <!-- Dynamically populated in app.js -->
-        </div>
-      </div>
-
-    </div>
-
-    <!-- ======================================================== -->
-    <!-- TAB VIEW 3: MANAGER ESCALATION CENTER -->
-    <!-- ======================================================== -->
-    <div id="view-alerts" class="tab-content hidden flex-1 flex flex-col space-y-6">
-      
-      <div class="bg-slate-900 border border-red-500/50 rounded-2xl p-6 shadow-xl">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-800 gap-4">
-          <div class="flex items-center space-x-3">
-            <div class="w-12 h-12 rounded-2xl bg-red-600/30 text-red-400 flex items-center justify-center border border-red-500/50 alert-pulse">
-              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
-            </div>
-            <div>
-              <h2 class="text-xl font-black text-white flex items-center">
-                <span>Manager Escalation &amp; Incident Feed</span>
-                <span class="ml-2 px-2 py-0.5 rounded text-[10px] font-bold bg-red-600 text-white">AUTOMATIC TRIGGER ON</span>
-              </h2>
-              <p class="text-xs text-slate-400 mt-1">
-                Any date where available team bandwidth drops below <strong class="text-red-400 font-bold">40% capacity</strong> triggers an instant escalation to leadership.
-              </p>
-            </div>
-          </div>
-
-          <div class="text-right">
-            <span class="text-xs text-slate-400 block">Lead Recipient:</span>
-            <span id="alert-manager-email-display" class="text-xs font-bold text-indigo-300">sarah.lead@company.com</span>
-          </div>
-        </div>
-
-        <!-- Incidents List -->
-        <div class="mt-6 space-y-4" id="alerts-tab-feed">
-          <!-- Dynamically populated in app.js -->
-        </div>
-
-      </div>
-
-    </div>
-
-    <!-- ======================================================== -->
-    <!-- TAB VIEW 4: TEAM DIRECTORY (100 MEMBERS) -->
-    <!-- ======================================================== -->
-    <div id="view-directory" class="tab-content hidden flex-1 flex flex-col space-y-4">
-      
-      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex flex-wrap items-center justify-between gap-4">
-        <div>
-          <h2 class="text-lg font-bold text-white">Team Member Directory</h2>
-          <p class="text-xs text-slate-400">100 active engineering staff with project assignments and designated backup peers</p>
-        </div>
-        <div class="flex items-center space-x-3">
-          <input 
-            type="text" 
-            id="directory-search-input" 
-            placeholder="Search directory..." 
-            class="px-3 py-2 bg-slate-950 border border-slate-700 rounded-xl text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-indigo-500 w-64">
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" id="directory-grid">
-        <!-- Dynamically populated in app.js -->
-      </div>
-
-    </div>
-
   </main>
 
   <!-- ======================================================== -->
-  <!-- FLOATING AI COPILOT LAUNCHER BUTTON -->
+  <!-- DRAWER 1: ATTENDANCE & HANDOVER INSPECTOR (SLIDE-OVER) -->
   <!-- ======================================================== -->
-  <div class="fixed bottom-6 right-6 z-40">
-    <button onclick="toggleAICopilot()" class="px-4 py-3 rounded-2xl bg-gradient-to-r from-purple-600 via-indigo-600 to-sky-600 hover:from-purple-500 hover:to-sky-500 text-white font-bold text-xs flex items-center shadow-2xl shadow-indigo-500/40 border border-white/20 transition-all hover:scale-105 active:scale-95 ai-glow">
-      <div class="w-6 h-6 rounded-lg bg-white/20 flex items-center justify-center mr-2.5">
-        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-      </div>
-      <span>✨ PulseAI Copilot</span>
-    </button>
-  </div>
-
-  <!-- ======================================================== -->
-  <!-- AI COPILOT CHAT DRAWER / WINDOW -->
-  <!-- ======================================================== -->
-  <div id="ai-copilot-drawer" class="fixed bottom-20 right-6 z-50 w-full sm:w-96 max-w-[calc(100vw-3rem)] bg-slate-900 border border-indigo-500/40 rounded-3xl shadow-2xl overflow-hidden hidden flex flex-col h-[520px] transition-all">
+  <div id="inspector-drawer" class="fixed inset-0 z-50 pointer-events-none hidden">
+    <!-- Backdrop -->
+    <div onclick="closeInspectorDrawer()" class="absolute inset-0 drawer-backdrop pointer-events-auto"></div>
     
-    <!-- Drawer Header -->
-    <div class="p-4 bg-gradient-to-r from-slate-900 via-indigo-950/70 to-slate-900 border-b border-indigo-500/30 flex items-center justify-between">
-      <div class="flex items-center space-x-2.5">
-        <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-purple-600 to-indigo-500 flex items-center justify-center text-white shadow">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-        </div>
-        <div>
-          <h3 class="text-xs font-black text-white flex items-center">
-            <span>PulseAI Copilot</span>
-            <span class="ml-1.5 px-1.5 py-0.2 rounded-full bg-emerald-500/20 text-emerald-400 text-[9px] font-bold">READY</span>
-          </h3>
-          <p class="text-[10px] text-slate-400">Intelligent Capacity &amp; Risk Assistant</p>
-        </div>
-      </div>
-      <button onclick="toggleAICopilot()" class="text-slate-400 hover:text-white p-1 rounded-lg">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-      </button>
-    </div>
-
-    <!-- Suggested Quick Prompts -->
-    <div class="px-3 py-2 bg-slate-950/70 border-b border-slate-800/80 flex items-center space-x-1.5 overflow-x-auto text-[10px]">
-      <button onclick="askAIPrompt('Analyze capacity risks this sprint')" class="px-2 py-1 rounded-full bg-indigo-950/80 hover:bg-indigo-900 text-indigo-300 border border-indigo-700/50 whitespace-nowrap">
-        💡 Analyze Risks
-      </button>
-      <button onclick="askAIPrompt('Explain Oct 28 critical drop below 40%')" class="px-2 py-1 rounded-full bg-red-950/80 hover:bg-red-900 text-red-300 border border-red-700/50 whitespace-nowrap">
-        🚨 Oct 28 Drop
-      </button>
-      <button onclick="askAIPrompt('Check backup collisions and conflicts')" class="px-2 py-1 rounded-full bg-amber-950/80 hover:bg-amber-900 text-amber-300 border border-amber-700/50 whitespace-nowrap">
-        ⚠️ Backup Conflicts
-      </button>
-      <button onclick="askAIPrompt('Draft standup executive summary')" class="px-2 py-1 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 whitespace-nowrap">
-        📋 Standup Summary
-      </button>
-    </div>
-
-    <!-- Chat Messages Container -->
-    <div id="ai-chat-messages" class="flex-1 p-3.5 overflow-y-auto space-y-3 text-xs">
-      <div class="ai-chat-bubble-bot p-3 text-xs leading-relaxed">
-        👋 Hi! I am <strong>PulseAI</strong>, your capacity copilot. I am actively monitoring all <strong>100 engineering staff</strong> and daily bandwidth metrics.
-        <br><br>
-        Ask me anything, like:
-        <ul class="list-disc pl-4 mt-1.5 space-y-1 text-slate-300">
-          <li><em>"Which projects are under risk this week?"</em></li>
-          <li><em>"Who has a backup conflict on Oct 28?"</em></li>
-          <li><em>"Generate executive summary for lead standup"</em></li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Chat Input Form -->
-    <form onsubmit="handleAIChatSubmit(event)" class="p-2.5 bg-slate-950 border-t border-slate-800 flex items-center space-x-2">
-      <input 
-        type="text" 
-        id="ai-chat-input" 
-        placeholder="Ask PulseAI about bandwidth, leaves..." 
-        class="flex-1 px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500">
-      <button type="submit" class="p-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white shrink-0 transition-colors">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
-      </button>
-    </form>
-
-  </div>
-
-  <!-- ======================================================== -->
-  <!-- MODAL: AI CAPACITY & RISK AUDIT -->
-  <!-- ======================================================== -->
-  <div id="ai-audit-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4">
-    <div class="bg-slate-900 border border-purple-500/50 rounded-3xl max-w-2xl w-full shadow-2xl p-6 max-h-[90vh] flex flex-col modal-enter-active">
-      
-      <div class="flex items-center justify-between pb-4 border-b border-slate-800">
-        <div class="flex items-center space-x-3">
-          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-600 to-indigo-500 flex items-center justify-center text-white ai-glow">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
-          </div>
-          <div>
-            <h3 class="text-lg font-black text-white flex items-center">
-              <span>PulseAI Capacity &amp; Risk Diagnostic</span>
-              <span class="ml-2 px-2 py-0.5 rounded text-[10px] font-bold bg-purple-600 text-white uppercase">Automated Scan</span>
-            </h3>
-            <p class="text-xs text-slate-400 mt-0.5">Deep inspection of 100 team members, leave patterns, and backup resilience</p>
-          </div>
-        </div>
-        <button onclick="closeModal('ai-audit-modal')" class="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-slate-800">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-        </button>
-      </div>
-
-      <!-- Audit Body -->
-      <div class="flex-1 overflow-y-auto py-5 space-y-5" id="ai-audit-content">
-        <!-- Dynamically rendered -->
-      </div>
-
-      <!-- Modal Footer -->
-      <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
-        <span class="text-xs text-slate-400">
-          Audit Model: <strong class="text-indigo-300">PulseAI Deep Capacity Heuristics (Offline Ready)</strong>
-        </span>
-        <button onclick="closeModal('ai-audit-modal')" class="px-5 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg text-xs font-semibold">
-          Done
-        </button>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- ======================================================== -->
-  <!-- MODAL: SUBMIT LEAVE / ADD MEMBER WEB FORM -->
-  <!-- ======================================================== -->
-  <div id="leave-request-modal" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm hidden flex items-center justify-center p-4">
-    <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-lg w-full shadow-2xl p-6 modal-enter-active">
-      
-      <div class="flex items-center justify-between pb-3 border-b border-slate-800">
-        <div>
-          <h3 class="text-base font-bold text-white flex items-center">
-            <svg class="w-5 h-5 mr-2 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-            Mark Leave / Register Member
-          </h3>
-          <p class="text-xs text-slate-400 mt-0.5">Self-service form for any team member to update leave or register name</p>
-        </div>
-        <button onclick="closeModal('leave-request-modal')" class="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-slate-800">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-        </button>
-      </div>
-
-      <form onsubmit="handleLeaveFormSubmit(event)" class="mt-4 space-y-4">
+    <!-- Slide Panel -->
+    <div class="absolute inset-y-0 right-0 max-w-full flex pl-10 pointer-events-auto">
+      <div class="w-screen max-w-md bg-white border-l border-[#dadce0] shadow-2xl flex flex-col drawer-panel">
         
-        <!-- Member Selection / Add Name (Req #2) -->
+        <!-- Header -->
+        <div class="p-4 border-b border-[#dadce0] flex items-center justify-between bg-[#f8fafd]">
+          <div>
+            <h3 class="text-sm font-medium text-[#202124]">Attendance &amp; Handover Details</h3>
+            <p class="text-xs text-[#5f6368] mt-0.5">
+              <span id="inspect-member-name" class="font-semibold text-[#1a73e8]">Member Name</span> &bull; 
+              <span id="inspect-member-squad">Squad</span>
+            </p>
+          </div>
+          <button onclick="closeInspectorDrawer()" class="p-1.5 rounded-full hover:bg-[#f1f3f4] text-[#5f6368]">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+          </button>
+        </div>
+
+        <!-- Body Form -->
+        <div class="flex-1 overflow-y-auto p-5 space-y-4 text-xs">
+          
+          <!-- Selected Date Info -->
+          <div class="bg-[#f8fafd] p-3 rounded-lg border border-[#e8eaed] flex items-center justify-between">
+            <span class="text-[#5f6368] font-medium">Selected Date:</span>
+            <span id="inspect-date" class="font-semibold text-[#1a73e8]">Wed, 28 Oct 2026</span>
+          </div>
+
+          <!-- Status Dropdown (Req #5) -->
+          <div>
+            <label class="block font-medium text-[#3c4043] mb-1">Status Category *</label>
+            <select id="inspect-status" class="w-full px-3 py-2 bg-white border border-[#dadce0] rounded-md text-xs text-[#202124] focus:outline-none focus:border-[#1a73e8]">
+              <option value="Working">Working (100% capacity)</option>
+              <option value="Planned Leave">Planned Leave (0% capacity - Absent)</option>
+              <option value="Half day">Half day (50% capacity)</option>
+              <option value="Not Applicable">Not Applicable (Off / Weekend)</option>
+            </select>
+          </div>
+
+          <!-- Backup Person Field (Req #4) with AI Matching -->
+          <div>
+            <div class="flex items-center justify-between mb-1">
+              <label class="block font-medium text-[#3c4043]">
+                Backup Person (Coverage in absence)
+              </label>
+              <button type="button" onclick="applyAISmartBackupInInspector()" class="text-[11px] text-[#1a73e8] hover:text-[#1557b0] font-medium flex items-center">
+                <span>✨ Suggest Best Backup</span>
+              </button>
+            </div>
+            <select id="inspect-backup" class="w-full px-3 py-2 bg-white border border-[#dadce0] rounded-md text-xs text-[#202124] focus:outline-none focus:border-[#1a73e8]">
+              <!-- Dynamically populated -->
+            </select>
+            <div id="inspect-ai-hint" class="hidden mt-1 text-[11px] text-[#137333] bg-[#e6f4ea] p-2 rounded border border-[#ceead6]"></div>
+          </div>
+
+          <!-- Reason / Handover Notes (Req #7) -->
+          <div>
+            <label class="block font-medium text-[#3c4043] mb-1">
+              Reason for Taking Leave / Project Handover Remarks *
+            </label>
+            <textarea 
+              id="inspect-reason" 
+              rows="3" 
+              placeholder="e.g. Doctor appointment, Family wedding, Vacation..." 
+              class="w-full px-3 py-2 bg-white border border-[#dadce0] rounded-md text-xs text-[#202124] focus:outline-none focus:border-[#1a73e8]"></textarea>
+          </div>
+
+          <!-- Multi-day checkbox -->
+          <div class="flex items-center space-x-2 pt-2 border-t border-[#ebebeb]">
+            <input type="checkbox" id="inspect-apply-all" class="w-4 h-4 rounded text-[#1a73e8] border-[#dadce0] focus:ring-0">
+            <label for="inspect-apply-all" class="text-[#5f6368]">Apply this status across all remaining working days in sprint</label>
+          </div>
+
+        </div>
+
+        <!-- Footer -->
+        <div class="p-4 border-t border-[#dadce0] bg-[#f8fafd] flex items-center justify-end space-x-2">
+          <button type="button" onclick="closeInspectorDrawer()" class="px-3.5 py-2 border border-[#dadce0] bg-white hover:bg-[#f1f3f4] text-[#3c4043] rounded-md text-xs font-medium">
+            Cancel
+          </button>
+          <button type="button" onclick="saveInspectorEdit()" class="px-4 py-2 bg-[#1a73e8] hover:bg-[#1557b0] text-white rounded-md text-xs font-medium shadow-sm">
+            Save Changes
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- DRAWER 2: GEMINI WORKSPACE INSIGHTS (SLIDE-OVER) -->
+  <!-- ======================================================== -->
+  <div id="gemini-drawer" class="fixed inset-0 z-50 pointer-events-none hidden">
+    <div onclick="toggleGeminiDrawer()" class="absolute inset-0 drawer-backdrop pointer-events-auto"></div>
+    <div class="absolute inset-y-0 right-0 max-w-full flex pl-10 pointer-events-auto">
+      <div class="w-screen max-w-md bg-white border-l border-[#dadce0] shadow-2xl flex flex-col drawer-panel">
+        
+        <!-- Header -->
+        <div class="p-4 border-b border-[#dadce0] flex items-center justify-between bg-[#f8fafd]">
+          <div class="flex items-center space-x-2">
+            <div class="w-7 h-7 rounded-full bg-[#e8f0fe] text-[#1a73e8] flex items-center justify-center">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-sm font-medium text-[#202124]">Gemini in Bandwidth Planner</h3>
+              <p class="text-[11px] text-[#5f6368]">AI Capacity &amp; Coverage Assistant</p>
+            </div>
+          </div>
+          <button onclick="toggleGeminiDrawer()" class="p-1.5 rounded-full hover:bg-[#f1f3f4] text-[#5f6368]">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+          </button>
+        </div>
+
+        <!-- Quick Prompt Chips -->
+        <div class="p-3 bg-[#f8fafd] border-b border-[#dadce0] flex items-center space-x-1.5 overflow-x-auto text-[11px]">
+          <button onclick="askGeminiPrompt('Summarize Oct 28 capacity risk below 40%')" class="px-2.5 py-1 rounded-full bg-white hover:bg-[#f1f3f4] text-[#3c4043] border border-[#dadce0] whitespace-nowrap shadow-xs">
+            🚨 Oct 28 Shortage
+          </button>
+          <button onclick="askGeminiPrompt('Check backup collisions and conflicts')" class="px-2.5 py-1 rounded-full bg-white hover:bg-[#f1f3f4] text-[#3c4043] border border-[#dadce0] whitespace-nowrap shadow-xs">
+            ⚠️ Backup Conflicts
+          </button>
+          <button onclick="askGeminiPrompt('Draft executive briefing for standup')" class="px-2.5 py-1 rounded-full bg-white hover:bg-[#f1f3f4] text-[#3c4043] border border-[#dadce0] whitespace-nowrap shadow-xs">
+            📋 Executive Summary
+          </button>
+        </div>
+
+        <!-- Chat Messages -->
+        <div id="gemini-messages" class="flex-1 p-4 overflow-y-auto space-y-3 text-xs">
+          <div class="gemini-bubble-ai p-3.5 leading-relaxed">
+            Hello! I am monitoring the <strong>100 engineering staff</strong> across the current sprint.
+            <br><br>
+            Ask me anything about team coverage, single points of failure, or backup conflicts:
+            <ul class="list-disc pl-4 mt-2 space-y-1 text-[#5f6368]">
+              <li><em>"Which squad has the highest leave rate?"</em></li>
+              <li><em>"Who has a backup conflict on Oct 28?"</em></li>
+              <li><em>"Draft an escalation email for leadership"</em></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Input Form -->
+        <form onsubmit="handleGeminiSubmit(event)" class="p-3 border-t border-[#dadce0] bg-white flex items-center space-x-2">
+          <input 
+            type="text" 
+            id="gemini-input" 
+            placeholder="Ask Gemini about team bandwidth, leaves..." 
+            class="flex-1 px-3 py-2 bg-[#f1f3f4] focus:bg-white border border-transparent focus:border-[#1a73e8] rounded-full text-xs text-[#202124] placeholder-[#5f6368] focus:outline-none">
+          <button type="submit" class="p-2 rounded-full bg-[#1a73e8] hover:bg-[#1557b0] text-white shrink-0">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+          </button>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- DRAWER 3: ESCALATIONS & ALERTS CENTER (SLIDE-OVER) -->
+  <!-- ======================================================== -->
+  <div id="alerts-drawer" class="fixed inset-0 z-50 pointer-events-none hidden">
+    <div onclick="toggleAlertsDrawer()" class="absolute inset-0 drawer-backdrop pointer-events-auto"></div>
+    <div class="absolute inset-y-0 right-0 max-w-full flex pl-10 pointer-events-auto">
+      <div class="w-screen max-w-lg bg-white border-l border-[#dadce0] shadow-2xl flex flex-col drawer-panel">
+        
+        <!-- Header -->
+        <div class="p-4 border-b border-[#dadce0] flex items-center justify-between bg-[#fce8e6]/40">
+          <div class="flex items-center space-x-2">
+            <div class="w-7 h-7 rounded-full bg-[#fce8e6] text-[#c5221f] flex items-center justify-center font-bold">
+              !
+            </div>
+            <div>
+              <h3 class="text-sm font-semibold text-[#c5221f]">Manager Escalations &amp; Alerts</h3>
+              <p class="text-[11px] text-[#5f6368]">Trigger rule: Active bandwidth &lt; 40% capacity</p>
+            </div>
+          </div>
+          <button onclick="toggleAlertsDrawer()" class="p-1.5 rounded-full hover:bg-[#f1f3f4] text-[#5f6368]">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+          </button>
+        </div>
+
+        <!-- Autonomous Schedule Auto-Healer Hero Action -->
+        <div class="p-3 bg-[#e6f4ea] border-b border-[#ceead6] flex items-center justify-between">
+          <div>
+            <div class="flex items-center space-x-1.5 text-[#137333] font-semibold text-xs">
+              <span class="w-2 h-2 rounded-full bg-[#137333]"></span>
+              <span>Autonomous Schedule Auto-Healer</span>
+            </div>
+            <p class="text-[11px] text-[#3c4043] mt-0.5">
+              1-Click AI Agent to resolve collisions and restore bandwidth &ge; 40%
+            </p>
+          </div>
+          <button 
+            onclick="triggerAutonomousAutoHeal()" 
+            class="px-3 py-1.5 bg-[#137333] hover:bg-[#0f5b28] text-white rounded text-xs font-medium flex items-center space-x-1 shadow-sm transition-colors shrink-0">
+            <svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+            <span>Auto-Heal (46%)</span>
+          </button>
+        </div>
+
+        <!-- Incidents List -->
+        <div class="flex-1 overflow-y-auto p-4 space-y-4 text-xs" id="alerts-drawer-feed">
+          <!-- Dynamically populated -->
+        </div>
+
+        <!-- Footer -->
+        <div class="p-4 border-t border-[#dadce0] bg-[#f8fafd] flex items-center justify-between">
+          <span class="text-[11px] text-[#5f6368]">
+            Lead: <strong id="alert-lead-email" class="text-[#1a73e8]">rawatabhinav@google.com</strong> (Abhinav Rawat)
+          </span>
+          <button onclick="toggleAlertsDrawer()" class="px-3.5 py-1.5 bg-white border border-[#dadce0] hover:bg-[#f1f3f4] text-[#3c4043] rounded-md text-xs font-medium">
+            Close
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- MODAL: ADD NEW MEMBER / REGISTER ENTRY -->
+  <!-- ======================================================== -->
+  <div id="add-member-modal" class="fixed inset-0 z-50 bg-[#202124]/40 backdrop-blur-xs hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-lg max-w-md w-full shadow-xl border border-[#dadce0] p-5">
+      
+      <div class="flex items-center justify-between pb-3 border-b border-[#ebebeb]">
+        <h3 class="text-sm font-semibold text-[#202124]">Mark Leave / Register Member</h3>
+        <button onclick="closeModal('add-member-modal')" class="p-1 rounded-full hover:bg-[#f1f3f4] text-[#5f6368]">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+      </div>
+
+      <form id="add-member-form" onsubmit="handleLeaveFormSubmit(event)" class="mt-4 space-y-3.5 text-xs">
+        
+        <!-- Member Select or Add New (Req #2) -->
         <div>
-          <label class="block text-xs font-semibold text-slate-300 mb-1">Team Member Name *</label>
-          <div class="space-y-2">
-            <select id="form-member-select" onchange="handleMemberSelectChange(this)" class="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-xs text-white focus:outline-none focus:border-indigo-500">
-              <option value="__NEW__">+ Add New Member Name</option>
-              <!-- Dynamically populated with 100 members -->
+          <label class="block font-medium text-[#3c4043] mb-1">Team Member *</label>
+          <div class="space-y-1.5">
+            <select id="form-member-select" onchange="handleMemberSelectChange(this)" class="w-full px-3 py-2 bg-white border border-[#dadce0] rounded-md text-xs text-[#202124] focus:outline-none focus:border-[#1a73e8]">
+              <option value="__NEW__">+ Register New Member Name</option>
+              <!-- Dynamically populated -->
             </select>
             <input 
               type="text" 
               id="form-new-name" 
               placeholder="Or type full name..." 
-              class="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-xs text-white focus:outline-none focus:border-indigo-500">
+              class="w-full px-3 py-2 bg-white border border-[#dadce0] rounded-md text-xs text-[#202124] focus:outline-none focus:border-[#1a73e8]">
           </div>
         </div>
 
         <!-- Project (Req #7) -->
         <div>
-          <label class="block text-xs font-semibold text-slate-300 mb-1">Project Name Working Upon *</label>
-          <select id="form-project-select" class="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-xs text-white focus:outline-none focus:border-indigo-500">
+          <label class="block font-medium text-[#3c4043] mb-1">Squad / Project *</label>
+          <select id="form-project-select" class="w-full px-3 py-2 bg-white border border-[#dadce0] rounded-md text-xs text-[#202124] focus:outline-none focus:border-[#1a73e8]">
             <!-- Dynamically populated -->
           </select>
         </div>
 
-        <!-- Date Range -->
+        <!-- Date -->
         <div>
-          <label class="block text-xs font-semibold text-slate-300 mb-1">For Date / Day *</label>
-          <select id="form-date-select" class="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-xs text-white focus:outline-none focus:border-indigo-500">
+          <label class="block font-medium text-[#3c4043] mb-1">Date *</label>
+          <select id="form-date-select" class="w-full px-3 py-2 bg-white border border-[#dadce0] rounded-md text-xs text-[#202124] focus:outline-none focus:border-[#1a73e8]">
             <!-- Dynamically populated -->
           </select>
         </div>
 
-        <!-- Status Category (Req #5) -->
+        <!-- Status (Req #5) -->
         <div>
-          <label class="block text-xs font-semibold text-slate-300 mb-1">Status Category *</label>
-          <select id="form-status-select" class="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-xs text-white focus:outline-none focus:border-indigo-500">
-            <option value="Planned Leave">Planned Leave (0% capacity)</option>
+          <label class="block font-medium text-[#3c4043] mb-1">Status Category *</label>
+          <select id="form-status-select" class="w-full px-3 py-2 bg-white border border-[#dadce0] rounded-md text-xs text-[#202124] focus:outline-none focus:border-[#1a73e8]">
+            <option value="Planned Leave">Planned Leave (0% capacity - Absent)</option>
             <option value="Half day">Half day (50% capacity)</option>
             <option value="Working">Working (100% capacity)</option>
             <option value="Not Applicable">Not Applicable (Off / Weekend)</option>
           </select>
         </div>
 
-        <!-- Backup Name (Req #4) with AI Smart Recommendation button -->
+        <!-- Backup Name (Req #4) -->
         <div>
           <div class="flex items-center justify-between mb-1">
-            <label class="block text-xs font-semibold text-slate-300">
-              Backup Colleague Name (Who will work in place of you) *
-            </label>
-            <button type="button" onclick="applyAISmartBackupInForm()" class="text-[10px] text-purple-300 hover:text-purple-200 font-bold flex items-center">
-              <span>✨ AI Recommend</span>
+            <label class="block font-medium text-[#3c4043]">Backup Person *</label>
+            <button type="button" onclick="applyAISmartBackupInForm()" class="text-[11px] text-[#1a73e8] hover:text-[#1557b0] font-medium">
+              ✨ Suggest Best Backup
             </button>
           </div>
-          <select id="form-backup-select" class="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-xs text-white focus:outline-none focus:border-indigo-500">
+          <select id="form-backup-select" class="w-full px-3 py-2 bg-white border border-[#dadce0] rounded-md text-xs text-[#202124] focus:outline-none focus:border-[#1a73e8]">
             <!-- Dynamically populated -->
           </select>
-          <div id="ai-backup-hint" class="hidden mt-1 text-[11px] text-purple-300 bg-purple-950/40 p-2 rounded-lg border border-purple-500/30"></div>
+          <div id="ai-backup-hint" class="hidden mt-1 text-[11px] text-[#137333] bg-[#e6f4ea] p-1.5 rounded border border-[#ceead6]"></div>
         </div>
 
-        <!-- Reason for leave (Req #7) -->
+        <!-- Reason (Req #7) -->
         <div>
-          <label class="block text-xs font-semibold text-slate-300 mb-1">Why Taking Leave / Handover Notes *</label>
+          <label class="block font-medium text-[#3c4043] mb-1">Reason for Taking Leave *</label>
           <input 
             type="text" 
             id="form-reason-input" 
             required 
             placeholder="e.g. Doctor appointment, Family wedding, Vacation..." 
-            class="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-xs text-white focus:outline-none focus:border-indigo-500">
+            class="w-full px-3 py-2 bg-white border border-[#dadce0] rounded-md text-xs text-[#202124] focus:outline-none focus:border-[#1a73e8]">
         </div>
 
-        <div class="pt-4 border-t border-slate-800 flex items-center justify-end space-x-3">
-          <button type="button" onclick="closeModal('leave-request-modal')" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg text-xs font-medium">
+        <div class="pt-3 border-t border-[#ebebeb] flex items-center justify-end space-x-2">
+          <button type="button" onclick="closeModal('add-member-modal')" class="px-3 py-1.5 border border-[#dadce0] bg-white hover:bg-[#f1f3f4] text-[#3c4043] rounded-md text-xs font-medium">
             Cancel
           </button>
-          <button type="submit" class="px-5 py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-xs font-bold shadow-lg shadow-indigo-600/30">
-            Submit &amp; Check Bandwidth
+          <button type="submit" class="px-4 py-1.5 bg-[#1a73e8] hover:bg-[#1557b0] text-white rounded-md text-xs font-medium shadow-sm">
+            Save Entry
           </button>
         </div>
 
       </form>
-
-    </div>
-  </div>
-
-  <!-- ======================================================== -->
-  <!-- MODAL: CELL QUICK EDIT -->
-  <!-- ======================================================== -->
-  <div id="cell-edit-modal" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm hidden flex items-center justify-center p-4">
-    <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-md w-full shadow-2xl p-6 modal-enter-active">
-      
-      <div class="flex items-center justify-between pb-3 border-b border-slate-800">
-        <div>
-          <h3 class="text-base font-bold text-white">Update Attendance</h3>
-          <p class="text-xs text-slate-400 mt-0.5">
-            <span id="edit-cell-member-name" class="font-semibold text-indigo-300">Member</span> &bull; 
-            <span id="edit-cell-project" class="text-slate-300">Project</span>
-          </p>
-        </div>
-        <button onclick="closeModal('cell-edit-modal')" class="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-slate-800">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-        </button>
-      </div>
-
-      <div class="mt-4 space-y-4">
-        <div class="bg-slate-950 p-2.5 rounded-lg border border-slate-800 flex items-center justify-between">
-          <span class="text-xs text-slate-400 font-medium">Selected Date:</span>
-          <span id="edit-cell-date" class="text-xs font-bold text-indigo-300">Date</span>
-        </div>
-
-        <div>
-          <label class="block text-xs font-semibold text-slate-300 mb-1">Status Category *</label>
-          <select id="edit-cell-status" class="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-xs text-white focus:outline-none focus:border-indigo-500">
-            <option value="Working">Working (Active 100%)</option>
-            <option value="Planned Leave">Planned Leave (Absent 0%)</option>
-            <option value="Half day">Half day (Active 50%)</option>
-            <option value="Not Applicable">Not Applicable (Off / Holiday)</option>
-          </select>
-        </div>
-
-        <div id="cell-reason-backup-group" class="space-y-4">
-          <div>
-            <div class="flex items-center justify-between mb-1">
-              <label class="block text-xs font-semibold text-slate-300">Backup Colleague</label>
-              <button type="button" onclick="applyAISmartBackupInCellModal()" class="text-[10px] text-purple-300 hover:text-purple-200 font-bold flex items-center">
-                <span>✨ AI Recommend</span>
-              </button>
-            </div>
-            <select id="edit-cell-backup" class="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-xs text-white focus:outline-none focus:border-indigo-500">
-              <!-- Dynamically populated -->
-            </select>
-          </div>
-
-          <div>
-            <label class="block text-xs font-semibold text-slate-300 mb-1">Reason for Taking Leave</label>
-            <input 
-              type="text" 
-              id="edit-cell-reason" 
-              placeholder="e.g. Doctor appointment, Family vacation..." 
-              class="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-xs text-white focus:outline-none focus:border-indigo-500">
-          </div>
-        </div>
-
-        <div class="flex items-center space-x-2 pt-1">
-          <input type="checkbox" id="edit-cell-apply-all" class="w-4 h-4 rounded bg-slate-950 border-slate-700 text-indigo-600 focus:ring-0">
-          <label for="edit-cell-apply-all" class="text-xs text-slate-300">Apply to all working days in current sprint window</label>
-        </div>
-      </div>
-
-      <div class="mt-6 flex items-center justify-end space-x-3 pt-3 border-t border-slate-800">
-        <button type="button" onclick="closeModal('cell-edit-modal')" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg text-xs font-medium">
-          Cancel
-        </button>
-        <button type="button" onclick="saveCellEdit()" class="px-5 py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-xs font-bold shadow-lg">
-          Save Changes
-        </button>
-      </div>
 
     </div>
   </div>
@@ -668,49 +559,41 @@
   <!-- ======================================================== -->
   <!-- MODAL: SETTINGS -->
   <!-- ======================================================== -->
-  <div id="settings-modal" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm hidden flex items-center justify-center p-4">
-    <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-md w-full shadow-2xl p-6 modal-enter-active">
+  <div id="settings-modal" class="fixed inset-0 z-50 bg-[#202124]/40 backdrop-blur-xs hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-lg max-w-md w-full shadow-xl border border-[#dadce0] p-5">
       
-      <div class="flex items-center justify-between pb-3 border-b border-slate-800">
-        <h3 class="text-base font-bold text-white">Manager Escalation &amp; AI Settings</h3>
-        <button onclick="closeModal('settings-modal')" class="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-slate-800">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+      <div class="flex items-center justify-between pb-3 border-b border-[#ebebeb]">
+        <h3 class="text-sm font-semibold text-[#202124]">Planner &amp; Escalation Settings</h3>
+        <button onclick="closeModal('settings-modal')" class="p-1 rounded-full hover:bg-[#f1f3f4] text-[#5f6368]">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
         </button>
       </div>
 
-      <form onsubmit="saveSettings(event)" class="mt-4 space-y-4">
+      <form onsubmit="saveSettings(event)" class="mt-4 space-y-3.5 text-xs">
         <div>
-          <label class="block text-xs font-semibold text-slate-300 mb-1">Lead / Manager Name</label>
-          <input type="text" id="settings-manager-name" required class="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-xs text-white">
+          <label class="block font-medium text-[#3c4043] mb-1">Lead / Manager Name</label>
+          <input type="text" id="settings-manager-name" required class="w-full px-3 py-2 bg-white border border-[#dadce0] rounded-md text-xs text-[#202124]">
         </div>
 
         <div>
-          <label class="block text-xs font-semibold text-slate-300 mb-1">Lead / Manager Email (For Automatic Triggers)</label>
-          <input type="email" id="settings-manager-email" required class="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-xs text-white">
+          <label class="block font-medium text-[#3c4043] mb-1">Lead Email (For Automatic Escalations)</label>
+          <input type="email" id="settings-manager-email" required class="w-full px-3 py-2 bg-white border border-[#dadce0] rounded-md text-xs text-[#202124]">
         </div>
 
         <div>
-          <label class="block text-xs font-semibold text-slate-300 mb-1">Bandwidth Alert Threshold (%)</label>
+          <label class="block font-medium text-[#3c4043] mb-1">Bandwidth Alert Threshold (%)</label>
           <div class="flex items-center space-x-2">
-            <input type="number" id="settings-threshold" min="10" max="90" required class="w-24 px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-xs text-white">
-            <span class="text-xs text-slate-400">Trigger alert if bandwidth drops below this value (Default: 40%)</span>
+            <input type="number" id="settings-threshold" min="10" max="90" required class="w-20 px-3 py-2 bg-white border border-[#dadce0] rounded-md text-xs text-[#202124]">
+            <span class="text-[#5f6368]">Trigger alert if bandwidth drops below this value (Default: 40%)</span>
           </div>
         </div>
 
-        <div>
-          <label class="block text-xs font-semibold text-slate-300 mb-1">AI Engine Mode</label>
-          <select id="settings-ai-mode" class="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-xs text-white">
-            <option value="offline_expert">PulseAI Built-in Heuristics Engine (Offline Demo Ready)</option>
-            <option value="external_llm">Custom LLM API (OpenAI / Gemini Compatible)</option>
-          </select>
-        </div>
-
-        <div class="pt-4 border-t border-slate-800 flex items-center justify-end space-x-3">
-          <button type="button" onclick="closeModal('settings-modal')" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg text-xs font-medium">
+        <div class="pt-3 border-t border-[#ebebeb] flex items-center justify-end space-x-2">
+          <button type="button" onclick="closeModal('settings-modal')" class="px-3 py-1.5 border border-[#dadce0] bg-white hover:bg-[#f1f3f4] text-[#3c4043] rounded-md text-xs font-medium">
             Cancel
           </button>
-          <button type="submit" class="px-5 py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-xs font-bold shadow-lg">
-            Save Configuration
+          <button type="submit" class="px-4 py-1.5 bg-[#1a73e8] hover:bg-[#1557b0] text-white rounded-md text-xs font-medium shadow-sm">
+            Save Settings
           </button>
         </div>
       </form>
@@ -718,15 +601,85 @@
     </div>
   </div>
 
-  <!-- Realtime Toast Notification Banner -->
-  <div id="toast-notification" class="fixed bottom-5 right-5 z-50 transform translate-y-8 opacity-0 transition-all duration-300 hidden max-w-md">
-    <div class="bg-slate-900 border border-indigo-500/80 rounded-2xl p-4 shadow-2xl flex items-start space-x-3">
-      <div class="p-1 rounded-lg bg-indigo-500/20 text-indigo-400 shrink-0 mt-0.5">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+  <!-- ======================================================== -->
+  <!-- GEMINI LIVE VOICE ASSISTANT MODAL (Multimodal Voice AI) -->
+  <!-- ======================================================== -->
+  <div id="voice-assistant-modal" class="fixed inset-0 z-50 bg-[#202124]/50 backdrop-blur-xs hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-md w-full shadow-2xl border border-[#dadce0] p-6 text-center drawer-panel">
+      
+      <!-- Close button -->
+      <div class="flex justify-end -mt-2 -mr-2 mb-1">
+        <button onclick="toggleVoiceAssistant()" class="p-1 rounded-full hover:bg-[#f1f3f4] text-[#5f6368]">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
       </div>
-      <div class="flex-1">
-        <div class="text-xs font-semibold text-white" id="toast-text">Notification message</div>
+
+      <!-- Animated Google Voice Orb -->
+      <div class="relative w-20 h-20 mx-auto flex items-center justify-center mb-4">
+        <div id="voice-orb-pulse" class="absolute inset-0 rounded-full voice-pulsar bg-gradient-to-tr from-[#4285F4]/30 via-[#EA4335]/20 to-[#34A853]/30"></div>
+        <div class="w-16 h-16 rounded-full bg-white shadow-md flex items-center justify-center space-x-1 border border-[#dadce0]">
+          <span class="audio-bar" style="height: 18px;"></span>
+          <span class="audio-bar" style="height: 28px;"></span>
+          <span class="audio-bar" style="height: 22px;"></span>
+          <span class="audio-bar" style="height: 14px;"></span>
+        </div>
       </div>
+
+      <h3 class="text-base font-semibold text-[#202124]" id="voice-status-title">Gemini Live Voice Commander</h3>
+      <p class="text-xs text-[#5f6368] mt-1" id="voice-status-desc">Listening... Speak a natural command or tap a prompt below</p>
+
+      <!-- Real-time Speech Transcription Box -->
+      <div class="mt-4 bg-[#f8fafd] border border-[#dadce0] rounded-xl p-3.5 text-left min-h-[70px] max-h-[120px] overflow-y-auto">
+        <div class="text-[10px] uppercase font-bold tracking-wider text-[#5f6368] mb-1">Spoken Input / Intent:</div>
+        <div id="voice-transcript" class="text-xs font-medium text-[#202124] italic">"Listening for voice..."</div>
+      </div>
+
+      <!-- Voice Feedback Response Box -->
+      <div id="voice-response-container" class="hidden mt-2 bg-[#e8f0fe] border border-[#d2e3fc] rounded-xl p-3.5 text-left">
+        <div class="text-[10px] uppercase font-bold tracking-wider text-[#1a73e8] mb-1">Gemini Action Executed:</div>
+        <div id="voice-response-text" class="text-xs text-[#1a73e8] font-medium leading-relaxed"></div>
+      </div>
+
+      <!-- Quick Action Prompt Chips -->
+      <div class="mt-4">
+        <div class="text-[11px] font-semibold text-[#5f6368] mb-2 text-left">Quick Voice Actions:</div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-left text-xs">
+          <button onclick="executeVoiceCommand('Mark Abhishek Mishra on leave on Wednesday')" class="p-2 rounded-lg border border-[#dadce0] hover:bg-[#f1f3f4] text-[#3c4043] flex items-center space-x-1.5 transition-colors">
+            <span>🏖️</span>
+            <span class="truncate">Mark Abhishek on leave Wed</span>
+          </button>
+          <button onclick="executeVoiceCommand('What is our bandwidth on Oct 28?')" class="p-2 rounded-lg border border-[#dadce0] hover:bg-[#f1f3f4] text-[#3c4043] flex items-center space-x-1.5 transition-colors">
+            <span>📊</span>
+            <span class="truncate">Bandwidth on Oct 28?</span>
+          </button>
+          <button onclick="executeVoiceCommand('Auto-heal the schedule for Oct 28')" class="p-2 rounded-lg border border-[#dadce0] hover:bg-[#f1f3f4] text-[#137333] font-medium flex items-center space-x-1.5 transition-colors">
+            <span>⚡</span>
+            <span class="truncate">Auto-heal Oct 28 conflicts</span>
+          </button>
+          <button onclick="executeVoiceCommand('Who has a backup conflict?')" class="p-2 rounded-lg border border-[#dadce0] hover:bg-[#f1f3f4] text-[#c5221f] font-medium flex items-center space-x-1.5 transition-colors">
+            <span>⚠️</span>
+            <span class="truncate">Find backup collisions</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mic Controls -->
+      <div class="mt-5 pt-3 border-t border-[#ebebeb] flex items-center justify-between">
+        <button id="toggle-mic-listening-btn" onclick="toggleMicListening()" class="px-3.5 py-1.5 rounded-full bg-[#1a73e8] hover:bg-[#1557b0] text-white text-xs font-medium flex items-center space-x-1.5 shadow-sm">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path></svg>
+          <span id="mic-status-label">Mic Active</span>
+        </button>
+        <span class="text-[11px] text-[#5f6368]">Web Speech API &bull; SpeechSynthesis</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Realtime Toast Banner -->
+  <div id="toast-notification" class="fixed bottom-5 right-5 z-50 transform translate-y-8 opacity-0 transition-all duration-200 hidden max-w-sm">
+    <div class="bg-[#202124] text-white rounded-md px-4 py-3 shadow-lg flex items-center space-x-2.5 text-xs">
+      <span class="text-[#8ab4f8]">ℹ️</span>
+      <span id="toast-text" class="flex-1 font-medium">Notification</span>
     </div>
   </div>
 

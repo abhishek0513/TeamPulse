@@ -1,29 +1,29 @@
-// Seed data and team generator for TeamPulse Bandwidth Tracker (100 members)
+// Seed data and team generator for Google Staffing & Bandwidth Planner (100 members)
 
 const FIRST_NAMES = [
-  "Aarav", "Priya", "Michael", "Sarah", "David", "Fatima", "Carlos", "Emily", "Rohan", "Ananya",
-  "James", "Elena", "Liam", "Sophia", "Daniel", "Meera", "Alexander", "Zainab", "Lucas", "Olivia",
-  "Vikram", "Chloe", "Benjamin", "Aaliyah", "William", "Jessica", "Noah", "Zara", "Ethan", "Nandini",
-  "Henry", "Maya", "Sebastian", "Layla", "Matthew", "Tara", "Samuel", "Kavya", "Jackson", "Noor",
-  "Aditya", "Amara", "Gabriel", "Sana", "Carter", "Ishaan", "Luke", "Simran", "Anthony", "Diya",
-  "Arjun", "Neha", "Mason", "Grace", "Oliver", "Tanvi", "Elijah", "Riya", "Jack", "Pooja",
-  "Aryan", "Sneha", "Leo", "Avani", "Theodore", "Mira", "Thomas", "Deepika", "Logan", "Shreya",
-  "Harsh", "Shruti", "Julian", "Swati", "Jayden", "Bhavna", "Ryan", "Archana", "Nathan", "Geeta",
-  "Varun", "Pallavi", "Caleb", "Meenakshi", "Christian", "Divya", "Hunter", "Kalyani", "Eli", "Radhika",
-  "Karan", "Komal", "Landon", "Bhumika", "Connor", "Richa", "Jonathan", "Payal", "Aaron", "Sunita"
+  "Aarav", "Priya", "Michael", "Elena", "David", "Fatima", "Carlos", "Emily", "Rohan", "Ananya",
+  "James", "Sophia", "Liam", "Meera", "Daniel", "Alexander", "Zainab", "Lucas", "Olivia", "Vikram",
+  "Chloe", "Benjamin", "Aaliyah", "William", "Jessica", "Noah", "Zara", "Ethan", "Nandini", "Henry",
+  "Maya", "Sebastian", "Layla", "Matthew", "Tara", "Samuel", "Kavya", "Jackson", "Noor", "Aditya",
+  "Amara", "Gabriel", "Sana", "Carter", "Ishaan", "Luke", "Simran", "Anthony", "Diya", "Arjun",
+  "Neha", "Mason", "Grace", "Oliver", "Tanvi", "Elijah", "Riya", "Jack", "Pooja", "Aryan",
+  "Sneha", "Leo", "Avani", "Theodore", "Mira", "Thomas", "Deepika", "Logan", "Shreya", "Harsh",
+  "Shruti", "Julian", "Swati", "Jayden", "Bhavna", "Ryan", "Archana", "Nathan", "Geeta", "Varun",
+  "Pallavi", "Caleb", "Meenakshi", "Christian", "Divya", "Hunter", "Kalyani", "Eli", "Radhika", "Karan",
+  "Komal", "Landon", "Bhumika", "Connor", "Richa", "Jonathan", "Payal", "Aaron", "Sunita", "Tanya"
 ];
 
 const LAST_NAMES = [
-  "Sharma", "Patel", "Chen", "Jenkins", "Kim", "Zahra", "Rodriguez", "Watson", "Gupta", "Singh",
-  "Johnson", "Petrova", "Smith", "Miller", "Taylor", "Verma", "Ivanov", "Khan", "Martin", "Brown",
-  "Nair", "Anderson", "Davis", "Al-Mansoor", "Wilson", "Martinez", "Moore", "Siddiqui", "Taylor", "Iyer",
-  "Thomas", "Rao", "Hernandez", "Malik", "Clark", "Deshmukh", "Lewis", "Chopra", "Robinson", "Qureshi",
-  "Mishra", "Ali", "Walker", "Bano", "Hall", "Bose", "Allen", "Kaur", "Young", "Bhatt",
-  "Reddy", "Ghosh", "Wright", "King", "Lopez", "Joshi", "Hill", "Mehta", "Scott", "Saxena",
-  "Kapoor", "Banerjee", "Green", "Adams", "Baker", "Trivedi", "Gonzalez", "Agarwal", "Nelson", "Mukherjee",
-  "Pandey", "Chatterjee", "Mitchell", "Pillai", "Perez", "Das", "Roberts", "Chawla", "Turner", "Menon",
-  "Thakur", "Dutta", "Phillips", "Nambiar", "Campbell", "Mahajan", "Parker", "Garg", "Evans", "Shukla",
-  "Malhotra", "Biswas", "Edwards", "Tandon", "Collins", "Lal", "Stewart", "Somani", "Sanchez", "Dube"
+  "Sharma", "Patel", "Chen", "Kim", "Zahra", "Rodriguez", "Watson", "Gupta", "Singh", "Johnson",
+  "Petrova", "Smith", "Miller", "Taylor", "Verma", "Ivanov", "Khan", "Martin", "Brown", "Nair",
+  "Anderson", "Davis", "Al-Mansoor", "Wilson", "Martinez", "Moore", "Siddiqui", "Iyer", "Thomas", "Rao",
+  "Hernandez", "Malik", "Clark", "Deshmukh", "Lewis", "Chopra", "Robinson", "Qureshi", "Mishra", "Ali",
+  "Walker", "Bano", "Hall", "Bose", "Allen", "Kaur", "Young", "Bhatt", "Reddy", "Ghosh",
+  "Wright", "King", "Lopez", "Joshi", "Hill", "Mehta", "Scott", "Saxena", "Kapoor", "Banerjee",
+  "Green", "Adams", "Baker", "Trivedi", "Gonzalez", "Agarwal", "Nelson", "Mukherjee", "Pandey", "Chatterjee",
+  "Mitchell", "Pillai", "Perez", "Das", "Roberts", "Chawla", "Turner", "Menon", "Thakur", "Dutta",
+  "Phillips", "Nambiar", "Campbell", "Mahajan", "Parker", "Garg", "Evans", "Shukla", "Malhotra", "Biswas",
+  "Edwards", "Tandon", "Collins", "Lal", "Stewart", "Somani", "Sanchez", "Dube", "Vaidya", "Bansal"
 ];
 
 const PROJECTS = [
@@ -48,7 +48,7 @@ const LEAVE_REASONS = [
   "Visa & Passport Appointment"
 ];
 
-// Generate dates for current window (15 days starting from Oct 24, 2026)
+// Generate dates for current window (14 days starting from Oct 24, 2026)
 function generateDateRange(startDateStr = "2026-10-24", daysCount = 14) {
   const dates = [];
   const start = new Date(startDateStr);
@@ -73,19 +73,23 @@ function generateDateRange(startDateStr = "2026-10-24", daysCount = 14) {
   return dates;
 }
 
-// Generate 100 realistic members
+// Generate 100 realistic members (with Abhishek Mishra as Member #1)
 function generateInitialTeam(dates) {
   const team = [];
   const fullNames = [];
   
-  for (let i = 0; i < 100; i++) {
+  // Member #1 is explicitly Abhishek Mishra
+  fullNames.push("Abhishek Mishra");
+
+  for (let i = 1; i < 100; i++) {
     fullNames.push(`${FIRST_NAMES[i % FIRST_NAMES.length]} ${LAST_NAMES[i % LAST_NAMES.length]}`);
   }
 
   for (let i = 0; i < 100; i++) {
     const id = `MEM-${String(i + 1).padStart(3, '0')}`;
     const name = fullNames[i];
-    const project = PROJECTS[i % PROJECTS.length];
+    const project = (i === 0) ? "AI Recommendation Engine" : PROJECTS[i % PROJECTS.length];
+    
     // Assign a peer from same or adjacent project as default backup
     const backupIndex = (i + 1) % 100;
     const backupName = fullNames[backupIndex];
@@ -104,8 +108,8 @@ function generateInitialTeam(dates) {
       if (dt.isWeekend && !isCriticalDate2) {
         // Weekends default to Not Applicable
         schedule[dt.key] = "Not Applicable";
-      } else if (isCriticalDate1 && i < 68) {
-        // 68 people on leave on Oct 28
+      } else if (isCriticalDate1 && i > 0 && i < 68) {
+        // 67 people on leave on Oct 28 (keeping Abhishek Mishra active)
         schedule[dt.key] = "Planned Leave";
         leaveReasons[dt.key] = LEAVE_REASONS[i % LEAVE_REASONS.length];
         dateBackups[dt.key] = backupName;
@@ -117,7 +121,10 @@ function generateInitialTeam(dates) {
       } else {
         // Normal distribution: ~85% Working, ~8% Planned Leave, ~5% Half day, ~2% NA
         const rand = (i * 17 + dateIdx * 23) % 100;
-        if (rand < 82) {
+        if (i === 0) {
+          // Abhishek Mishra default schedule
+          schedule[dt.key] = dt.isWeekend ? "Not Applicable" : "Working";
+        } else if (rand < 82) {
           schedule[dt.key] = "Working";
         } else if (rand < 92) {
           schedule[dt.key] = "Planned Leave";
@@ -133,13 +140,17 @@ function generateInitialTeam(dates) {
       }
     });
 
+    const email = (i === 0) 
+      ? "abhishmishra@google.com" 
+      : `${name.toLowerCase().replace(/\s+/g, '.')}@google.com`;
+
     team.push({
       id: id,
       name: name,
       project: project,
       defaultBackup: backupName,
-      defaultReason: LEAVE_REASONS[i % LEAVE_REASONS.length],
-      email: `${name.toLowerCase().replace(/\s+/g, '.')}@company.com`,
+      defaultReason: (i === 0) ? "Core Engine Sprint Delivery" : LEAVE_REASONS[i % LEAVE_REASONS.length],
+      email: email,
       schedule: schedule,
       leaveReasons: leaveReasons,
       dateBackups: dateBackups

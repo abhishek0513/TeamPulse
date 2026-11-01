@@ -1,37 +1,25 @@
-# TeamPulse: Team Leave & Bandwidth Management Web Portal (with PulseAI)
+# Google Staffing & Bandwidth Planner (Internal Engineering Tool)
 
-A real-time SaaS web application for 100+ member team attendance tracking, capacity planning, automated manager escalation triggers, and **PulseAI intelligent risk management**.
+A lightweight, high-density capacity and leave planning tool built for Google engineering squads (100 staff), featuring automated manager escalation triggers when daily team capacity falls below critical thresholds (< 40%).
 
 ---
 
-## 🌐 Live Website
+## 👤 Profiles & Ownership
+* **User Profile**: **Abhishek Mishra** (`abhishmishra@google.com`) - Software / AI Engineer
+* **Engineering Lead / Manager**: **Abhinav Rawat** (`rawatabhinav@google.com`) - Manager receiving automated capacity alerts
 
-The website is **ONLINE and RUNNING**:
+---
+
+## 🌐 Live Access
+The tool is currently running on your local server:
 👉 **[http://localhost:5000](http://localhost:5000)**
 
-*(Or double-click [`index.html`](file:///C:/Users/Dell/.gemini/antigravity/scratch/team-bandwidth-tracker/index.html) or the single-file [`TeamPulse_Standalone_Demo.html`](file:///C:/Users/Dell/.gemini/antigravity/scratch/team-bandwidth-tracker/TeamPulse_Standalone_Demo.html) to open directly in any browser with zero setup).*
+*(Or double-click the standalone offline file [`TeamPulse_Standalone_Demo.html`](file:///C:/Users/Dell/.gemini/antigravity/scratch/team-bandwidth-tracker/TeamPulse_Standalone_Demo.html) in any browser with zero setup).*
 
 ---
 
-## 🤖 PulseAI Features Integrated
-
-1. **✨ PulseAI Copilot (Floating Assistant Drawer)**:
-   - Click **`✨ PulseAI Copilot`** in the bottom-right corner.
-   - Natural language question answering about team capacity, sprint vulnerabilities, and backup health.
-   - Built-in prompt chips:
-     - 💡 *"Analyze capacity risks this sprint"*
-     - 🚨 *"Explain Oct 28 drop (<40%)"*
-     - ⚠️ *"Check backup collisions and conflicts"*
-     - 📋 *"Draft standup executive summary"*
-
-2. **✨ AI Capacity & Risk Audit**:
-   - Click **`✨ AI Capacity Audit`** in the top navigation bar.
-   - Evaluates a **0–100 Team Risk Score** based on active shortages, collision hazards, and project vulnerabilities.
-   - Generates actionable mitigation recommendations for leadership.
-
-3. **✨ Smart AI Backup Recommender**:
-   - In the **Leave Request Form** and **Cell Edit Menu**, click **`✨ AI Recommend`**.
-   - AI scans same-project colleagues, filters for who is 100% available with zero conflicts on that date, and automatically assigns them as backup.
-
-4. **✨ Double-Outage Hazard Detector**:
-   - Proactively detects if an employee and their designated backup are simultaneously taking leave on the same date.
+## 🖥️ Architecture & Design Highlights
+1. **Google Material 3 Workspace Theme**: Clean white canvas (`#ffffff`), subtle borders (`#dadce0`), Google Sans typography.
+2. **On-Demand Right Drawers**: Zero clutter on screen. Clicking any cell opens the **Attendance & Handover Inspector**.
+3. **Gemini Workspace Panel**: Integrated Gemini assistant for natural language capacity analysis, double-outage collision checks, and executive standup summaries.
+4. **Automated Escalation Rule**: Any sprint date where available team bandwidth drops below **40%** automatically generates an escalation draft to **Abhinav Rawat** (`rawatabhinav@google.com`).

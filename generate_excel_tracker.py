@@ -232,7 +232,7 @@ def export_excel_xml(dates, members, filepath):
     xml.append('    <Cell ss:StyleID="Title"><Data ss:Type="String">Team Leave &amp; Bandwidth Capacity Tracker (100 Members)</Data></Cell>')
     xml.append('   </Row>')
     xml.append('   <Row ss:Height="18">')
-    xml.append('    <Cell><Data ss:Type="String">Automatic Escalation Rule: Any date where available bandwidth drops below 40% triggers alert to Manager (sarah.lead@company.com)</Data></Cell>')
+    xml.append('    <Cell><Data ss:Type="String">Automatic Escalation Rule: Any date where available bandwidth drops below 40% triggers alert to Manager (rawatabhinav@google.com - Abhinav Rawat)</Data></Cell>')
     xml.append('   </Row>')
     xml.append('   <Row ss:Height="10"/>')
 
